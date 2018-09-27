@@ -13,4 +13,13 @@ public class scr_player_shooter_bullet : MonoBehaviour {
 	void Update () {
         transform.Translate(Vector2.up * Time.deltaTime * 5);
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "enemy")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }
