@@ -11,7 +11,7 @@ public class scr_player_shooter_bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(Vector2.up * Time.deltaTime * 5);
+        transform.Translate(Vector2.up * Time.deltaTime * 8);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -20,6 +20,7 @@ public class scr_player_shooter_bullet : MonoBehaviour {
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
+            global.scoreShooter += 500;
         }
     }
 }
