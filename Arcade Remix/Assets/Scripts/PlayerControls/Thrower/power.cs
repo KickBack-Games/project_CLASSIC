@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
@@ -17,6 +17,8 @@ public class power : MonoBehaviour {
 	public Text txtDistance; 
 	public float distance;
 
+	public GameObject pre_particles;
+
 	void Start ()
 	{
 		setText();
@@ -28,7 +30,13 @@ public class power : MonoBehaviour {
 		if (second > 0)
 		{
 			if (Input.GetMouseButtonDown(0))
+			{
 				counter += 1;
+
+				// Create particles
+				for (int i = 0; i < 10; i++)
+					Instantiate(pre_particles, this.gameObject.GetComponent<Transform>());
+			}
 
 			timer -= Time.deltaTime;
 			second = Mathf.RoundToInt(timer);
