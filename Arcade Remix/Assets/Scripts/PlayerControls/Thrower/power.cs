@@ -9,7 +9,7 @@ public class power : MonoBehaviour {
 	private float timer = 10.0f;
 	public int second = 10;
 
-	public int counter;
+	public int counter = 0;
 	private bool done = false;
 
 	// Text
