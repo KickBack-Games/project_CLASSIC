@@ -14,7 +14,6 @@ public class scr_enemy_shooter_movement : MonoBehaviour {
 	void Update () {
         transform.Translate(Vector2.right * Time.deltaTime * speedX);
         transform.Translate(Vector2.up * Time.deltaTime * speedY);
-        Debug.Log(transform.position.y);
 
         if (transform.position.x >= 2.3)
         {
