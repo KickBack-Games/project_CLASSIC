@@ -5,7 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - ImageCopy
+<<<<<<< HEAD
   - ShooterTarget
+=======
+  - wall
+  - ball
+>>>>>>> 87dfbfc57b9bea35bb109b96f9452440b29b3544
   layers:
   - Default
   - TransparentFX
