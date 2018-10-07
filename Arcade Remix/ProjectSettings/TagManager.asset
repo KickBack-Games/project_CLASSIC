@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ImageCopy
+  - ShooterTarget
   layers:
   - Default
   - TransparentFX

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class scr_player_shooter_bullet : MonoBehaviour {
-
+    public GameObject eventobject;
 	// Use this for initialization
 	void Start () {
 		
@@ -21,6 +21,7 @@ public class scr_player_shooter_bullet : MonoBehaviour {
             Destroy(other.gameObject);
             Destroy(gameObject);
             global.scoreShooter += 500;
+            eventobject.GetComponent<scr_enemy_shooter_spawn>().alarm = 60;
         }
     }
 }
