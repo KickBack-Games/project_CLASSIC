@@ -508,6 +508,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtTime: {fileID: 1538617245}
+  secondToIncDiff: 5
+  changeFloat: 0.1
 --- !u!1 &942196750
 GameObject:
   m_ObjectHideFlags: 0
