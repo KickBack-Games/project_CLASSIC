@@ -10,7 +10,8 @@ public class cameraMovement : MonoBehaviour {
 	private Vector2 temp = new Vector2();
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	 {
 		temp = followPlayer.gameObject.GetComponent<Transform>().position;
 		this.gameObject.GetComponent<Transform>().position = new Vector3(temp.x + offset, 0, -10);
 	}

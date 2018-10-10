@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour 
 {
@@ -34,6 +35,9 @@ public class playerMovement : MonoBehaviour
 			// falling effect
 			if (transform.localScale.x >= 0 && transform.localScale.y >= 0)
 				transform.localScale -= new Vector3(0.01f, 0.01f, 0.0f);
+			else
+				// Restart when completely shrunk
+				SceneManager.LoadScene("scn_game_dodger");
 		}
 		else
 		{
