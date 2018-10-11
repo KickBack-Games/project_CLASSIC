@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class scr_player_runner_controls : MonoBehaviour {
     //touch button to fire 
     public Button button;
-    public GameObject UIEvent;
     //hits Limmit
     public int hits = 5;
     //Movement speed
@@ -19,10 +18,10 @@ public class scr_player_runner_controls : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        GetComponent<Rigidbody2D>().AddForce(Vector2.up * -13);
     }
 
     void OnJump() {
-
+        GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity + new Vector2(0, 10);
     }
 }
