@@ -6,9 +6,11 @@ public class dragAndShoot : MonoBehaviour {
 
 	private SpringJoint2D spring;
 	public float maxStretch = 3.0f;
-	public bool clickedOn;
+	public bool isPressed = false;
 
 	private Ray raytoMouse;
+	public Rigidbody2D rb;
+	public float releaseTime = .15f;
 
 	void Awake() 
 	{
@@ -24,23 +26,32 @@ public class dragAndShoot : MonoBehaviour {
 	void Update () 
 	{
 		// if clicked mouse, then drag
-		if (Input.GetMouseButtonDown(0))
+		if (isPressed)
 		{
-			//spring.enabled = false;
-			clickedOn = true;
-			Vector2 supahPOWAH = new Vector2(35.0f, 20.0f);
-			this.gameObject.GetComponent<Rigidbody2D>().AddForce (supahPOWAH, ForceMode2D.Impulse);	
-			if (Input.GetMouseButtonUp(0))
-			{
-				//spring.enabled = true;
-				gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-				Debug.Log("Drag ended!");
-			}
+			rb.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		}
 
 	}
 
+	void OnMouseDown()
+	{
+		isPressed = true;
+		rb.isKinematic = true;
+	}
 
+	void OnMouseUp()
+	{
+	
+		isPressed = false;
+		rb.isKinematic = false;
+		StartCoroutine(Release());
+	}
+
+	IEnumerator Release ()
+	{
+		yield return new WaitForSeconds(releaseTime);
+		GetComponent<SpringJoint2D>().enabled = false;
+	}
 
 	void dragging ()
 	{
