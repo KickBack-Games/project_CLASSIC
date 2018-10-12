@@ -7,6 +7,8 @@ public class ballMovement : MonoBehaviour {
 
 	public float speed;
 	public int dir;
+	private float sortingF;
+	private int sortingI;
 
 	void Start()
 	{
@@ -29,6 +31,14 @@ public class ballMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		// This will allow a "3D" effect by keeping the sorting layer based on height
+		// This effect interacts with the player when the ball is about to hit top or bottom of player
+		SpriteRenderer spr = GetComponent<SpriteRenderer>();
+		sortingF = gameObject.transform.position.y;
+		sortingI = Mathf.RoundToInt(sortingF);
+
+		spr.sortingOrder = sortingI * -1;
+
 		// Move the object forward along its correct axis.
 		if (dir == 0) // UP
         	transform.Translate(0, Time.deltaTime * speed, 0);
