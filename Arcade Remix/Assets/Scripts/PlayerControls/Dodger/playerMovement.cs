@@ -10,7 +10,7 @@ public class playerMovement : MonoBehaviour
 	private Vector3 pos;
 	private Transform tr;
 
-	private bool lost;
+	public bool lost;
 
 	void Start() 
 	{
@@ -31,7 +31,7 @@ public class playerMovement : MonoBehaviour
 
 		if (lost)
 		{
-			transform.Rotate( new Vector3(0, 0, 300) * Time.deltaTime);
+			transform.Rotate( new Vector3(0, 0, 500) * Time.deltaTime);
 			// falling effect
 			if (transform.localScale.x >= 0 && transform.localScale.y >= 0)
 				transform.localScale -= new Vector3(0.01f, 0.01f, 0.0f);
