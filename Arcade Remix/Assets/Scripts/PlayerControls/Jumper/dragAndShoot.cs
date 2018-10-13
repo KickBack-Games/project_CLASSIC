@@ -11,10 +11,15 @@ public class dragAndShoot : MonoBehaviour {
 	private Ray raytoMouse;
 	public Rigidbody2D rb;
 	public float releaseTime = .15f;
+	public float releaseTimeGrav = .3f;
+
+	public float maxVelocity;
+
+	public GameObject anchor;
 
 	void Awake() 
 	{
-		spring = GetComponent<SpringJoint2D>();
+		//spring = GetComponent<SpringJoint2D>();
 	}
 
 	void Start()
@@ -26,6 +31,7 @@ public class dragAndShoot : MonoBehaviour {
 	void Update () 
 	{
 		// if clicked mouse, then drag
+		//GetComponent<Rigidbody2D>().gravityScale = 10;
 		if (isPressed)
 		{
 			rb.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -33,10 +39,19 @@ public class dragAndShoot : MonoBehaviour {
 
 	}
 
+	void FixedUpdate()
+	{
+		rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+	}
+
+
 	void OnMouseDown()
 	{
 		isPressed = true;
 		rb.isKinematic = true;
+		GetComponent<SpringJoint2D>().enabled = true;
+		
+		anchor.transform.position = gameObject.transform.position;
 	}
 
 	void OnMouseUp()
@@ -51,7 +66,10 @@ public class dragAndShoot : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(releaseTime);
 		GetComponent<SpringJoint2D>().enabled = false;
+
 	}
+
+
 
 	void dragging ()
 	{
