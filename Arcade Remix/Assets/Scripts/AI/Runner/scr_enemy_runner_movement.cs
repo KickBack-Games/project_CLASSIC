@@ -11,7 +11,7 @@ public class scr_enemy_runner_movement : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "MainCamera")
+        if (col.gameObject.tag == "MainCamera" && this.gameObject.name!="firstwave")
         {
             parent.GetComponent<scr_enemy_runner_spawn>().OnSpawn();
         }

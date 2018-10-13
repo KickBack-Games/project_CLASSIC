@@ -6,6 +6,9 @@ TagManager:
   tags:
   - RunnerBlock
   - ShooterTarget
+  - RunnerEnemy
+  - ImageCopy
+  - RunnerGoal
   layers:
   - Default
   - TransparentFX
