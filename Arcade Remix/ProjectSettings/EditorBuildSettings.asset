@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/scn_game_runner.unity
-    guid: 449f8c66507b0cb40bf766eeda516cdb
+    path: Assets/Scenes/scn_game_basketball.unity
+    guid: 69b3f3f6ecc72df47b34fcaa40133ac9
   m_configObjects: {}

@@ -17,6 +17,8 @@ public class testShot : MonoBehaviour {
 	public GameObject anchor;
 	public SpriteRenderer rend;
 
+    private float rotSpeed;
+
 	// Update is called once per frame
 
 	void start()
@@ -27,7 +29,9 @@ public class testShot : MonoBehaviour {
 
 	void Update () 
 	{
-		if (Input.GetMouseButton(0))
+        rotSpeed = rb.velocity.x;
+        gameObject.transform.Rotate(new Vector3(0,0,-rotSpeed));
+        if (Input.GetMouseButton(0))
 		{
 			// This 'lock' allows the logic for dragging... since only when you let go, does it 
 			// turn false
@@ -94,7 +98,8 @@ public class testShot : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+		//rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+        Debug.Log(rb.velocity);
 	}
 }
 
