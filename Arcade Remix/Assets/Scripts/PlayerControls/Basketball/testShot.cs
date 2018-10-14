@@ -97,3 +97,7 @@ public class testShot : MonoBehaviour {
 		rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
 	}
 }
+
+// ADD A COLLIDER WHEN BALL IS BELOW Y POSITION OF HOOP TO AVOID CHEATING?
+// SPARKLERS AFTER SCORING? FAST Y SPEED, AND SLOWING DOWN, BUT SLOW X AS IT SPEEDS UP.
+// RANDOM POSITION WHEN SCORING
