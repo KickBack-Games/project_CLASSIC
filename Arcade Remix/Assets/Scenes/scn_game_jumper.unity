@@ -161,11 +161,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 229938625}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.2, y: -4.2, z: 0}
+  m_LocalPosition: {x: 11.51, y: -4.2, z: 10}
   m_LocalScale: {x: 58.44, y: 31.88, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 373501019}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &371805215
 Prefab:
@@ -238,9 +238,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 373501018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.38, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 229938627}
+  - {fileID: 946748362}
+  - {fileID: 2119069984}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -304,6 +307,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followPlayer: {fileID: 1106510275}
   offset: 8
+--- !u!1 &433246406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1556335711853552, guid: 82e697129b23c4f4ba379e3c8ea5d75b,
+    type: 2}
+  m_PrefabInternal: {fileID: 371805215}
+--- !u!50 &433246410
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 433246406}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10000
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5
 --- !u!1 &449522150
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +426,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &575156269
 GameObject:
@@ -549,11 +577,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 946748360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.4, y: -3.93, z: 0}
+  m_LocalPosition: {x: -23.1, y: -3.93, z: 10}
   m_LocalScale: {x: 58.44, y: 31.88, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 373501019}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1106510275
 GameObject:
@@ -916,11 +944,11 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.5
+  m_AngularDrag: 0
   m_GravityScale: 5
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -996,7 +1024,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1355653314
 MonoBehaviour:
@@ -1009,10 +1037,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97df682b828fa741af58fd390c96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  locked: 0
   dragging: 0
   impulseGiven: 0
   maxVelocity: 100
   rb: {fileID: 1355653310}
+  initP: {x: 0, y: 0}
+  finalP: {x: 0, y: 0}
+  power: 30
 --- !u!1 &1793462176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,7 +1194,7 @@ Transform:
   m_Children:
   - {fileID: 1215499369}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2119069982
 GameObject:
@@ -1212,9 +1244,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2119069982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8, y: 122, z: 0}
+  m_LocalPosition: {x: -0.6199999, y: 122, z: 10}
   m_LocalScale: {x: 58.44, y: 31.88, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 373501019}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
