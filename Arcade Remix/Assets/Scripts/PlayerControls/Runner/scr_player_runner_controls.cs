@@ -27,6 +27,7 @@ public class scr_player_runner_controls : MonoBehaviour {
     {
         if (collision.gameObject.tag == "RunnerEnemy")
         {
+            collision.gameObject.GetComponent<scr_enemy_runner_jumping>().goal.SetActive(false);
             if (this.GetComponent<scr_mod_iframes>().alarm>-1)
             {
                 Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision, false);
@@ -36,10 +37,10 @@ public class scr_player_runner_controls : MonoBehaviour {
                 hits--;
                 uievent.GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
                 this.GetComponent<scr_mod_iframes>().OnStart(60);
-                Destroy(collision.gameObject);
+               
             }
         }
-        if (collision.gameObject.tag == "RunnerGoal")
+        if (collision.gameObject.tag == "RunnerGoal" && GetComponent<Rigidbody2D>().velocity != new Vector2(0, 0))
         {
             global.scoreRunner += 500;
         }
