@@ -5,19 +5,26 @@ using UnityEngine;
 public class testShot : MonoBehaviour {
 
 	public bool locked = false;
-	public bool dragging = false;
-	public bool impulseGiven = false;
 	public float maxVelocity;
 
 	public Rigidbody2D rb;
-	private Vector2 test;
 
 	public Vector2 initP;
 	public Vector2 finalP;
 
 	public float power;
 
+	public GameObject anchor;
+	public SpriteRenderer rend;
+
 	// Update is called once per frame
+
+	void start()
+	{
+		rend = anchor.GetComponent<SpriteRenderer>();
+	}
+
+
 	void Update () 
 	{
 		if (Input.GetMouseButton(0))
@@ -35,20 +42,19 @@ public class testShot : MonoBehaviour {
 				if ((initP.x == 0) && (initP.y == 0))
 				{
 					initP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+					rend.transform.position = initP;
+					rend.enabled = true;
 				}
 			} 
-
 		}
 		else
 		{
+			rend.enabled = false;
 			gameObject.GetComponent<Rigidbody2D>().gravityScale = 10;
 			if (locked)
 			{
-				
-
 				// TODO CALCULATIONS with final and init
 				finalP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
 
 				// Find the direction
 				int xDir;
@@ -83,46 +89,11 @@ public class testShot : MonoBehaviour {
 				initP = new Vector2 (0, 0);
 			}
 			locked = false;
-		} 
-		// if clicked mouse, then drag
-		//GetComponent<Rigidbody2D>().gravityScale = 10;
-		if (dragging)
-		{
-			if (impulseGiven)
-			{
-
-				//gameObject.GetComponent<Rigidbody2D>().gravityScale = 5;
-				//impulseGiven = false;
-			}
-			
-			//rb.position = test;
-		}
-			
-
+		} 		
 	}
 
 	void FixedUpdate()
 	{
 		rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
-	}
-
-
-	void OnMouseDown()
-	{
-		test = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		//isPressed = true;
-		//rb.isKinematic = true;
-		//dragging = true;
-		
-	}
-
-	void OnMouseUp()
-	{
-	
-		//isPressed = false;
-		//rb.isKinematic = false;
-		//dragging = false;
-		//impulseGiven = true;
-
 	}
 }
