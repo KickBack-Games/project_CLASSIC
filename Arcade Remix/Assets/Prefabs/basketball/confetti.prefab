@@ -76,7 +76,7 @@ MonoBehaviour:
   lifetime: 30
   xSpeed: 0
   ySpeed: 5
-  freq: 0.1
+  freq: 0.05
   delta: 1
   board: {fileID: 0}
 --- !u!212 &212199143931842942
