@@ -11,6 +11,7 @@ public class scr_player_runner_controls : MonoBehaviour {
     public int hits = 5;
     //Movement speed
     public int speed = 3;
+    public int jspeed = 7;
 
 	// Use this for initialization
 	void Start () {
@@ -49,7 +50,7 @@ public class scr_player_runner_controls : MonoBehaviour {
     void OnJump() {
         if(GetComponent<Rigidbody2D>().velocity == new Vector2(0,0))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 7);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, jspeed);
         }       
     }
 }

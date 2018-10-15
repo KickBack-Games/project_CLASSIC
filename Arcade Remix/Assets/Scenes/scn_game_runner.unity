@@ -339,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 1314024867}
+  jspeed: 0
 --- !u!1 &101768972
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,6 +2150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 1134622459}
+  jspeed: 0
 --- !u!1 &1332718444
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,6 +2734,7 @@ MonoBehaviour:
   uievent: {fileID: 521296848}
   hits: 5
   speed: 3
+  jspeed: 8
 --- !u!61 &1708757167
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2771,7 +2774,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.51
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -2925,6 +2928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 547022804}
+  jspeed: 0
 --- !u!1 &2026950951
 GameObject:
   m_ObjectHideFlags: 0
