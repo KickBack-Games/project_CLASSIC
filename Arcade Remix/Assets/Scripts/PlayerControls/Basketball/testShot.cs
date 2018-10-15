@@ -29,9 +29,7 @@ public class testShot : MonoBehaviour {
 
 	void Update () 
 	{
-        rotSpeed = rb.velocity.x;
-        gameObject.transform.Rotate(new Vector3(0,0,-rotSpeed));
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && (gameObject.transform.position.y < 0))
 		{
 			// This 'lock' allows the logic for dragging... since only when you let go, does it 
 			// turn false
@@ -57,7 +55,6 @@ public class testShot : MonoBehaviour {
 			gameObject.GetComponent<Rigidbody2D>().gravityScale = 10;
 			if (locked)
 			{
-				// TODO CALCULATIONS with final and init
 				finalP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 				// Find the direction
@@ -98,11 +95,9 @@ public class testShot : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		//rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
-        Debug.Log(rb.velocity);
+		//rotSpeed = rb.velocity.x;
+        //gameObject.transform.Rotate(new Vector3(0,0,-rotSpeed/2f));
+		rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
 	}
 }
 
-// ADD A COLLIDER WHEN BALL IS BELOW Y POSITION OF HOOP TO AVOID CHEATING?
-// SPARKLERS AFTER SCORING? FAST Y SPEED, AND SLOWING DOWN, BUT SLOW X AS IT SPEEDS UP.
-// RANDOM POSITION WHEN SCORING

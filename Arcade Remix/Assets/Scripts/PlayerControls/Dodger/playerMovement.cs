@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; 
 
 public class playerMovement : MonoBehaviour 
 {
@@ -11,6 +12,7 @@ public class playerMovement : MonoBehaviour
 	private Transform tr;
 
 	public bool lost;
+	public Text txtScore;
 
 	void Start() 
 	{
