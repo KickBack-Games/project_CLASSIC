@@ -11,7 +11,7 @@ public class confettiMaker : MonoBehaviour {
 
 	public GameObject confetti_;
 	public GameObject board;
-	public GameObject ballGO;
+	public Rigidbody2D ballRB;
 
 	private int score = 0;
 	public Text txtScore; 
@@ -23,7 +23,7 @@ public class confettiMaker : MonoBehaviour {
 	void Update () 
 	{
 		// NO CHEATING ALLOWED
-		if (ballGO.transform.position.y + 2f < gameObject.transform.position.y)
+		if (ballRB.velocity.y > 0)
 			gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
 		else
 			gameObject.GetComponent<BoxCollider2D>().isTrigger = true;

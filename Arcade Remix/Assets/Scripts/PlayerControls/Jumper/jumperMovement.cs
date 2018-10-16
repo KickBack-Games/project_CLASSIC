@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class testShot : MonoBehaviour {
-
+public class jumperMovement : MonoBehaviour 
+{
 	public bool locked = false;
 	public float maxVelocity;
 
@@ -19,6 +19,8 @@ public class testShot : MonoBehaviour {
 
     private float rotSpeed;
 
+    public bool landed = false;
+
 	// Update is called once per frame
 
 	void start()
@@ -29,7 +31,8 @@ public class testShot : MonoBehaviour {
 
 	void Update () 
 	{
-        if (Input.GetMouseButton(0) && (gameObject.transform.position.y < 0))
+		
+        if (Input.GetMouseButton(0) & landed)
 		{
 			// This 'lock' allows the logic for dragging... since only when you let go, does it 
 			// turn false
@@ -52,7 +55,7 @@ public class testShot : MonoBehaviour {
 		else
 		{
 			rend.enabled = false;
-			gameObject.GetComponent<Rigidbody2D>().gravityScale = 10;
+			gameObject.GetComponent<Rigidbody2D>().gravityScale = 8;
 			if (locked)
 			{
 				finalP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -98,5 +101,15 @@ public class testShot : MonoBehaviour {
         //gameObject.transform.Rotate(new Vector3(0,0,-rotSpeed/2f));
 		rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
 	}
-}
 
+
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		landed = true;
+	}
+	void OnCollisionExit2D(Collision2D other)
+	{
+		landed = false;
+	}
+
+}
