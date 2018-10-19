@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class jumperMovement : MonoBehaviour 
 {
@@ -21,8 +22,6 @@ public class jumperMovement : MonoBehaviour
 
     public bool landed = false;
 
-	// Update is called once per frame
-
 	void start()
 	{
 		rend = anchor.GetComponent<SpriteRenderer>();
@@ -31,6 +30,8 @@ public class jumperMovement : MonoBehaviour
 
 	void Update () 
 	{
+		if (Input.GetKeyDown(KeyCode.R))
+			SceneManager.LoadScene("scn_game_jumper");
 		
         if (Input.GetMouseButton(0) & landed)
 		{
@@ -97,19 +98,18 @@ public class jumperMovement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		//rotSpeed = rb.velocity.x;
-        //gameObject.transform.Rotate(new Vector3(0,0,-rotSpeed/2f));
 		rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
 	}
-
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		landed = true;
 	}
+
 	void OnCollisionExit2D(Collision2D other)
 	{
 		landed = false;
 	}
-
 }
+
+

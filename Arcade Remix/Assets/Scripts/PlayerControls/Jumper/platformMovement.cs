@@ -40,16 +40,24 @@ public class platformMovement : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
+		if (other.gameObject.tag == "Respawn")
+		{
 			teleportPlatform();
 			hasLanded = false;
+		}
 	}
 
 	void teleportPlatform()
 	{
+		int hori = Random.Range(0,2);
+
 		transform.position = new Vector2(playah.transform.position.x + 25f, Random.Range(-5.5f, 5.5f));
-		travelDistance = Random.Range(1f, 2f);
+		travelDistance = Random.Range(1f, 3f);
 		pointA = transform.position;
-		pointB = new Vector2 (pointA.x + travelDistance, pointA.y);
+		if (hori == 0)
+			pointB = new Vector2 (pointA.x + travelDistance, pointA.y);
+		else
+			pointB = new Vector2(pointA.x, pointA.y + travelDistance);
 	}
 }
 

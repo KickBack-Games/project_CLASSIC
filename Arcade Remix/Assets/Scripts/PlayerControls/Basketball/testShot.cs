@@ -19,15 +19,12 @@ public class testShot : MonoBehaviour {
 
     private float rotSpeed;
 
-	// Update is called once per frame
-
 	void start()
 	{
 		rend = anchor.GetComponent<SpriteRenderer>();
 	}
 
-
-	void Update () 
+	void Update ()
 	{
         if (Input.GetMouseButton(0) && (gameObject.transform.position.y < 0))
 		{
