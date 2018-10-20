@@ -9,6 +9,7 @@ TagManager:
   - RunnerEnemy
   - ImageCopy
   - RunnerGoal
+  - bad
   layers:
   - Default
   - TransparentFX

@@ -21,18 +21,22 @@ public class waveMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if ((Mathf.Abs(player.transform.position.x - gameObject.transform.position.x)) > far)
+		if ((Mathf.Abs(player.transform.position.x - gameObject.transform.position.x)) < close)
 		{
-			speed = 100;
+			if(speed >= 10)
+				speed -= 2;
+
 		}
-		else if ((Mathf.Abs(player.transform.position.x - gameObject.transform.position.x)) > mid)
+		else if ((Mathf.Abs(player.transform.position.x - gameObject.transform.position.x)) < mid)
 		{
-			speed = 50;
+			if(speed >= 50)
+				speed -= 2;
 		}
-		else if ((Mathf.Abs(player.transform.position.x - gameObject.transform.position.x)) > close)
+		else if ((Mathf.Abs(player.transform.position.x - gameObject.transform.position.x)) < far)
 		{
-			speed = 10;
+			speed = 70;
 		}
+
 		// Keep speed up
 		rb.velocity = new Vector2(Time.deltaTime * speed * NEPTUNEPOWER, 0f);	
 		print((Mathf.Abs(player.transform.position.x - gameObject.transform.position.x)));
