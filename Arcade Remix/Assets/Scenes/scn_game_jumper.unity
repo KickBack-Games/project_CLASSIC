@@ -662,9 +662,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 35659557}
   speed: 100
-  close: 9
-  mid: 11
-  far: 15
+  close: 7
+  mid: 16
+  far: 18
   NEPTUNEPOWER: 10
 --- !u!1 &1499504849
 GameObject:
