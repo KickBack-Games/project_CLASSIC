@@ -57,7 +57,6 @@ public class confettiMaker : MonoBehaviour {
 				transitioning = false;
 				trFloat = 0;
 			}
-
 			// BACK TO NORMAL
 			
 		}
@@ -66,7 +65,6 @@ public class confettiMaker : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		score++;
-		print(score);
 		scored = true;
 		gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
 

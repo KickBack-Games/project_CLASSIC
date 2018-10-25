@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class skiierMovement : MonoBehaviour {
 
@@ -10,12 +11,16 @@ public class skiierMovement : MonoBehaviour {
 	public float yVel;
 
 	private float max;
+
+	private int score = 0;
+	public Text txtScore; 
 	// Use this for initialization
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody2D>();
 		max = 5;
 		yVel = 0;
+		txtScore.text = score.ToString();
 	}
 	
 	// Update is called once per frame
@@ -39,5 +44,11 @@ public class skiierMovement : MonoBehaviour {
 	{
 		rb.velocity =
 		 new Vector2(vel, yVel);
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		score++;
+		txtScore.text = score.ToString();
 	}
 }
