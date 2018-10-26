@@ -43,7 +43,14 @@ public class HeroHitBoxManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Collider hit something!");
+        if (col.gameObject.name == "baseball")
+        {
+            if (col.GetComponent<scr_baseball_ball>().hspeed == 0)
+            {
+                col.GetComponent<scr_baseball_ball>().vspeed = -6;
+                col.GetComponent<scr_baseball_ball>().hspeed = 7;
+            }
+        }
     }
 
     public void setHitBox(hitBoxes val)
