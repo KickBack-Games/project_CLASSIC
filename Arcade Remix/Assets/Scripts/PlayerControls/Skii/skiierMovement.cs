@@ -14,6 +14,7 @@ public class skiierMovement : MonoBehaviour {
 
 	private int score = 0;
 	public Text txtScore; 
+	
 	// Use this for initialization
 	void Start () 
 	{
