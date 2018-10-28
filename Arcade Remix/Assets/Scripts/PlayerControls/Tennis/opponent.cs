@@ -6,14 +6,25 @@ public class opponent : MonoBehaviour
 {
 	private Vector2 pos;
 	public float speed;
+
+	public GameObject ball;
+	private tennisBall tb;
+	private float myX;
+	private float myY;
+
 	void Start()
 	{
 		StartCoroutine(Example());
-		pos = transform.position;
+		pos = ball.transform.position;
+		tb = ball.GetComponent<tennisBall>();
+		myX = ball.transform.position.x;
+		myY = ball.transform.position.y;
+
 	}
     void Update()
     {
-    	
+    	myX = ball.transform.position.x;
+    	pos = new Vector2(myX, myY);
  		transform.position = Vector2.MoveTowards(transform.position, pos, Time.deltaTime * speed);
 
     }
@@ -21,9 +32,10 @@ public class opponent : MonoBehaviour
     IEnumerator Example()
     {
         print(Time.time);
-        yield return new WaitForSeconds(Random.Range(3, 10));
+        yield return new WaitForSeconds(Random.Range(2, 3));
         print("Now");
-        pos = new Vector2(0, Random.Range(.75f, 4.5f));
+        myY = Random.Range(.75f, 4.5f);
+        pos = new Vector2(transform.position.x, myY);
         print(pos);
         StartCoroutine(Example());
     }

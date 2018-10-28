@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 1079775829}
   - component: {fileID: 1079775832}
   - component: {fileID: 1079775833}
+  - component: {fileID: 1079775834}
   m_Layer: 0
   m_Name: ball
   m_TagString: Untagged
@@ -310,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be29827992e93284598ae0563c32cd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 8
   goingup: 0
 --- !u!212 &1079775830
 SpriteRenderer:
@@ -365,7 +366,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1079775828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.127889, y: 4.12, z: 0}
+  m_LocalPosition: {x: -2.29, y: 4.53, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -416,6 +417,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1079775834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1079775828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3faf2a20232e1dc4086596dea00d44f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1283580307
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +641,7 @@ GameObject:
   - component: {fileID: 1798852849}
   m_Layer: 0
   m_Name: net
-  m_TagString: Untagged
+  m_TagString: point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -722,6 +734,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaf4c06569c38b4e9d110244d8119e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 3
+  ball: {fileID: 1079775828}
 --- !u!61 &2091295073
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -800,7 +814,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2091295071}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.75, z: 0}
+  m_LocalPosition: {x: 0, y: 4.54, z: 0}
   m_LocalScale: {x: 100, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
