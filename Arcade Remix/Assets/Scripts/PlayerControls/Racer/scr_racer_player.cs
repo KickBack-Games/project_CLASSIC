@@ -14,11 +14,11 @@ public class scr_racer_player : MonoBehaviour {
         transform.Translate(Vector3.forward * Time.deltaTime*3);
         if (Input.GetKey(KeyCode.A))
         {
-            gameObject.transform.Rotate(new Vector3(0,-1,0));
+            gameObject.transform.Rotate(new Vector3(0,-0.2f,0));
         }
         if (Input.GetKey(KeyCode.D))
         {
-            gameObject.transform.Rotate(new Vector3(0, 1, 0));
+            gameObject.transform.Rotate(new Vector3(0, 0.2f, 0));
         }
     }
 }
