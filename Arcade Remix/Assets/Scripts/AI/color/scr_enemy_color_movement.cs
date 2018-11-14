@@ -19,8 +19,8 @@ public class scr_enemy_color_movement : MonoBehaviour {
         SpriteRenderer sprite = this.GetComponent<SpriteRenderer>();
         sprite.color = new Color(red[num], blue[num], green[num]);
 
-        speedX = Random.Range(2, 6);
-        speedY = Random.Range(2, 6);
+        speedX = Random.Range(2, 4);
+        speedY = Random.Range(2, 4);
     }
 
     // Update is called once per frame
@@ -28,23 +28,38 @@ public class scr_enemy_color_movement : MonoBehaviour {
     {
         transform.Translate(Vector2.right * Time.deltaTime * speedX);
         transform.Translate(Vector2.up * Time.deltaTime * speedY);
-        Debug.Log(transform.position.y);
         if (transform.position.x >= 2.3)
         {
             speedX = Mathf.Abs(speedX) * -1;
+            num = Random.Range(0, 2);
+            Mathf.RoundToInt(num);
+            SpriteRenderer sprite = this.GetComponent<SpriteRenderer>();
+            sprite.color = new Color(red[num], blue[num], green[num]);
         }
         if (transform.position.x <= -2.6)
         {
             speedX = Mathf.Abs(speedX);
+            num = Random.Range(0, 2);
+            Mathf.RoundToInt(num);
+            SpriteRenderer sprite = this.GetComponent<SpriteRenderer>();
+            sprite.color = new Color(red[num], blue[num], green[num]);
         }
 
         if (transform.position.y >= 3.80)
         {
             speedY = Mathf.Abs(speedY) * -1;
+            num = Random.Range(0, 2);
+            Mathf.RoundToInt(num);
+            SpriteRenderer sprite = this.GetComponent<SpriteRenderer>();
+            sprite.color = new Color(red[num], blue[num], green[num]);
         }
         if (transform.position.y <= -4.50)
         {
             speedY = Mathf.Abs(speedY);
+            num = Random.Range(0, 2);
+            Mathf.RoundToInt(num);
+            SpriteRenderer sprite = this.GetComponent<SpriteRenderer>();
+            sprite.color = new Color(red[num], blue[num], green[num]);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
