@@ -14,7 +14,15 @@ public class playerMovement : MonoBehaviour
 	public bool lost;
 	public Text txtScore;
 
-	void Start() 
+    public void Awake()
+    {
+        SimpleGesture.On4AxisSwipeRight(SwipeRight);
+        SimpleGesture.On4AxisSwipeDown(SwipeDown);
+        SimpleGesture.On4AxisSwipeLeft(SwipeLeft);
+        SimpleGesture.On4AxisSwipeUp(SwipeUp);
+    }
+
+    void Start() 
 	{
 		pos = transform.position;
 		tr = transform;
@@ -43,21 +51,21 @@ public class playerMovement : MonoBehaviour
 		}
 		else
 		{
-			if (Input.GetKeyDown(KeyCode.D) && tr.position == pos)
+			if (Input.GetKeyDown(KeyCode.D))
 			{
-				pos += Vector3.right;
+                SwipeRight();
 			}
-			else if (Input.GetKeyDown(KeyCode.A) && tr.position == pos) 
+			else if (Input.GetKeyDown(KeyCode.A)) 
 			{
-				pos += Vector3.left;
+                SwipeLeft();
 			}
-			else if (Input.GetKeyDown(KeyCode.W) && tr.position == pos) 
+			else if (Input.GetKeyDown(KeyCode.W)) 
 			{
-				pos += Vector3.up;
+                SwipeUp();
 			}
-			else if (Input.GetKeyDown(KeyCode.S) && tr.position == pos) 
+			else if (Input.GetKeyDown(KeyCode.S)) 
 			{
-				pos += Vector3.down;
+                SwipeDown();
 			}
 		}
 		transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);
@@ -84,5 +92,34 @@ public class playerMovement : MonoBehaviour
 	            	pos += Vector3.left * 2;
 	        }
     	}
+    }
+
+    public void SwipeUp()
+    {
+        if (tr.position == pos)
+        {
+            pos += Vector3.up;
+        }
+    }
+    public void SwipeDown()
+    {
+        if (tr.position == pos)
+        {
+            pos += Vector3.down;
+        }
+    }
+    public void SwipeLeft()
+    {
+        if (tr.position == pos)
+        {
+            pos += Vector3.left;
+        }
+    }
+    public void SwipeRight()
+    {
+        if(tr.position == pos)
+        {
+            pos += Vector3.right;
+        }
     }
 }

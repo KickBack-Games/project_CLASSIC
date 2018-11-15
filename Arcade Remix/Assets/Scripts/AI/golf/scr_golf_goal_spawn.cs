@@ -39,5 +39,6 @@ public class scr_golf_goal_spawn : MonoBehaviour {
         n_goal.SetActive(true);
         n_goal.transform.position = new Vector3(Random.Range(m_Min.x, m_Max.x), Random.Range(m_Min.y, m_Max.y), goal.transform.position.z);
         n_goal.transform.localScale = goal.transform.lossyScale;
+        n_goal.gameObject.name = "goal";
     }
 }

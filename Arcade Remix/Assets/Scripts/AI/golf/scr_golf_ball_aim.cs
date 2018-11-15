@@ -37,6 +37,7 @@ public class scr_golf_ball_aim : MonoBehaviour {
         if (col.gameObject.name == "goal")
         {
             Destroy(this.gameObject);
+            Destroy(col.gameObject);
             spawner.GetComponent<scr_golf_goal_spawn>().OnSpawn();
         }
     }
