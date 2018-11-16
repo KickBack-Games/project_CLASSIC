@@ -11,6 +11,7 @@ public class power : MonoBehaviour {
 
 	public int counter = 0;
 	private bool done = false;
+	public SpriteRenderer sr;
 
 	// Text
 	public Text txtTime;
@@ -18,10 +19,12 @@ public class power : MonoBehaviour {
 	public float distance;
 
 	public GameObject pre_particles;
-
+	public GameObject feedback;
+	public GameObject holder;
 	void Start ()
 	{
 		setText();
+		sr = GetComponent<SpriteRenderer>();
 	}
 
 	// Update is called once per frame
@@ -31,11 +34,11 @@ public class power : MonoBehaviour {
 		{
 			if (Input.GetMouseButtonDown(0))
 			{
-				counter += 1;
 
-				// Create particles
-				for (int i = 0; i < 10; i++)
-					Instantiate(pre_particles, this.gameObject.GetComponent<Transform>());
+				Vector3 mousePos = Input.mousePosition;
+				mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+				counter += 1;
+				Instantiate(feedback, mousePos, Quaternion.identity);
 			}
 
 			timer -= Time.deltaTime;
@@ -51,12 +54,12 @@ public class power : MonoBehaviour {
 				// Time is redundant now in screen, so change it so that we show total taps instead
 				txtTime.text = counter.ToString();
 				done = true;
+				sr.sortingOrder = 5;
+				Destroy(holder);
 			}
 			else
-			{
-
 				txtDistance.text = (Mathf.FloorToInt(gameObject.GetComponent<Transform>().position.x)).ToString() + " m";
-			}
+			
 		}
 	
 	}
@@ -66,5 +69,11 @@ public class power : MonoBehaviour {
 		txtDistance.text = counter.ToString();
 		txtTime.text = second.ToString();
 
+	}
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		Vector2 supahPOWAH = new Vector2(counter * 2.9f, counter * 2.9f);
+		this.gameObject.GetComponent<Rigidbody2D>().AddForce (-supahPOWAH, ForceMode2D.Impulse);
 	}
 }

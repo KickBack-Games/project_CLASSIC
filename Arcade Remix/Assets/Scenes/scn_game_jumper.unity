@@ -253,7 +253,7 @@ MonoBehaviour:
   rb: {fileID: 35659558}
   initP: {x: 0, y: 0}
   finalP: {x: 0, y: 0}
-  power: 4
+  power: 5
   anchor: {fileID: 1499504849}
   rend: {fileID: 1499504850}
   landed: 0

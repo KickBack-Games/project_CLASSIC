@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,4 +27,5 @@ public class poleMovement : MonoBehaviour {
 			transform.position = new Vector2(Random.Range(-xSpawn, xSpawn), skiier.transform.position.y - 15);
 		}
 	}
+
 }

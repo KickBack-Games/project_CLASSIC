@@ -21,17 +21,17 @@ public class camera : MonoBehaviour {
 			if(Input.GetMouseButtonDown(0))
 			{
 				this.gameObject.GetComponent<Transform>().position = new Vector2(Random.Range(-xRan, xRan), 
-																				 Random.Range(-yRan, yRan));
+																				 Random.Range(-yRan + 2.67f, yRan + 2.67f));
 			}
 			else
-			this.gameObject.GetComponent<Transform>().position = new Vector2(0, 0);
+			this.gameObject.GetComponent<Transform>().position = new Vector2(0, 2.67f);
 
 		}
 		else
 		{
 
 			temp = objToFollow.gameObject.GetComponent<Transform>().position;
-			this.gameObject.GetComponent<Transform>().position = new Vector2(temp.x, 0);
+			this.gameObject.GetComponent<Transform>().position = new Vector2(temp.x, 2.67f);
 		}
 	}
 }

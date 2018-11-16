@@ -10,7 +10,7 @@ public class opponent : MonoBehaviour
 	public GameObject ball;
 	private tennisBall tb;
 	private float myX;
-	private float myY;
+	public float myY;
 
 	void Start()
 	{
@@ -36,7 +36,6 @@ public class opponent : MonoBehaviour
         print("Now");
         myY = Random.Range(.75f, 4.5f);
         pos = new Vector2(transform.position.x, myY);
-        print(pos);
         StartCoroutine(Example());
     }
 }

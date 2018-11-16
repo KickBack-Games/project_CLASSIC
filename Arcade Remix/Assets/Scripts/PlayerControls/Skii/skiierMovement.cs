@@ -14,6 +14,9 @@ public class skiierMovement : MonoBehaviour {
 
 	private int score = 0;
 	public Text txtScore; 
+	public int boundary;
+
+	private Vector3 mPos;
 	
 	// Use this for initialization
 	void Start () 
@@ -22,23 +25,31 @@ public class skiierMovement : MonoBehaviour {
 		max = 5;
 		yVel = 0;
 		txtScore.text = score.ToString();
+		mPos.z = 10;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if ((Input.GetKey(KeyCode.D)) && (vel < max))
+	void Update () 
+	{
+		mPos = Input.mousePosition;
+		mPos.z = 10;
+		mPos = Camera.main.ScreenToWorldPoint(mPos);
+		if (Input.GetMouseButton(0))
 		{
-			vel += accel;
-		}
-		if (Input.GetKey(KeyCode.A) && (vel > -max))
-		{
-			vel -= accel;
+			if ((mPos.x > 0) && (vel < max))
+			{
+				vel += accel;
+			}
+			if ((mPos.x) <= 0 && (vel > -max))
+			{
+				vel -= accel;
+			}
 		}
 		if (transform.position.y > 3f)
 			yVel = -.01f;
 		else
 			yVel = 0f;
-		
+
 	}
 
 	void FixedUpdate()
