@@ -14,32 +14,15 @@ using UnityEngine.UI;
 ///            }
 /// </summary>
 public class scr_ui_multiIcon : MonoBehaviour {
-    public Image baseimage;
     public GameObject image;
-    public Transform canvas;
+    public float basewidth;
 
     private void Start()
     {
-        image.SetActive(false);
+        basewidth = image.GetComponent<Image>().sprite.rect.width;
     }
 
     public void OnRefresh (int count) {
-        GameObject[] imagecopy;
-
-        imagecopy = GameObject.FindGameObjectsWithTag("ImageCopy");
-
-        foreach (GameObject food in imagecopy)
-        {
-            Destroy(food);
-        }
-
-        for (int i = 0; i < count; i++)
-        {
-            GameObject copy = Instantiate(image);
-            copy.SetActive(true);
-            copy.gameObject.tag = "ImageCopy";
-            copy.transform.SetParent(canvas, false);
-            copy.transform.position = image.transform.position + new Vector3(baseimage.sprite.rect.width * i, 0, 0);
-        }
-	}
+        image.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(basewidth * count, image.GetComponent<Image>().rectTransform.sizeDelta.y);
+    }
 }
