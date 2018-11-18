@@ -6,11 +6,12 @@ using UnityEngine;
 public class power : MonoBehaviour {
 
 	// Make a timer
-	private float timer = 10.0f;
-	public int second = 10;
+	public float timer = 10.0f;
+	public int second;
 
 	public int counter = 0;
 	private bool done = false;
+	public bool landed = false;
 	public SpriteRenderer sr;
 
 	// Text
@@ -21,6 +22,7 @@ public class power : MonoBehaviour {
 	public GameObject pre_particles;
 	public GameObject feedback;
 	public GameObject holder;
+
 	void Start ()
 	{
 		setText();
@@ -49,6 +51,7 @@ public class power : MonoBehaviour {
 		{
 			if (!done)
 			{
+				//counter = counter * 10; //For testing purposes
 				Vector2 supahPOWAH = new Vector2(counter * 3, counter * 3);
 				this.gameObject.GetComponent<Rigidbody2D>().AddForce (supahPOWAH, ForceMode2D.Impulse);
 				// Time is redundant now in screen, so change it so that we show total taps instead
@@ -58,7 +61,8 @@ public class power : MonoBehaviour {
 				Destroy(holder);
 			}
 			else
-				txtDistance.text = (Mathf.FloorToInt(gameObject.GetComponent<Transform>().position.x)).ToString() + " m";
+				if (!landed)
+					txtDistance.text = (Mathf.FloorToInt(gameObject.GetComponent<Transform>().position.x)).ToString() + " m";
 			
 		}
 	
@@ -73,7 +77,7 @@ public class power : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		Vector2 supahPOWAH = new Vector2(counter * 2.9f, counter * 2.9f);
-		this.gameObject.GetComponent<Rigidbody2D>().AddForce (-supahPOWAH, ForceMode2D.Impulse);
+		if (col.gameObject.tag == "RunnerBlock")
+			landed = true;
 	}
 }

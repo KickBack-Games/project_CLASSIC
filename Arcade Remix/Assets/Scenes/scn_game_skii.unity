@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skiier: {fileID: 1782971960}
-  speed: 4.5
+  speed: 3.7
   ySpawn: 0
 --- !u!61 &50118113
 BoxCollider2D:
@@ -255,7 +255,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 277173354}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2062205734}
@@ -539,7 +539,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 962892671}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 50118115}
@@ -817,7 +817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skiier: {fileID: 1782971960}
-  speed: 4.5
+  speed: 3.7
   ySpawn: 0
 --- !u!61 &1187882667
 BoxCollider2D:
@@ -1099,7 +1099,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1779600154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2003829220}
@@ -1315,6 +1315,7 @@ MonoBehaviour:
   vel: 0
   yVel: 0
   txtScore: {fileID: 778063666}
+  boundary: 0
 --- !u!1 &2003829216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,7 +1346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skiier: {fileID: 1782971960}
-  speed: 4.5
+  speed: 3.7
   ySpawn: 0
 --- !u!61 &2003829218
 BoxCollider2D:
@@ -1463,7 +1464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skiier: {fileID: 1782971960}
-  speed: 4.5
+  speed: 3.7
   ySpawn: 0
 --- !u!61 &2062205732
 BoxCollider2D:
@@ -1575,7 +1576,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2094107678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1187882669}

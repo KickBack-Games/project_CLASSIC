@@ -29,9 +29,12 @@ public class camera : MonoBehaviour {
 		}
 		else
 		{
-
-			temp = objToFollow.gameObject.GetComponent<Transform>().position;
-			this.gameObject.GetComponent<Transform>().position = new Vector2(temp.x, 2.67f);
+			// As long as the ball hasn't landed... follow the ball.. then stop
+			if (!objToFollow.GetComponent<power>().landed)
+			{
+				temp = objToFollow.gameObject.GetComponent<Transform>().position;
+				this.gameObject.GetComponent<Transform>().position = new Vector2(temp.x, 2.67f);
+			}
 		}
 	}
 }

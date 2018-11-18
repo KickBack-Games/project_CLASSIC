@@ -80,7 +80,7 @@ public class tennisBall : MonoBehaviour {
 			pos = new Vector2(Random.Range(-3f, 3f), -5f);
 			goingup = false;
 			if (speed < 12)
-				speed += .5f;
+				speed += .25f;
 		}
 	}
 }
