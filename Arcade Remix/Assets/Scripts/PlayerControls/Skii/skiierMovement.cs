@@ -12,7 +12,6 @@ public class skiierMovement : MonoBehaviour {
 
 	private float max;
 
-	private int score = 0;
 	public Text txtScore; 
 	public int boundary;
 
@@ -24,7 +23,6 @@ public class skiierMovement : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 		max = 5;
 		yVel = 0;
-		txtScore.text = score.ToString();
 		mPos.z = 10;
 	}
 	
@@ -60,7 +58,6 @@ public class skiierMovement : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		score++;
-		txtScore.text = score.ToString();
+        global.scoreSkii += 500;
 	}
 }

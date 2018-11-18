@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class scr_player_runner_controls : MonoBehaviour {
     //touch button to fire 
     public Button button;
-    public GameObject uievent;
     //hits Limmit
     public int hits = 5;
     //Movement speed
@@ -16,7 +15,7 @@ public class scr_player_runner_controls : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         button.onClick.AddListener(OnJump);
-        uievent.GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
+        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
     }
 	
 	// Update is called once per frame
@@ -36,7 +35,7 @@ public class scr_player_runner_controls : MonoBehaviour {
             else
             {
                 hits--;
-                uievent.GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
+                GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
                 this.GetComponent<scr_mod_iframes>().OnStart(60);
                
             }

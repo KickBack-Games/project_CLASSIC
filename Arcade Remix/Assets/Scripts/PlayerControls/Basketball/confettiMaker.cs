@@ -13,7 +13,6 @@ public class confettiMaker : MonoBehaviour {
 	public GameObject board;
 	public Rigidbody2D ballRB;
 
-	private int score = 0;
 	public Text txtScore; 
 	private bool transitioning;
 	private float trFloat = 0f;
@@ -44,9 +43,6 @@ public class confettiMaker : MonoBehaviour {
 			}
 		}
 
-		// DISPLAY SCORE
-		txtScore.text = score.ToString();
-
 		// IF SCORED THEN YOU CAN TRANSITION TO NEW POSITION!
 		if (transitioning)
 		{
@@ -64,7 +60,7 @@ public class confettiMaker : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		score++;
+		global.scoreBasketball += 500;
 		scored = true;
 		gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
 
