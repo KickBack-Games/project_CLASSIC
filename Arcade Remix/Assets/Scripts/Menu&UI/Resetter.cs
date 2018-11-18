@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Resetter : MonoBehaviour {
+    Button button;
 
+    private void Start()
+    {
+        button = this.GetComponent<Button>();
+        button.onClick.AddListener(OnPress);
+    }
 
-	void update()
+    void OnPress()
 	{
-
-
-		Debug.Log("HI");
-
-	}
+        SceneManager.LoadScene("DEBUG", LoadSceneMode.Single);
+    }
 }
