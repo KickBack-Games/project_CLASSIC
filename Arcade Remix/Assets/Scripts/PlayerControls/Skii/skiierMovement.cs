@@ -21,7 +21,7 @@ public class skiierMovement : MonoBehaviour {
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody2D>();
-		max = 5;
+		max = 4;
 		yVel = 0;
 		mPos.z = 10;
 	}
@@ -42,6 +42,18 @@ public class skiierMovement : MonoBehaviour {
 			{
 				vel -= accel;
 			}
+		}
+		else
+		{
+			
+			if (vel == 0)
+				vel = 0;
+			else if ((vel < 0))
+				vel += .05f;
+			else if ((vel > 0))
+				vel -= .05f;
+			
+
 		}
 		if (transform.position.y > 3f)
 			yVel = -.01f;

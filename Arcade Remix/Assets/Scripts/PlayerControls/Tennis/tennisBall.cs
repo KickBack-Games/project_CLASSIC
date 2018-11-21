@@ -8,6 +8,8 @@ public class tennisBall : MonoBehaviour {
 
 	private Vector2 pos;
 	public float speed;
+
+	public bool swung;
 	public bool goingup;
 	private Vector3 mPos;
 
@@ -30,10 +32,12 @@ public class tennisBall : MonoBehaviour {
 		{
 			if (Input.GetMouseButtonDown(0)) 
 			{
+
 				if ((transform.position.y < -2.4f) && 
 					(transform.position.y > -4.8f) &&
 					(mPos.y < -2.4f) &&
-					(mPos.y > -4.8f))
+					(mPos.y > -4.8f) && 
+					(!swung))
 				{
 						// LEFT SIDE OF THE HITBOX
 					if ((transform.position.x < -1.08f) &&
@@ -42,6 +46,7 @@ public class tennisBall : MonoBehaviour {
 						(mPos.x > -3.35f))
 					{
 						pos = new Vector2(Random.Range(-3f, 3f), 5f);
+						global.scoreTennis += 250;
 						goingup = true;
 					}
 						//  MIDDLE SIDE OF THE HITBOX
@@ -51,6 +56,7 @@ public class tennisBall : MonoBehaviour {
 						(mPos.x >= -1.08f))
 					{
 						pos = new Vector2(Random.Range(-3f, 3f), 5f);
+						global.scoreTennis += 250;
 						goingup = true;
 					}
 						// RIGHT SIDE OF THE HITBOX
@@ -60,8 +66,10 @@ public class tennisBall : MonoBehaviour {
 						(mPos.x > 1.08f))
 					{
 						pos = new Vector2(Random.Range(-3f, 3f), 5f);
+						global.scoreTennis += 250;
 						goingup = true;
 					}
+					swung = true;
 				}
 			}
 		}
@@ -79,6 +87,7 @@ public class tennisBall : MonoBehaviour {
 		{
 			pos = new Vector2(Random.Range(-3f, 3f), -5f);
 			goingup = false;
+			swung = false;
 			if (speed < 12)
 				speed += .25f;
 		}

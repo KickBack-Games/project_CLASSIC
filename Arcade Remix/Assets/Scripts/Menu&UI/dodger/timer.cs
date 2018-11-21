@@ -18,6 +18,7 @@ public class timer : MonoBehaviour
 	void Start () 
 	{
 		txtTime.text = second.ToString();
+		global.scoreDodger = 0;
 	}
 	
 	// Update is called once per frame
@@ -30,13 +31,18 @@ public class timer : MonoBehaviour
 		// Control the frequency of spawner based on time
 		if (second % secondToIncDiff == 0)
 		{
+
+
 			if (second != 0)
 				if (!changed)
 				{
 					spawner ballScript = GetComponent<spawner>();
 					ballScript.frequency += changeFloat;
+					global.scoreDodger += 250;
 					changed = true;						
 				}
+
+
 
 		}
 		else
