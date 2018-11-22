@@ -866,9 +866,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550b236b59a669a4188be8c812c4f78c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseimage: {fileID: 1657724289}
   image: {fileID: 1657724287}
-  canvas: {fileID: 159283684}
+  basewidth: 0
 --- !u!114 &521296853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,7 +1051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.0000023841858, y: -0.00004386902}
+  m_AnchoredPosition: {x: 0.0000023841858, y: -0.000013440433}
   m_SizeDelta: {x: 179, y: 608}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &581243698
@@ -2780,7 +2779,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 968927930}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.44916117
+  m_Size: 0.44916108
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

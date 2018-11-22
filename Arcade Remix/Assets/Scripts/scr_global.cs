@@ -17,15 +17,23 @@ public class global : MonoBehaviour {
     public static int scoreSkii = 0;
     public static int scoreTennis = 0;
     public static int scoreThrower = 0;
+
     public static int level = 1;
     public static int layer = 0;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public static int timelimit = 0;
+    public static List<string> games = new List<string>(new string[] {
+        "scn_game_baseball",
+        "scn_game_basketball",
+        "scn_game_color",
+        "scn_game_dodger",
+        "scn_game_gliding",
+        "scn_game_golf",
+        "scn_game_jumper",
+        "scn_game_racing",
+        "scn_game_runner",
+        "scn_game_shooter",
+        "scn_game_skii",
+        "scn_game_tennis",
+        "scn_game_thrower"});
 }
