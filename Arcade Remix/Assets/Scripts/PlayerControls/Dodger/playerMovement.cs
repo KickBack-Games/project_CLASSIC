@@ -27,7 +27,8 @@ public class playerMovement : MonoBehaviour
 		pos = transform.position;
 		tr = transform;
 		lost = false;
-	}
+        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
+    }
 
 	void Update() 
 	{
@@ -47,7 +48,11 @@ public class playerMovement : MonoBehaviour
 				transform.localScale -= new Vector3(0.01f, 0.01f, 0.0f);
 			else
 				// Restart when completely shrunk
-				SceneManager.LoadScene("scn_game_dodger");
+                if (global.timelimit > 0)
+            {
+                SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+            }
+				
 		}
 		else
 		{

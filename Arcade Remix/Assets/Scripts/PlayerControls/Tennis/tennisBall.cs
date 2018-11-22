@@ -13,13 +13,17 @@ public class tennisBall : MonoBehaviour {
 	public bool goingup;
 	private Vector3 mPos;
 
+    public static int balls;
 	// Use this for initialization
 	void Start () 
 	{
 		goingup = false;
 		pos = new Vector2(Random.Range(-3f, 3f), -5f);
 		mPos.z = 10;
-	}
+        balls = 3;
+        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(1);
+
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -76,7 +80,19 @@ public class tennisBall : MonoBehaviour {
 
 		transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);
 		if (Input.GetKeyDown(KeyCode.R) || transform.position.y >= 4.8f || transform.position.y <= -4.8f)
-			SceneManager.LoadScene("scn_game_tennis");
+        {
+            if (global.timelimit>0)
+            {
+                SceneManager.LoadScene("scn_lobby",LoadSceneMode.Single);
+            }
+            else
+            {
+                SceneManager.LoadScene("scn_game_tennis", LoadSceneMode.Single);
+            }
+        }
+			
+
+
 	}
 
 

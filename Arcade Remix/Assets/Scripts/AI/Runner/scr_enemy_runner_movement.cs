@@ -6,7 +6,7 @@ public class scr_enemy_runner_movement : MonoBehaviour {
     public GameObject parent;
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(Vector2.left * Time.deltaTime * 2);
+        transform.Translate(Vector2.left * Time.deltaTime * 4);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -20,6 +20,7 @@ public class scr_enemy_runner_movement : MonoBehaviour {
     {
         if (col.gameObject.tag == "MainCamera")
         {
+            global.scoreGliding += 200;
             Destroy(this.gameObject);
         }
     }

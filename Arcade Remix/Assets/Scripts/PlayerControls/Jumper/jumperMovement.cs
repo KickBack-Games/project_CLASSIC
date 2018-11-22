@@ -24,10 +24,11 @@ public class jumperMovement : MonoBehaviour
     public bool lost = false;
     public bool forceAdded = false;
 
-	void start()
+	void Start()
 	{
 		rend = anchor.GetComponent<SpriteRenderer>();
-	}
+        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
+    }
 
 
 	void Update () 
@@ -117,7 +118,10 @@ public class jumperMovement : MonoBehaviour
 			}
 			else
 				// Restart when completely shrunk
-				SceneManager.LoadScene("scn_game_jumper");
+				if (global.timelimit > 0)
+            {
+                SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+            }
 		}
 	}
 
@@ -137,6 +141,10 @@ public class jumperMovement : MonoBehaviour
 		{
 			lost = true;
 		}
+        if (other.gameObject.name == "Points" && gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
+        {
+            global.scoreJumper += 500;
+        }
 	}
 
 	void OnCollisionExit2D(Collision2D other)

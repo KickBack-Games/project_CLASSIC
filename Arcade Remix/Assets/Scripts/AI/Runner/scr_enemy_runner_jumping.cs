@@ -7,7 +7,7 @@ public class scr_enemy_runner_jumping : MonoBehaviour {
     public int jspeed;
 	// Use this for initialization
 	void Start () {
-        jspeed = Random.Range(2, 5);
+        //jspeed = Random.Range(2, 5);
 
     }
 	

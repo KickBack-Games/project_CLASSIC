@@ -37,8 +37,10 @@ public class scr_golf_ball_aim : MonoBehaviour {
         if (col.gameObject.name == "goal")
         {
             Destroy(this.gameObject);
-            Destroy(col.gameObject);
             spawner.GetComponent<scr_golf_goal_spawn>().OnSpawn();
+            scr_player_golf_controls.holes++;
+            GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(scr_player_golf_controls.holes);
+            global.scoreGolf += 200;
         }
     }
 

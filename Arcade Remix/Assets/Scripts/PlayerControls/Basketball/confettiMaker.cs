@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class confettiMaker : MonoBehaviour {
 
@@ -60,13 +61,22 @@ public class confettiMaker : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		global.scoreBasketball += 500;
-		scored = true;
-		gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        if (other.gameObject.name == "Ball")
+        {
+            global.scoreBasketball += 500;
+            scored = true;
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            testShot.points++;
+            GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(testShot.points);
+            if (testShot.points >= 3 && global.timelimit > 0)
+            {
+                SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+            }
 
-		// Change the position of the board and all that it "childs"
-		// transition time.
-		transitioning = true;
+            // Change the position of the board and all that it "childs"
+            // transition time.
+            transitioning = true;
+        }
 	}
 
 }

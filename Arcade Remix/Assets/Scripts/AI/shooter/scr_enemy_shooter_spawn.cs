@@ -22,7 +22,6 @@ public class scr_enemy_shooter_spawn : MonoBehaviour {
 	}
 
     public void OnRespawn() {
-        Debug.Log("check");
         if (GameObject.FindGameObjectsWithTag("ShooterTarget").Length == 0 && alarm == -1)
         {
             GameObject newWave = Instantiate(wave[global.level].transform.GetChild(Random.Range(0, wave[global.level].gameObject.transform.childCount)).gameObject);

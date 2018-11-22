@@ -49,6 +49,7 @@ public class HeroHitBoxManager : MonoBehaviour
             {
                 col.GetComponent<scr_baseball_ball>().vspeed = -6;
                 col.GetComponent<scr_baseball_ball>().hspeed = 7;
+                global.scoreBaseball += 500;
             }
         }
     }

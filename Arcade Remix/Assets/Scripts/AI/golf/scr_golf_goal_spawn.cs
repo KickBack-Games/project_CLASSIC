@@ -30,6 +30,7 @@ public class scr_golf_goal_spawn : MonoBehaviour {
 	}
 
     public void OnSpawn() {
+        Destroy(GameObject.Find("goal"));
         GameObject n_ball = Instantiate(ball);
         n_ball.SetActive(true);
         n_ball.transform.localScale = ball.transform.lossyScale;

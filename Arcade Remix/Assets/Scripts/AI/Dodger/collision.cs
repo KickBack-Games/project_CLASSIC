@@ -9,6 +9,7 @@ public class collision : MonoBehaviour
     {
         if (other.gameObject.tag == "wall")
             Destroy(gameObject);
+        global.scoreDodger += 20;
         
     }
 }

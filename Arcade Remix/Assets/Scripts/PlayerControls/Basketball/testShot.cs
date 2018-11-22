@@ -19,10 +19,14 @@ public class testShot : MonoBehaviour {
 
     private float rotSpeed;
 
-	void start()
+    public static int points;
+
+	void Start()
 	{
-		rend = anchor.GetComponent<SpriteRenderer>();
-	}
+		//rend = anchor.GetComponent<SpriteRenderer>();
+        points = 0;
+        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
+    }
 
 	void Update ()
 	{

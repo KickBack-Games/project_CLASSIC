@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class skiierMovement : MonoBehaviour {
 
@@ -16,6 +17,8 @@ public class skiierMovement : MonoBehaviour {
 	public int boundary;
 
 	private Vector3 mPos;
+
+    public static int goals;
 	
 	// Use this for initialization
 	void Start () 
@@ -24,11 +27,17 @@ public class skiierMovement : MonoBehaviour {
 		max = 4;
 		yVel = 0;
 		mPos.z = 10;
-	}
+        goals = 0;
+        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
+    }
 	
 	// Update is called once per frame
 	void Update () 
 	{
+        if (goals >= 3)
+        {
+            SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+        }
 		mPos = Input.mousePosition;
 		mPos.z = 10;
 		mPos = Camera.main.ScreenToWorldPoint(mPos);
@@ -71,5 +80,7 @@ public class skiierMovement : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
         global.scoreSkii += 500;
-	}
+        goals++;
+        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(goals);
+    }
 }

@@ -2140,7 +2140,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.050180294, y: 0.10179448}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2151,7 +2151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24, y: 0.48}
+  m_Size: {x: 0.31742108, y: 1.3947153}
   m_EdgeRadius: 0
 --- !u!50 &1439204091
 Rigidbody2D:
@@ -2671,7 +2671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1233df0d899989f4b82260e9865e6555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
+  button: {fileID: 1740874113}
   UIEvent: {fileID: 0}
   bullet: {fileID: 1439204086}
   ammo: 5
@@ -2698,6 +2698,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1740874113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114433003181919932, guid: ebb8936645a7a2b4fa373226cea1c498,
+    type: 2}
+  m_PrefabInternal: {fileID: 1806954391}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1806954391
 Prefab:
   m_ObjectHideFlags: 0
@@ -2800,6 +2806,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114635585721247820, guid: ebb8936645a7a2b4fa373226cea1c498,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a5fafdf3453433640b1fe51a2ef26d95,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb8936645a7a2b4fa373226cea1c498, type: 2}
   m_IsPrefabAsset: 0

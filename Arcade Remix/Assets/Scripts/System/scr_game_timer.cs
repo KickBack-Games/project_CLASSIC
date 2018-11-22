@@ -11,8 +11,11 @@ public class scr_game_timer : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        StartCoroutine(OnBegin());
-        time = global.timelimit;
+        if (global.timelimit > 0)
+        {
+            StartCoroutine(OnBegin());
+            time = global.timelimit;
+        }
     }
 
     public IEnumerator OnBegin()

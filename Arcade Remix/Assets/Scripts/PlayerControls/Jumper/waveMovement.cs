@@ -41,6 +41,6 @@ public class waveMovement : MonoBehaviour
 
 		// Keep speed up
 		rb.velocity = new Vector2(Time.deltaTime * speed * NEPTUNEPOWER, 0f);	
-		print((Mathf.Abs(player.transform.position.x - gameObject.transform.position.x)));
+		//print((Mathf.Abs(player.transform.position.x - gameObject.transform.position.x)));
 	}
 }

@@ -2,25 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class scr_player_runner_controls : MonoBehaviour {
-    //touch button to fire 
-    public Button button;
     //hits Limmit
-    public int hits = 5;
+    public int hits;
     //Movement speed
     public int speed = 3;
     public int jspeed = 7;
+    private Animator anim;
 
-	// Use this for initialization
-	void Start () {
-        button.onClick.AddListener(OnJump);
+    // Use this for initialization
+    void Start () {
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
+        SimpleGesture.On4AxisSwipeUp(OnJump);
+        hits = 3;
+        anim = this.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown("space")) { OnJump(); }
+        if (hits <= 0 && global.timelimit > 0)
+        {
+            SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            OnJump();
+        }
+        if (this.GetComponent<Rigidbody2D>().velocity.y == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("run"))
+        {
+            anim.Play("run", -1, 1f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,6 +64,7 @@ public class scr_player_runner_controls : MonoBehaviour {
         if(GetComponent<Rigidbody2D>().velocity == new Vector2(0,0))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, jspeed);
+            anim.Play("jump", -1, 0f);
         }       
     }
 }
