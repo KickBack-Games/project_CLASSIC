@@ -28,6 +28,7 @@ public class playerMovement : MonoBehaviour
 		tr = transform;
 		lost = false;
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
+        scr_game_launcher.winstate = 1;
     }
 
 	void Update() 
@@ -50,6 +51,7 @@ public class playerMovement : MonoBehaviour
 				// Restart when completely shrunk
                 if (global.timelimit > 0)
             {
+                scr_game_launcher.winstate = -1;
                 SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
             }
 				

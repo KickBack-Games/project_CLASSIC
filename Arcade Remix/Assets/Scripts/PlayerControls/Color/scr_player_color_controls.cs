@@ -11,13 +11,16 @@ public class scr_player_color_controls : MonoBehaviour {
     public SpriteRenderer shield;
 
     public int num;
-	// Use this for initialization
-	void Start () {
-        button[0].onClick.AddListener(OnRed);
-        button[1].onClick.AddListener(OnBlue);
-        button[2].onClick.AddListener(OnGreen);
+
+    public static int tries;
+    private void Start()
+    {
+        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(3);
+        OnRed();
+        tries = 3;
+        scr_game_launcher.winstate = 1;
     }
-	
+
     public void OnRed() {
         num = 0;
         shield.color = new Color(red[0], blue[0], green[0], 0.3843137f);

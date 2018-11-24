@@ -12,7 +12,7 @@ public class scr_golf_ball_aim : MonoBehaviour {
     {
         spinSpeed.x = 0;
         spinSpeed.y = 0;
-        spinSpeed.z = Random.Range(0.2f, 0.5f);
+        spinSpeed.z = Random.Range(0.5f, 0.9f);
         goSpeed = 0;
         line = GetComponent<LineRenderer>();
     }
@@ -41,6 +41,10 @@ public class scr_golf_ball_aim : MonoBehaviour {
             scr_player_golf_controls.holes++;
             GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(scr_player_golf_controls.holes);
             global.scoreGolf += 200;
+            if (scr_player_golf_controls.holes >= 3)
+            {
+                scr_game_launcher.winstate = 1;
+            }
         }
     }
 

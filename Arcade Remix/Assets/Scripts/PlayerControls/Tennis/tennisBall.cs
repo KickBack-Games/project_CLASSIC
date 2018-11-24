@@ -22,7 +22,7 @@ public class tennisBall : MonoBehaviour {
 		mPos.z = 10;
         balls = 3;
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(1);
-
+        scr_game_launcher.winstate = 1;
     }
 	
 	// Update is called once per frame
@@ -83,6 +83,7 @@ public class tennisBall : MonoBehaviour {
         {
             if (global.timelimit>0)
             {
+                scr_game_launcher.winstate = -1;
                 SceneManager.LoadScene("scn_lobby",LoadSceneMode.Single);
             }
             else

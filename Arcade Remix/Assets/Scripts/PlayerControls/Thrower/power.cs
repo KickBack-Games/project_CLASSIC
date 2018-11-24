@@ -9,7 +9,7 @@ public class power : MonoBehaviour {
 	public float timer = 10.0f;
 	public int second;
 
-	public int counter = 0;
+	public float counter = 0;
 	private bool done = false;
 	public bool landed = false;
 	public SpriteRenderer sr;
@@ -23,15 +23,23 @@ public class power : MonoBehaviour {
 	public GameObject feedback;
 	public GameObject holder;
 
+    public Image bar;
+
 	void Start ()
 	{
 		setText();
 		sr = GetComponent<SpriteRenderer>();
+        bar.fillAmount = 0;
+        scr_game_launcher.winstate = -1;
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
+        if (this.gameObject.GetComponent<Rigidbody2D>().velocity.y != 0)
+        {
+            global.scoreThrower += 50;
+        }
 		if (second > 0)
 		{
 			if (Input.GetMouseButtonDown(0))
@@ -41,7 +49,8 @@ public class power : MonoBehaviour {
 				mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 				counter += 1;
 				Instantiate(feedback, mousePos, Quaternion.identity);
-			}
+                bar.fillAmount = counter / 40;
+            }
 
 			timer -= Time.deltaTime;
 			second = Mathf.RoundToInt(timer);
@@ -49,7 +58,15 @@ public class power : MonoBehaviour {
 		}
 		else
 		{
-			if (!done)
+            if (counter >= 30)
+            {
+                scr_game_launcher.winstate = 1;
+            }
+            else
+            {
+                scr_game_launcher.winstate = -1;
+            }
+            if (!done)
 			{
 				//counter = counter * 10; //For testing purposes
 				Vector2 supahPOWAH = new Vector2(counter * 3, counter * 3);

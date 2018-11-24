@@ -18,6 +18,7 @@ public class scr_player_runner_controls : MonoBehaviour {
         SimpleGesture.On4AxisSwipeUp(OnJump);
         hits = 3;
         anim = this.GetComponent<Animator>();
+        scr_game_launcher.winstate = 1;
     }
 	
 	// Update is called once per frame
@@ -50,8 +51,12 @@ public class scr_player_runner_controls : MonoBehaviour {
             {
                 hits--;
                 GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
-                this.GetComponent<scr_mod_iframes>().OnStart(60);
-               
+                this.GetComponent<scr_mod_iframes>().OnStart(60);               
+            }
+            if (hits <= 0)
+            {
+                scr_game_launcher.winstate = -1;
+                SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
             }
         }
         if (collision.gameObject.tag == "RunnerGoal" && GetComponent<Rigidbody2D>().velocity != new Vector2(0, 0))

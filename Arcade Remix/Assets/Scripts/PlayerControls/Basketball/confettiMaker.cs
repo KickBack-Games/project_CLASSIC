@@ -19,8 +19,11 @@ public class confettiMaker : MonoBehaviour {
 	private float trFloat = 0f;
 
 
-	// Update is called once per frame
-	void Update () 
+    private void Start()
+    {
+        scr_game_launcher.winstate = -1;
+    }
+    void Update () 
 	{
 		// NO CHEATING ALLOWED
 		if (ballRB.velocity.y > 0)
@@ -68,9 +71,9 @@ public class confettiMaker : MonoBehaviour {
             gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
             testShot.points++;
             GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(testShot.points);
-            if (testShot.points >= 3 && global.timelimit > 0)
+            if (testShot.points >= 1)
             {
-                SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+                scr_game_launcher.winstate = -1;
             }
 
             // Change the position of the board and all that it "childs"

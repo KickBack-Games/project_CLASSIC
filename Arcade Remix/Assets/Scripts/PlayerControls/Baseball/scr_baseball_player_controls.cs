@@ -20,6 +20,7 @@ public class scr_baseball_player_controls : MonoBehaviour {
         button.onClick.AddListener(OnShoot);
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(3);
         anim.speed = 0;
+        scr_game_launcher.winstate = 1;
     }
 
     // Update is called once per frame
@@ -33,6 +34,7 @@ public class scr_baseball_player_controls : MonoBehaviour {
         if (balls <= 0 && global.timelimit > 0)
         {
             SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+            scr_game_launcher.winstate = -1;
         }
     }
 

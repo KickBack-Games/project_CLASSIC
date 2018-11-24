@@ -29,15 +29,12 @@ public class skiierMovement : MonoBehaviour {
 		mPos.z = 10;
         goals = 0;
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
+        scr_game_launcher.winstate = -1;
     }
 	
 	// Update is called once per frame
 	void Update () 
 	{
-        if (goals >= 3)
-        {
-            SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
-        }
 		mPos = Input.mousePosition;
 		mPos.z = 10;
 		mPos = Camera.main.ScreenToWorldPoint(mPos);
@@ -82,5 +79,9 @@ public class skiierMovement : MonoBehaviour {
         global.scoreSkii += 500;
         goals++;
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(goals);
+        if (goals >= 3)
+        {
+            scr_game_launcher.winstate = 1;
+        }
     }
 }

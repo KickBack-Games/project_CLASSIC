@@ -22,6 +22,8 @@ public class global : MonoBehaviour {
     public static int layer = 0;
 
     public static int timelimit = 0;
+
+    public static int wincount = 0;
     public static List<string> games = new List<string>(new string[] {
         "scn_game_baseball",
         "scn_game_basketball",

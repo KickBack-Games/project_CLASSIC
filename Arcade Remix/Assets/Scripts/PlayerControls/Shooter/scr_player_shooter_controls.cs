@@ -29,6 +29,7 @@ public class scr_player_shooter_controls : MonoBehaviour {
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(ammo);
         anim = this.GetComponent<Animator>();
         anim.speed = 0;
+        scr_game_launcher.winstate = -1;
     }
 	
 	// Update is called once per frame
@@ -64,15 +65,9 @@ public class scr_player_shooter_controls : MonoBehaviour {
             alarm = Random.Range(alarmMin, alarmMax);
         }
 
-
-
-        if (ammo <= 0 && global.timelimit > 0)
-        {
-            SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
-        }
-
         if (GameObject.FindGameObjectsWithTag("ShooterTarget").Length == 0 && global.timelimit >0)
         {
+            scr_game_launcher.winstate = 1;
             SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
         }
     }

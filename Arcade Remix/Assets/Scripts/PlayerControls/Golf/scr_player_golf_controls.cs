@@ -19,6 +19,7 @@ public class scr_player_golf_controls : MonoBehaviour {
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
         anim.speed = 0;
         holes = 0;
+        scr_game_launcher.winstate = -1;
     }
 	
 	// Update is called once per frame
@@ -27,7 +28,7 @@ public class scr_player_golf_controls : MonoBehaviour {
         {
             if (ball.GetComponent<scr_golf_ball_aim>().goSpeed == 0)
             {
-                ball.GetComponent<scr_golf_ball_aim>().goSpeed = 0.1f;
+                ball.GetComponent<scr_golf_ball_aim>().goSpeed = 0.3f;
                 anim.Play("swing", -1, 0f);
                 anim.speed = 0;
             }

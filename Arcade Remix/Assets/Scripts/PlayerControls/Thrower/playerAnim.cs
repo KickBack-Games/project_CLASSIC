@@ -14,8 +14,8 @@ public class playerAnim : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-
-		anim = GetComponent<Animator>();
+        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
+        anim = GetComponent<Animator>();
 		scri = pow.GetComponent<power>();
 	}
 	
@@ -31,7 +31,6 @@ public class playerAnim : MonoBehaviour
 				anim.SetTrigger("THROW");
 				count++;
 			}
-			print(count);
 		}
 	}
 }

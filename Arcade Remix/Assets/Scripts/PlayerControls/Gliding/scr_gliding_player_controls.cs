@@ -8,11 +8,14 @@ public class scr_gliding_player_controls : MonoBehaviour {
     //touch button to fire 
     public Button button;
     public static int hits;
+
+    public float velocity;
     void Start()
     {
         button.onClick.AddListener(OnJump);
-        hits = 3;
+        hits = 2;
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
+        scr_game_launcher.winstate = 1;
     }
 
     void Update()
@@ -21,6 +24,7 @@ public class scr_gliding_player_controls : MonoBehaviour {
             transform.eulerAngles.x,
             transform.eulerAngles.y,
             GetComponent<Rigidbody2D>().velocity.y);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, Mathf.Clamp(GetComponent<Rigidbody2D>().velocity.y,-7f,7f));
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -33,12 +37,14 @@ public class scr_gliding_player_controls : MonoBehaviour {
             if (hits <= 0)
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y)* -1 );
+                scr_game_launcher.winstate = -1;
             }
         }
         if (other.gameObject.name == "water")
         {
             hits = 0;
             GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
+            scr_game_launcher.winstate = -1;
         }
         if (other.gameObject.name == "warp" && global.timelimit > 0)
         {

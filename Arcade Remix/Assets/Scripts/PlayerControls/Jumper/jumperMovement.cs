@@ -28,6 +28,7 @@ public class jumperMovement : MonoBehaviour
 	{
 		rend = anchor.GetComponent<SpriteRenderer>();
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
+        scr_game_launcher.winstate = 1;
     }
 
 
@@ -140,6 +141,7 @@ public class jumperMovement : MonoBehaviour
 		if (other.gameObject.tag == "bad")
 		{
 			lost = true;
+            scr_game_launcher.winstate = -1;
 		}
         if (other.gameObject.name == "Points" && gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
         {
@@ -147,7 +149,16 @@ public class jumperMovement : MonoBehaviour
         }
 	}
 
-	void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Main Camera")
+        {
+            scr_game_launcher.winstate = -1;
+            SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other)
 	{
 		landed = false;
 	}

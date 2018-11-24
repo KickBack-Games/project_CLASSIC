@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class scr_enemy_color_movement : MonoBehaviour {
     public int speedX;
@@ -70,6 +71,17 @@ public class scr_enemy_color_movement : MonoBehaviour {
             {
                 speedX *= -1;
                 speedY *= -1;
+                global.scoreColor += 200;
+            }
+            else
+            {
+                if (scr_player_color_controls.tries <= 0)
+                {
+                    scr_game_launcher.winstate = -1;
+                    SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+                }
+                scr_player_color_controls.tries--;
+                GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(scr_player_color_controls.tries);
             }
         }
     }
