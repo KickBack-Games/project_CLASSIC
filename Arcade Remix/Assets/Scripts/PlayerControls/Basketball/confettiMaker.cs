@@ -53,7 +53,7 @@ public class confettiMaker : MonoBehaviour {
 			trFloat += .05f;
 			if (trFloat >= 1f)
 			{
-				board.transform.position = new Vector2(Random.Range(-10f, 10f), Random.Range(0f, 15f));
+				board.transform.position = new Vector2(Random.Range(-9f, 9f), Random.Range(0f, 15f));
 				transitioning = false;
 				trFloat = 0;
 			}

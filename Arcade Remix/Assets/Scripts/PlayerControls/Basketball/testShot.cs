@@ -21,6 +21,8 @@ public class testShot : MonoBehaviour {
 
     public static int points;
 
+    public bool touching;
+
 	void Start()
 	{
 		//rend = anchor.GetComponent<SpriteRenderer>();
@@ -30,7 +32,7 @@ public class testShot : MonoBehaviour {
 
 	void Update ()
 	{
-        if (Input.GetMouseButton(0) && (gameObject.transform.position.y < 0))
+        if (Input.GetMouseButton(0) && (gameObject.transform.position.y <= 0))
 		{
 			// This 'lock' allows the logic for dragging... since only when you let go, does it 
 			// turn false
@@ -53,7 +55,9 @@ public class testShot : MonoBehaviour {
 		else
 		{
 			rend.enabled = false;
-			gameObject.GetComponent<Rigidbody2D>().gravityScale = 10;
+			if (!touching)
+				gameObject.GetComponent<Rigidbody2D>().gravityScale = 10;
+
 			if (locked)
 			{
 				finalP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -88,6 +92,7 @@ public class testShot : MonoBehaviour {
 
 				// Reset it
 				initP = new Vector2 (0, 0);
+				touching = false;
 			}
 			locked = false;
 		} 		
@@ -98,6 +103,17 @@ public class testShot : MonoBehaviour {
 		//rotSpeed = rb.velocity.x;
         //gameObject.transform.Rotate(new Vector3(0,0,-rotSpeed/2f));
 		rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+
+		if(other.gameObject.tag == "stop") // For the opponents hitbox
+		{
+			touching = true;
+			gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+			rb.velocity = new Vector2(0, 0);
+		}
 	}
 }
 
