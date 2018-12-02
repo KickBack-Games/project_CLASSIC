@@ -14,17 +14,17 @@ public class ballMovement : MonoBehaviour {
 	{
 		dir = Random.Range(0, 4);
 		int[] gridX = new int[] {-2, -1, 0, 1, 2};
-		int[] gridY = new int[] {-3, -2, -1, 0, 1, 2, 3};
+		int[] gridY = new int[] {-4, -3, -2, -1, 0, 1, 2};
 
 		// Starting position.
 		if (dir == 0) // UP
         	transform.position = new Vector2(gridX[Random.Range(0, gridX.Length)], -7.0f);
         else if(dir == 1) // DOWN
-        	transform.position = new Vector2(gridX[Random.Range(0, gridX.Length)], 7.0f);
+        	transform.position = new Vector2(gridX[Random.Range(0, gridX.Length)], 6.0f);
         else if(dir == 2) // RIGHT
-        	transform.position = new Vector2(-4.0f, gridY[Random.Range(0, gridY.Length)]);
+        	transform.position = new Vector2(-4.75f, gridY[Random.Range(0, gridY.Length)]);
         else if(dir == 3) // LEFT
-        	transform.position = new Vector2(4.0f, gridY[Random.Range(0, gridY.Length)]);
+        	transform.position = new Vector2(4.75f, gridY[Random.Range(0, gridY.Length)]);
         
 	}
 

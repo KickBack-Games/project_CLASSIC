@@ -14,6 +14,8 @@ public class playerMovement : MonoBehaviour
 	public bool lost;
 	public Text txtScore;
 
+	private Animator anim;
+
     public void Awake()
     {
         SimpleGesture.On4AxisSwipeRight(SwipeRight);
@@ -24,6 +26,7 @@ public class playerMovement : MonoBehaviour
 
     void Start() 
 	{
+		anim = GetComponent<Animator>();
 		pos = transform.position;
 		tr = transform;
 		lost = false;
@@ -37,7 +40,7 @@ public class playerMovement : MonoBehaviour
 		// Check to see if the player lost
 		if ((pos.x >= 3) || 
 			(pos.x <= -3) ||
-			(pos.y >= 5) ||
+			(pos.y >= 3) ||
 			(pos.y <= -5))
 			lost = true;
 
@@ -49,7 +52,9 @@ public class playerMovement : MonoBehaviour
 				transform.localScale -= new Vector3(0.01f, 0.01f, 0.0f);
 			else
 				// Restart when completely shrunk
-                if (global.timelimit > 0)
+				SceneManager.LoadScene("DEBUG", LoadSceneMode.Single);
+
+            if (global.timelimit > 0)
             {
                 scr_game_launcher.winstate = -1;
                 SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
@@ -60,20 +65,26 @@ public class playerMovement : MonoBehaviour
 		{
 			if (Input.GetKeyDown(KeyCode.D))
 			{
+				anim.SetTrigger("moving");
                 SwipeRight();
 			}
 			else if (Input.GetKeyDown(KeyCode.A)) 
 			{
+				anim.SetTrigger("moving");
                 SwipeLeft();
 			}
 			else if (Input.GetKeyDown(KeyCode.W)) 
 			{
+				anim.SetTrigger("moving");
                 SwipeUp();
 			}
 			else if (Input.GetKeyDown(KeyCode.S)) 
 			{
+				anim.SetTrigger("moving");
                 SwipeDown();
 			}
+			else
+				anim.SetBool("moving", false);
 		}
 		transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);
 	}   

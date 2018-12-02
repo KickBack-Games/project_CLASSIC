@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: e5a1235a518cda9469ec0e44928ffa2f
+guid: a50b11c48df130e48a3ce4c524cedabe
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Dodger_Run_32_SS_0
-    21300002: Dodger_Run_32_SS_1
-    21300004: Dodger_Run_32_SS_9
+    21300000: Dodger_RightsideStep_320_0
+    21300002: Dodger_RightsideStep_320_1
+    21300004: Dodger_RightsideStep_320_2
+    21300006: Dodger_RightsideStep_320_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -34,7 +35,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -64,7 +65,7 @@ TextureImporter:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -75,7 +76,7 @@ TextureImporter:
   - serializedVersion: 2
     buildTarget: Standalone
     maxTextureSize: 2048
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -86,7 +87,7 @@ TextureImporter:
   - serializedVersion: 2
     buildTarget: Android
     maxTextureSize: 2048
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -98,41 +99,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dodger_Run_32_SS_1
+      name: Dodger_RightsideStep_320_0
       rect:
         serializedVersion: 2
-        x: 53
-        y: 188
-        width: 82
-        height: 187
+        x: 70
+        y: 320
+        width: 180
+        height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d0afdde551ef5b44abc366ad3cc1663
+      spriteID: a0507de3fb822a443979ff582708df72
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dodger_Run_32_SS_9
+      name: Dodger_RightsideStep_320_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 0
-        width: 83
-        height: 187
-      alignment: 9
-      pivot: {x: 0.4999994, y: 0.49999928}
+        x: 340
+        y: 320
+        width: 240
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea0844df590a5e544a9103c145e2a743
+      spriteID: 493acf6a64aed2d4c993e14715f26779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dodger_RightsideStep_320_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 240
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a05ce3a31ba83384ab876dd12eed81e8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dodger_RightsideStep_320_3
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 0
+        width: 180
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba71e940c36ea0d468285ebd9cecc35d
       vertices: []
       indices: 
       edges: []
@@ -140,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 77b5377e8e42a52498d4157235f96b43
+    spriteID: 97bc41cae7a48bc4597a64abc023a4bf
     vertices: []
     indices: 
     edges: []

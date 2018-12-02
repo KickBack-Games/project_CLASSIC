@@ -11,6 +11,7 @@ TagManager:
   - RunnerGoal
   - bad
   - point
+  - stop
   layers:
   - Default
   - TransparentFX
