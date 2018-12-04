@@ -15,6 +15,7 @@ public class playerMovement : MonoBehaviour
 	public Text txtScore;
 
 	private Animator anim;
+    private SpriteRenderer sprite;
 
     public void Awake()
     {
@@ -27,6 +28,7 @@ public class playerMovement : MonoBehaviour
     void Start() 
 	{
 		anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
 		pos = transform.position;
 		tr = transform;
 		lost = false;
@@ -65,26 +67,28 @@ public class playerMovement : MonoBehaviour
 		{
 			if (Input.GetKeyDown(KeyCode.D))
 			{
-				anim.SetTrigger("moving");
+                anim.Play("jump", -1, 1f);
+                sprite.flipX = true;
                 SwipeRight();
 			}
 			else if (Input.GetKeyDown(KeyCode.A)) 
 			{
-				anim.SetTrigger("moving");
+                anim.Play("jump", -1, 1f);
+                sprite.flipX = false;
                 SwipeLeft();
 			}
 			else if (Input.GetKeyDown(KeyCode.W)) 
 			{
-				anim.SetTrigger("moving");
+                anim.Play("jump", -1, 1f);
                 SwipeUp();
 			}
 			else if (Input.GetKeyDown(KeyCode.S)) 
 			{
-				anim.SetTrigger("moving");
+                anim.Play("jump", -1, 1f);
                 SwipeDown();
 			}
-			else
-				anim.SetBool("moving", false);
+			//else
+				//anim.SetBool("moving", false);
 		}
 		transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);
 	}   

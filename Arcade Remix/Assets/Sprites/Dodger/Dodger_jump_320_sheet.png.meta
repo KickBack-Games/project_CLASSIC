@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: a50b11c48df130e48a3ce4c524cedabe
+guid: 155602cf5baa27e4eb7717f868efba96
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Dodger_RightsideStep_320_0
-    21300002: Dodger_RightsideStep_320_1
-    21300004: Dodger_RightsideStep_320_2
-    21300006: Dodger_RightsideStep_320_3
+    21300000: Dodger_jump_320_sheet_0
+    21300002: Dodger_jump_320_sheet_1
+    21300004: Dodger_jump_320_sheet_2
+    21300006: Dodger_jump_320_sheet_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -85,6 +85,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -99,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dodger_RightsideStep_320_0
+      name: Dodger_jump_320_sheet_0
       rect:
         serializedVersion: 2
-        x: 70
+        x: 0
         y: 320
-        width: 180
-        height: 300
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0507de3fb822a443979ff582708df72
+      spriteID: 70a0801a12e7f1647a0e0ff19e5ae9a3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dodger_RightsideStep_320_1
+      name: Dodger_jump_320_sheet_1
       rect:
         serializedVersion: 2
-        x: 340
+        x: 320
         y: 320
-        width: 240
-        height: 280
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,19 +144,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 493acf6a64aed2d4c993e14715f26779
+      spriteID: 633308d307c101042a5b54fec2fde853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dodger_RightsideStep_320_2
+      name: Dodger_jump_320_sheet_2
       rect:
         serializedVersion: 2
-        x: 60
+        x: 0
         y: 0
-        width: 240
-        height: 280
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,19 +164,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a05ce3a31ba83384ab876dd12eed81e8
+      spriteID: 1d4e0b73d3334de44ba0c0d6333eb252
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dodger_RightsideStep_320_3
+      name: Dodger_jump_320_sheet_3
       rect:
         serializedVersion: 2
-        x: 390
+        x: 320
         y: 0
-        width: 180
-        height: 300
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,7 +184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba71e940c36ea0d468285ebd9cecc35d
+      spriteID: ab8319d2ce5d6904bada2a74f689e797
       vertices: []
       indices: 
       edges: []
@@ -181,7 +192,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 97bc41cae7a48bc4597a64abc023a4bf
+    spriteID: 0ec478f94d13d7940825b409fd8e5448
     vertices: []
     indices: 
     edges: []
