@@ -79,12 +79,12 @@ public class playerMovement : MonoBehaviour
 			}
 			else if (Input.GetKeyDown(KeyCode.W)) 
 			{
-                anim.Play("jump", -1, 1f);
+                anim.Play("anim_dodge_up", -1, 1f);
                 SwipeUp();
 			}
 			else if (Input.GetKeyDown(KeyCode.S)) 
 			{
-                anim.Play("jump", -1, 1f);
+                anim.Play("anim_dodge_down", -1, 1f);
                 SwipeDown();
 			}
 			//else

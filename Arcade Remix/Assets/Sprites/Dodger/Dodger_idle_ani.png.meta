@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 97bb7b68b0e75c641ae844553f624029
+guid: 6f1bf1d7b1941c249ac3a2f3de235aac
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Dodger_sideStep_320_1
-    21300002: Dodger_sideStep_320_2
+    21300000: Dodger_idle_ani_0
+    21300002: Dodger_idle_ani_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -97,41 +97,41 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dodger_sideStep_320_1
+      name: Dodger_idle_ani_0
       rect:
         serializedVersion: 2
-        x: 340
+        x: 60
         y: 320
-        width: 240
-        height: 280
+        width: 200
+        height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1f53fef6c2a1344f8c67b967967ffc1
+      spriteID: e8e0b6e4c55caef4a97ea18eca48fcb7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dodger_sideStep_320_2
+      name: Dodger_idle_ani_1
       rect:
         serializedVersion: 2
-        x: 60
-        y: 0
-        width: 240
-        height: 280
+        x: 380
+        y: 320
+        width: 200
+        height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b92c4b179f8c624ab5b542ca212cf49
+      spriteID: b2397c0149e489e43b489f6695e53d5a
       vertices: []
       indices: 
       edges: []
@@ -139,7 +139,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9f453bd93ec31e344856bd01349f4cd0
+    spriteID: 48eb2ec889dd3ce4abb7cc3c263a8420
     vertices: []
     indices: 
     edges: []
