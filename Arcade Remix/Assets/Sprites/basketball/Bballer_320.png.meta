@@ -102,46 +102,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bballer_320_0
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 640
-        width: 130
-        height: 302
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7b6fd64a85040842a3d604151a0d797
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bballer_320_1
-      rect:
-        serializedVersion: 2
-        x: 428
-        y: 640
-        width: 130
-        height: 300
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e1056e4090f1bf4195eabc7e6d738f8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Bballer_320_2
       rect:
         serializedVersion: 2

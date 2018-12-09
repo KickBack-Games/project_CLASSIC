@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: anim_dodge_up
+  m_Name: anim_bball_moving
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,9 +19,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 65790aef42435f74d9e3935833b950dc, type: 3}
+      value: {fileID: 21300002, guid: 185284eec3b436e40b6a51c769afe5ef, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300002, guid: 65790aef42435f74d9e3935833b950dc, type: 3}
+      value: {fileID: 21300000, guid: 185284eec3b436e40b6a51c769afe5ef, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -41,8 +41,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 65790aef42435f74d9e3935833b950dc, type: 3}
-    - {fileID: 21300002, guid: 65790aef42435f74d9e3935833b950dc, type: 3}
+    - {fileID: 21300002, guid: 185284eec3b436e40b6a51c769afe5ef, type: 3}
+    - {fileID: 21300000, guid: 185284eec3b436e40b6a51c769afe5ef, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

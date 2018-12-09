@@ -67,24 +67,24 @@ public class playerMovement : MonoBehaviour
 		{
 			if (Input.GetKeyDown(KeyCode.D))
 			{
-                anim.Play("jump", -1, 1f);
+                anim.Play("jump", -1, 0f);
                 sprite.flipX = true;
                 SwipeRight();
 			}
 			else if (Input.GetKeyDown(KeyCode.A)) 
 			{
-                anim.Play("jump", -1, 1f);
+                anim.Play("jump", -1, 0f);
                 sprite.flipX = false;
                 SwipeLeft();
 			}
 			else if (Input.GetKeyDown(KeyCode.W)) 
 			{
-                anim.Play("anim_dodge_up", -1, 1f);
+                anim.Play("anim_dodge_up", -1, 0f);
                 SwipeUp();
 			}
 			else if (Input.GetKeyDown(KeyCode.S)) 
 			{
-                anim.Play("anim_dodge_down", -1, 1f);
+                anim.Play("anim_dodge_down", -1, 0f);
                 SwipeDown();
 			}
 			//else
