@@ -1211,6 +1211,8 @@ MonoBehaviour:
   hoop: {fileID: 1950007741}
   yPos: 0
   ySpeed: 0
+  throwCounter: 0
+  throwCounterLim: 1
 --- !u!1 &1648225459
 GameObject:
   m_ObjectHideFlags: 0
