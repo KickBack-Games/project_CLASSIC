@@ -21,13 +21,14 @@ public class bballPlayer : MonoBehaviour
 	{
 		yStart = player.GetComponent<Transform>().position.y;
 		ySpeed = 2;
-		anim = player.GetComponent<Animator>();
-	}
+		anim = player.GetComponent<Animator>();        
+    }
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		yPos = player.GetComponent<Transform>().position.y;
+        anim.SetFloat("speed",Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.y)/50);
+        yPos = player.GetComponent<Transform>().position.y;
 		if (Input.GetMouseButton(0) && (gameObject.transform.position.y < 0))
 		{
 			
@@ -42,7 +43,7 @@ public class bballPlayer : MonoBehaviour
 		//anim.Play("bball anim_bball_moving", -1, 0f);
 		if (Input.GetMouseButton(0))
 		{
-			anim.Play("anim_bball_locked", -1, 1f);
+			anim.Play("anim_bball_locked");
 			throwCounter = throwCounterLim;
 		}
 		else
@@ -50,11 +51,11 @@ public class bballPlayer : MonoBehaviour
 			
 			
 			if (throwCounter <= 0f)
-				anim.Play("anim_bball_move", 0, 1f);
+				anim.Play("anim_bball_move");
 			else
 			{
 				throwCounter -= .05f;
-				anim.Play("anim_bball_throw", 0, 1f);
+				anim.Play("anim_bball_throw");
 			}
 		}
 
