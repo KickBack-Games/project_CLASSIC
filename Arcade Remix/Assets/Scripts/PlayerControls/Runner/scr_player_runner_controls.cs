@@ -12,6 +12,11 @@ public class scr_player_runner_controls : MonoBehaviour {
     public int jspeed = 7;
     private Animator anim;
 
+    public static int goal = 0;
+    public Text goalText;
+
+    public int[] goals;
+
     // Use this for initialization
     void Start () {
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
@@ -19,6 +24,7 @@ public class scr_player_runner_controls : MonoBehaviour {
         hits = 3;
         anim = this.GetComponent<Animator>();
         scr_game_launcher.winstate = 1;
+        goalText.text = "Clear " +goal +" hurdles!";
     }
 	
 	// Update is called once per frame
