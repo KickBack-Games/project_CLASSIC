@@ -107,7 +107,12 @@ public class playerMovement : MonoBehaviour
 	    		if (dir == 0)
 	    			pos += Vector3.up * 2;
 	            else if (dir == 1)
-	            	pos += Vector3.down * 2;
+	            {
+	            	if (pos.y == -3)
+	            		pos += Vector3.down * 3;
+	            	else
+	            		pos += Vector3.down * 2;
+	            }
 	            else if (dir == 2)
 	            	pos += Vector3.right * 2;
 	            else
