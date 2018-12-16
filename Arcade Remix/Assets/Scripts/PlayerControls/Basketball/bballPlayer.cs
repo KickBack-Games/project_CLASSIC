@@ -15,7 +15,7 @@ public class bballPlayer : MonoBehaviour
 	public float throwCounter;
 	public float throwCounterLim;
 
-
+	public bool caught;
 	// Use this for initialization
 	void Start () 
 	{
@@ -27,6 +27,7 @@ public class bballPlayer : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		caught = GetComponent<testShot>().touching;
         anim.SetFloat("speed",Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.x)/50);
         yPos = player.GetComponent<Transform>().position.y;
 		if (Input.GetMouseButton(0) && (gameObject.transform.position.y < 0))
@@ -47,20 +48,26 @@ public class bballPlayer : MonoBehaviour
 			throwCounter = throwCounterLim;
 		}
 		else
-		{			
-			if (throwCounter <= 0f)
+		{
+			if (caught)
 			{
-				print("YUP");
-				anim.Play("anim_bball_moving");
+				anim.Play("anim_bball_idle");
 			}
 			else
 			{
-				throwCounter -= .05f;
-				anim.Play("anim_bball_throw");
-				print(throwCounter);
+				if (throwCounter <= 0f)
+				{
+					print("YUP");
+					anim.Play("anim_bball_moving");
+				}
+				else
+				{
+					throwCounter -= .05f;
+					anim.Play("anim_bball_throw");
+					print(throwCounter);
+				}
 			}
 		}
-
 
 		if (player.GetComponent<Transform>().position.x >= hoop.GetComponent<Transform>().position.x)
 			player.GetComponent<Transform>().localScale = new Vector2(-1, 1);

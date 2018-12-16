@@ -8,7 +8,6 @@ public class opponent : MonoBehaviour
 	public float speed;
 
 	public GameObject ball;
-	private tennisBall tb;
 	private float myX;
 	public float myY;
 
@@ -16,7 +15,6 @@ public class opponent : MonoBehaviour
 	{
 		StartCoroutine(Example());
 		pos = ball.transform.position;
-		tb = ball.GetComponent<tennisBall>();
 		myX = ball.transform.position.x;
 		myY = ball.transform.position.y;
 
