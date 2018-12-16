@@ -49,7 +49,7 @@ public class bballPlayer : MonoBehaviour
 		}
 		else
 		{
-			if (caught)
+			if (caught || (this.GetComponent<Rigidbody2D>().velocity.x < 0.01f  && this.GetComponent<Rigidbody2D>().velocity.x > -.01f))
 			{
 				anim.Play("anim_bball_idle");
 			}
