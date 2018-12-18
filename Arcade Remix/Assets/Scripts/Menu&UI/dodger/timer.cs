@@ -32,20 +32,17 @@ public class timer : MonoBehaviour
 		if (second % secondToIncDiff == 0)
 		{
 
-
 			if (second != 0)
 				if (!changed)
 				{
 					spawner ballScript = GetComponent<spawner>();
 					ballScript.frequency += changeFloat;
-					global.scoreDodger += 250;
 					changed = true;						
 				}
-
-
-
 		}
 		else
 			changed = false;
+		// Increase it every second
+		global.scoreDodger = second * 100;
 	}
 }
