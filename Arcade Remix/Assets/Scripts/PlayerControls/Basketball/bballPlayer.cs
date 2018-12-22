@@ -9,6 +9,7 @@ public class bballPlayer : MonoBehaviour
 	public float yPos;
 	public float ySpeed;
 	private float yStart;
+	private float offset; 
 
 	private Animator anim;
 
@@ -16,12 +17,15 @@ public class bballPlayer : MonoBehaviour
 	public float throwCounterLim;
 
 	public bool caught;
+	private bool jumped;
+	public float jumpPow;
+
 	// Use this for initialization
 	void Start () 
 	{
 		yStart = player.GetComponent<Transform>().position.y;
 		ySpeed = 2;
-		anim = player.GetComponent<Animator>();        
+		anim = player.GetComponent<Animator>();  
     }
 	
 	// Update is called once per frame
@@ -30,22 +34,12 @@ public class bballPlayer : MonoBehaviour
 		caught = GetComponent<testShot>().touching;
         anim.SetFloat("speed",Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.x)/50);
         yPos = player.GetComponent<Transform>().position.y;
-		if (Input.GetMouseButton(0) && (gameObject.transform.position.y < 0))
-		{
-			
-			if ((yPos + 6) <= gameObject.transform.position.y)
-				yPos += ySpeed;
-		}
-		else
-		{
-			if (yPos > yStart)
-				yPos -= ySpeed;
-		}
 		//anim.Play("bball anim_bball_moving", -1, 0f);
 		if (Input.GetMouseButton(0))
 		{
 			anim.Play("anim_bball_locked");
 			throwCounter = throwCounterLim;
+			jumped = false;
 		}
 		else
 		{
@@ -57,7 +51,6 @@ public class bballPlayer : MonoBehaviour
 			{
 				if (throwCounter <= 0f)
 				{
-					print("YUP");
 					anim.Play("anim_bball_moving");
 				}
 				else
@@ -67,14 +60,35 @@ public class bballPlayer : MonoBehaviour
 					print(throwCounter);
 				}
 			}
+
+
+			if (!jumped)
+			{
+				jumpPow = .2f;
+				jumped = true;
+			}
 		}
+		if ((player.GetComponent<Transform>().position.y > yStart))
+		{
+			jumpPow -= .01f;
+		}
+		else if ((player.GetComponent<Transform>().position.y < yStart - .05f))
+			jumpPow = 0;
+
 
 		if (player.GetComponent<Transform>().position.x >= hoop.GetComponent<Transform>().position.x)
+		{
+			offset = 2;
 			player.GetComponent<Transform>().localScale = new Vector2(-1, 1);
+		}
 		else
+		{
+			offset = -2;
 			player.GetComponent<Transform>().localScale = new Vector2(1, 1);
+		}
 
-		player.GetComponent<Transform>().position = new Vector2(gameObject.GetComponent<Transform>().position.x, 
+		player.GetComponent<Transform>().position = new Vector2(gameObject.GetComponent<Transform>().position.x + offset, 
 																yPos);
 	}
+
 }

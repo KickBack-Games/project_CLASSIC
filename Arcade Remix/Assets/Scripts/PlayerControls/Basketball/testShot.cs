@@ -25,14 +25,13 @@ public class testShot : MonoBehaviour {
 
 	void Start()
 	{
-		//rend = anchor.GetComponent<SpriteRenderer>();
         points = 0;
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
     }
 
 	void Update ()
 	{
-        if (Input.GetMouseButton(0) && (gameObject.transform.position.y <= 0))
+        if (Input.GetMouseButton(0) && (gameObject.transform.position.y <= -11))
 		{
 			// This 'lock' allows the logic for dragging... since only when you let go, does it 
 			// turn false
@@ -87,7 +86,7 @@ public class testShot : MonoBehaviour {
 				///  direction (probably 1, or -1... calculated by if statements of initP and finalP)* magnitude * power(which is a public float) 
 				Vector2 supahPOWAH = new Vector2(xDir * power * xDist, yDir * power * yDist);
 
-				//Do physics
+				// Do physics
 				gameObject.GetComponent<Rigidbody2D>().AddForce (supahPOWAH, ForceMode2D.Impulse);
 
 				// Reset it
@@ -100,8 +99,6 @@ public class testShot : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		//rotSpeed = rb.velocity.x;
-        //gameObject.transform.Rotate(new Vector3(0,0,-rotSpeed/2f));
 		rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
 	}
 
