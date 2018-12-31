@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class scr_ui_results : MonoBehaviour {
     public Sprite[] logo;
+
+    public string next;
 	// Use this for initialization
 	void Start () {
         StartCoroutine(OnBegin());
@@ -28,7 +30,7 @@ public class scr_ui_results : MonoBehaviour {
             {
                 if (global.winner)
                 {
-                    SceneManager.LoadScene("scn_game_basketball", LoadSceneMode.Single);
+                    SceneManager.LoadScene(next, LoadSceneMode.Single);
                 }
                 else
                 {

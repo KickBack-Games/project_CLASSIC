@@ -17,12 +17,20 @@ public class playerMovement : MonoBehaviour
 	private Animator anim;
     private SpriteRenderer sprite;
 
+    public int[] goals;
+    public Text goalText;
+    public GameObject results;
     public void Awake()
     {
         SimpleGesture.On4AxisSwipeRight(SwipeRight);
         SimpleGesture.On4AxisSwipeDown(SwipeDown);
         SimpleGesture.On4AxisSwipeLeft(SwipeLeft);
         SimpleGesture.On4AxisSwipeUp(SwipeUp);
+
+        StartCoroutine(OnBegin());
+
+        scr_game_launcher.winstate = -1;
+        goalText.text = "Last " + goals[global.difficulty - 1] + " Sec!";
     }
 
     void Start() 
@@ -34,6 +42,8 @@ public class playerMovement : MonoBehaviour
 		lost = false;
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
         scr_game_launcher.winstate = 1;
+        global.goalCounter = goals[global.difficulty - 1];
+        results.GetComponent<scr_ui_results>().next = "scn_game_shooter";
     }
 
 	void Update() 
@@ -49,18 +59,18 @@ public class playerMovement : MonoBehaviour
 		if (lost)
 		{
 			transform.Rotate( new Vector3(0, 0, 500) * Time.deltaTime);
-			// falling effect
-			if (transform.localScale.x >= 0 && transform.localScale.y >= 0)
-				transform.localScale -= new Vector3(0.01f, 0.01f, 0.0f);
-			else
-				// Restart when completely shrunk
-				SceneManager.LoadScene("DEBUG", LoadSceneMode.Single);
-
-            if (global.timelimit > 0)
+            // falling effect
+            if (transform.localScale.x >= 0 && transform.localScale.y >= 0)
+                transform.localScale -= new Vector3(0.01f, 0.01f, 0.0f);
+            else
             {
-                scr_game_launcher.winstate = -1;
-                SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+                // Restart when completely shrunk
+                global.winner = false;
+                results.SetActive(true);
+                Destroy(this);
             }
+
+                
 				
 		}
 		else
@@ -91,6 +101,11 @@ public class playerMovement : MonoBehaviour
 				//anim.SetBool("moving", false);
 		}
 		transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);
+        if (global.goalCounter <= 0)
+        {
+            global.winner = true;
+            results.SetActive(true);
+        }
 	}   
 
 	// HANDLE THE COLLISION HERE
@@ -148,5 +163,12 @@ public class playerMovement : MonoBehaviour
         {
             pos += Vector3.right;
         }
+    }
+
+    public IEnumerator OnBegin()
+    {
+        yield return new WaitForSeconds(1);
+        global.goalCounter--;
+        StartCoroutine(OnBegin());
     }
 }

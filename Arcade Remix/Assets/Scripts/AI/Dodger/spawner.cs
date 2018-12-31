@@ -8,8 +8,13 @@ public class spawner : MonoBehaviour
 	public float counter;
 
 	public GameObject ball;
-	// Update is called once per frame
-	void Update () 
+    // Update is called once per frame
+
+    private void Start()
+    {
+        frequency *= global.difficulty;
+    }
+    void Update () 
 	{
 		counter -= frequency;
 		if (counter <= 0.0)

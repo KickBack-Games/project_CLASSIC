@@ -22,6 +22,10 @@ public class scr_player_shooter_controls : MonoBehaviour {
 
     private Animator anim;
 
+    public int[] goals;
+    public Text goalText;
+    public GameObject results;
+
     // Use this for initialization
     void Start () {
         button.onClick.AddListener(OnShoot);
@@ -30,6 +34,8 @@ public class scr_player_shooter_controls : MonoBehaviour {
         anim = this.GetComponent<Animator>();
         anim.speed = 0;
         scr_game_launcher.winstate = -1;
+        goalText.text = "Hit " + goals[global.difficulty - 1] + " Targets!";
+        results.GetComponent<scr_ui_results>().next = "scn_title";
     }
 	
 	// Update is called once per frame
@@ -49,6 +55,9 @@ public class scr_player_shooter_controls : MonoBehaviour {
         }
         if (alarmRe == 0)
         {
+            global.winner = false;
+            results.SetActive(true);
+            Destroy(this);
             ammo = 5;
             GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(ammo);
             alarmRe = -1;
@@ -67,8 +76,9 @@ public class scr_player_shooter_controls : MonoBehaviour {
 
         if (GameObject.FindGameObjectsWithTag("ShooterTarget").Length == 0 && global.timelimit >0)
         {
-            scr_game_launcher.winstate = 1;
-            SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+            global.winner = true;
+            results.SetActive(true);
+            Destroy(this);
         }
     }
 
