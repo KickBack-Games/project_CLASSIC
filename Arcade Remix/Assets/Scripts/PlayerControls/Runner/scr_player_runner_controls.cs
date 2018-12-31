@@ -16,6 +16,7 @@ public class scr_player_runner_controls : MonoBehaviour {
     public Text goalText;
 
     public int[] goals;
+    public GameObject results;
 
     // Use this for initialization
     void Start () {
@@ -24,7 +25,7 @@ public class scr_player_runner_controls : MonoBehaviour {
         hits = 3;
         anim = this.GetComponent<Animator>();
         scr_game_launcher.winstate = 1;
-        goalText.text = "Clear " +goal +" hurdles!";
+        goalText.text = "Clear " +goals[global.difficulty-1] +" hurdles!";
     }
 	
 	// Update is called once per frame
@@ -32,7 +33,7 @@ public class scr_player_runner_controls : MonoBehaviour {
         if (Input.GetKeyDown("space")) { OnJump(); }
         if (hits <= 0 && global.timelimit > 0)
         {
-            SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+            GameObject.Find("Results").SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -62,12 +63,18 @@ public class scr_player_runner_controls : MonoBehaviour {
             if (hits <= 0)
             {
                 scr_game_launcher.winstate = -1;
-                SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+                results.SetActive(true);
             }
         }
         if (collision.gameObject.tag == "RunnerGoal" && GetComponent<Rigidbody2D>().velocity != new Vector2(0, 0))
         {
             global.scoreRunner += 500;
+            goal++;
+            global.goalCounter++;
+            if (goal >= goals[global.difficulty - 1])
+            {
+                global.winner = true;
+            }
         }
     }
 

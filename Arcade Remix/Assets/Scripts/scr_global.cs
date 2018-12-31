@@ -25,7 +25,13 @@ public class global : MonoBehaviour {
 
     public static int wincount = 0;
 
-    public static int difficulty = 0; //1=easy | 2=medium | 3=hard
+    public static int difficulty = 1; //1=easy | 2=medium | 3=hard
+
+    public static int gameMode = 1; //1=objective | -1=endless
+
+    public static int goalCounter = 0;
+
+    public static bool winner = false;
     public static List<string> games = new List<string>(new string[] {
         "scn_game_baseball",
         "scn_game_basketball",

@@ -8,6 +8,8 @@ public class scr_game_timer : MonoBehaviour
 {
     public int time;
     public Text counter;
+    public Image icon;
+    public Image goalIcon;
     // Use this for initialization
     void Start()
     {
@@ -15,6 +17,18 @@ public class scr_game_timer : MonoBehaviour
         {
             StartCoroutine(OnBegin());
             time = global.timelimit;
+        }
+        else
+        {
+            icon.sprite = goalIcon.sprite;
+        }
+    }
+
+    private void Update()
+    {
+        if (global.timelimit == 0)
+        {
+            counter.text = global.goalCounter.ToString();
         }
     }
 
