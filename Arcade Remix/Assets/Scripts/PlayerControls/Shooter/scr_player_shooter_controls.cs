@@ -24,7 +24,9 @@ public class scr_player_shooter_controls : MonoBehaviour {
 
     public int[] goals;
     public Text goalText;
+    public Text timeText;
     public GameObject results;
+    public int secs;
 
     // Use this for initialization
     void Start () {
@@ -35,7 +37,9 @@ public class scr_player_shooter_controls : MonoBehaviour {
         anim.speed = 0;
         scr_game_launcher.winstate = -1;
         goalText.text = "Hit " + goals[global.difficulty - 1] + " Targets!";
-        results.GetComponent<scr_ui_results>().next = "scn_title";
+        results.GetComponent<scr_ui_results>().next = "scn_game_thrower";
+        secs = 3 * goals[global.difficulty - 1];
+        StartCoroutine(OnBegin());
     }
 	
 	// Update is called once per frame
@@ -46,6 +50,12 @@ public class scr_player_shooter_controls : MonoBehaviour {
             anim.speed = 0;
         }*/
 
+        if (secs <= 0)
+        {
+            global.winner = false;
+            results.SetActive(true);
+            Destroy(this);
+        }
         transform.Translate(Vector2.right * Time.deltaTime * speed);
         //alarm--;
         alarmRe--;
@@ -55,9 +65,6 @@ public class scr_player_shooter_controls : MonoBehaviour {
         }
         if (alarmRe == 0)
         {
-            global.winner = false;
-            results.SetActive(true);
-            Destroy(this);
             ammo = 5;
             GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(ammo);
             alarmRe = -1;
@@ -74,7 +81,7 @@ public class scr_player_shooter_controls : MonoBehaviour {
             alarm = Random.Range(alarmMin, alarmMax);
         }
 
-        if (GameObject.FindGameObjectsWithTag("ShooterTarget").Length == 0 && global.timelimit >0)
+        if (global.goalCounter >= goals[global.difficulty - 1])
         {
             global.winner = true;
             results.SetActive(true);
@@ -105,5 +112,12 @@ public class scr_player_shooter_controls : MonoBehaviour {
     void OnFlip() {
         alarm = Random.Range(alarmMin, alarmMax);
         speed *= -1;
+    }
+    public IEnumerator OnBegin()
+    {
+        yield return new WaitForSeconds(1);
+        secs--;
+        timeText.text = secs.ToString();
+        StartCoroutine(OnBegin());
     }
 }

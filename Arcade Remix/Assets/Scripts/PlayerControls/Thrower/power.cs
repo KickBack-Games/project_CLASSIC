@@ -25,17 +25,26 @@ public class power : MonoBehaviour {
 
     public Image bar;
 
-	void Start ()
+    public int[] goals;
+    public Text goalText;
+    public Text timeText;
+    public GameObject results;
+    public int secs;
+
+    void Start ()
 	{
 		setText();
 		sr = GetComponent<SpriteRenderer>();
         bar.fillAmount = 0;
         scr_game_launcher.winstate = -1;
-	}
+        goalText.text = "Tap " + goals[global.difficulty - 1] + " Times!";
+        results.GetComponent<scr_ui_results>().next = "scn_title";
+    }
 
 	// Update is called once per frame
 	void Update () 
 	{
+        global.goalCounter = second;
         if (this.gameObject.GetComponent<Rigidbody2D>().velocity.y != 0)
         {
             global.scoreThrower += 50;

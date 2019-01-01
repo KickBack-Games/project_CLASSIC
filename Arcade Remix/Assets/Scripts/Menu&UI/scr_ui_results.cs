@@ -41,6 +41,8 @@ public class scr_ui_results : MonoBehaviour {
             {
                 SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
             }
+            scr_mod_fader.active = false;
+            scr_mod_fader.fadeSpeed = -1;
         }
     }
 
