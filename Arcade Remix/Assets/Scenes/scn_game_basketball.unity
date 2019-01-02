@@ -1213,6 +1213,8 @@ MonoBehaviour:
   ySpeed: 0
   throwCounter: 0
   throwCounterLim: 1
+  caught: 0
+  jumpPow: 0
 --- !u!1 &1648225459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,6 +1492,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 802624e19d083bd43a8f66f1351e7344,
         type: 3}
+    - target: {fileID: 114336975419938992, guid: ebb8936645a7a2b4fa373226cea1c498,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb8936645a7a2b4fa373226cea1c498, type: 2}
   m_IsPrefabAsset: 0
