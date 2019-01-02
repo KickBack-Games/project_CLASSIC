@@ -24,6 +24,9 @@ public class testShot : MonoBehaviour
 
     public bool touching;
 
+    // player jump
+    public GameObject player;
+
     void Start()
     {
         points = 0;
@@ -32,7 +35,7 @@ public class testShot : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && (gameObject.transform.position.y <= -11))
+        if (Input.GetMouseButton(0) && (gameObject.transform.position.y <= -10.5f))
         {
             // This 'lock' allows the logic for dragging... since only when you let go, does it 
             // turn false
@@ -86,9 +89,12 @@ public class testShot : MonoBehaviour
 
                 ///  direction (probably 1, or -1... calculated by if statements of initP and finalP)* magnitude * power(which is a public float) 
                 Vector2 supahPOWAH = new Vector2(xDir * power * xDist, yDir * power * yDist);
-
+                if (yDist > 12)
+                	yDist = 12;
+                Vector2 jumpPOWAH = new Vector2(0, (yDir * power * yDist)/4);
                 // Do physics
                 gameObject.GetComponent<Rigidbody2D>().AddForce(supahPOWAH, ForceMode2D.Impulse);
+                player.GetComponent<Rigidbody2D>().AddForce(jumpPOWAH, ForceMode2D.Impulse);
 
                 // Reset it
                 initP = new Vector2(0, 0);
