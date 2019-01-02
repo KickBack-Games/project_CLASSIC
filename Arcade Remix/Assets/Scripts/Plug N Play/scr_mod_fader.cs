@@ -15,6 +15,10 @@ public class scr_mod_fader : MonoBehaviour {
     void Start()
     {
         image = GetComponent<Image>();
+        active = false;
+        owner = null;
+        fadeSpeed = 0;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -41,6 +45,8 @@ public class scr_mod_fader : MonoBehaviour {
         {
             image.enabled = false;
             fadeSpeed = 0;
+            active = false;
+            owner = null;
         }
     }
 

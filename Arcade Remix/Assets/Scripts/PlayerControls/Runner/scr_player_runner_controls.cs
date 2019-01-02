@@ -20,6 +20,7 @@ public class scr_player_runner_controls : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        global.goalCounter = 0;
         results.GetComponent<scr_ui_results>().next = "scn_game_basketball";
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
         SimpleGesture.On4AxisSwipeUp(OnJump);
@@ -75,6 +76,7 @@ public class scr_player_runner_controls : MonoBehaviour {
             if (goal >= goals[global.difficulty - 1])
             {
                 global.winner = true;
+                results.SetActive(true);
             }
         }
     }

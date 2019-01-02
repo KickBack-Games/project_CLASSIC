@@ -67,14 +67,10 @@ public class confettiMaker : MonoBehaviour {
         if (other.gameObject.name == "Ball")
         {
             global.scoreBasketball += 500;
+            global.goalCounter++;
             scored = true;
             gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
             testShot.points++;
-            GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(testShot.points);
-            if (testShot.points >= 1)
-            {
-                scr_game_launcher.winstate = -1;
-            }
 
             // Change the position of the board and all that it "childs"
             // transition time.

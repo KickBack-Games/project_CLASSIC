@@ -15,6 +15,6 @@ public class Resetter : MonoBehaviour {
 
     void OnPress()
 	{
-        SceneManager.LoadScene("DEBUG", LoadSceneMode.Single);
+        SceneManager.LoadScene("scn_title", LoadSceneMode.Single);
     }
 }

@@ -147,10 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1be79b3b10c034485ced3a7b65575f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  easyLevels:
-  - scn_game_runner
-  mediumLevels: []
-  hardLevels: []
 --- !u!114 &729763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0
   counter: {fileID: 0}
+  icon: {fileID: 0}
+  goalIcon: {fileID: 0}
 --- !u!114 &729765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -967,7 +965,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 780787783}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 729762}
+        m_MethodName: OnBegin
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &780787783
@@ -1520,7 +1529,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1524439110}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 729762}
+        m_MethodName: OnBegin
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1524439110

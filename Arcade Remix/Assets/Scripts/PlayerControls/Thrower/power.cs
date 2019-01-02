@@ -67,14 +67,6 @@ public class power : MonoBehaviour {
 		}
 		else
 		{
-            if (counter >= 30)
-            {
-                scr_game_launcher.winstate = 1;
-            }
-            else
-            {
-                scr_game_launcher.winstate = -1;
-            }
             if (!done)
 			{
 				//counter = counter * 10; //For testing purposes
@@ -104,6 +96,23 @@ public class power : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col)
 	{
 		if (col.gameObject.tag == "RunnerBlock")
-			landed = true;
-	}
+        {
+            landed = true;
+            StartCoroutine(OnBegin());
+        }
+    }
+    public IEnumerator OnBegin()
+    {
+        yield return new WaitForSeconds(3);
+        if (counter >= goals[global.difficulty - 1])
+        {
+            global.winner = true;
+            results.SetActive(true);
+        }
+        else
+        {
+            global.winner = false;
+            results.SetActive(true);
+        }
+    }
 }

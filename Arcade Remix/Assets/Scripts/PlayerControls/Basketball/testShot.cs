@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class testShot : MonoBehaviour
 {
@@ -24,6 +25,12 @@ public class testShot : MonoBehaviour
 
     public bool touching;
 
+    public int[] goals;
+    public Text goalText;
+    public Text timeText;
+    public GameObject results;
+    public int secs;
+
     // player jump
     public GameObject player;
 
@@ -31,10 +38,28 @@ public class testShot : MonoBehaviour
     {
         points = 0;
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
+        scr_game_launcher.winstate = -1;
+        global.goalCounter = 0;
+        goalText.text = "Shoot " + goals[global.difficulty - 1] + " Baskets!";
+        results.GetComponent<scr_ui_results>().next = "scn_game_dodger";
+        secs = 15;
+        StartCoroutine(OnBegin());
     }
 
     void Update()
     {
+        if (secs <= 0)
+        {
+            global.winner = false;
+            results.SetActive(true);
+            Destroy(this);
+        }
+        if (global.goalCounter >= goals[global.difficulty - 1])
+        {
+            global.winner = true;
+            results.SetActive(true);
+            Destroy(this);
+        }
         if (Input.GetMouseButton(0) && (gameObject.transform.position.y <= -10.5f))
         {
             // This 'lock' allows the logic for dragging... since only when you let go, does it 
@@ -118,5 +143,13 @@ public class testShot : MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
             rb.velocity = new Vector2(0, 0);
         }
+    }
+
+    public IEnumerator OnBegin()
+    {
+        yield return new WaitForSeconds(1);
+        secs--;
+        timeText.text = secs.ToString();
+        StartCoroutine(OnBegin());
     }
 }

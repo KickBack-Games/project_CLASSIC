@@ -7,6 +7,18 @@ public class scr_enemy_runner_movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.Translate(Vector2.left * Time.deltaTime * 4);
+        if (global.difficulty==1)
+        {
+            Time.timeScale = 1;
+        }
+        if (global.difficulty == 2)
+        {
+            Time.timeScale = 1.5f;
+        }
+        if (global.difficulty == 3)
+        {
+            Time.timeScale = 2;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
