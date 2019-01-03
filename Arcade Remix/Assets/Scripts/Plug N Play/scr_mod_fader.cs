@@ -7,7 +7,7 @@ public class scr_mod_fader : MonoBehaviour {
     private Image image;
     public static int fadeSpeed;
     public static Color alpha;
-    public static float speed = 0.010f;
+    public static float speed = 0.030f;
     public static bool active = false;
 
     public static GameObject owner;
@@ -19,35 +19,22 @@ public class scr_mod_fader : MonoBehaviour {
         owner = null;
         fadeSpeed = 0;
         Time.timeScale = 1;
+        image.canvasRenderer.SetAlpha(0.01f);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        alpha = image.color;
-        if (fadeSpeed == 1 && alpha.a < 1)
+    {       
+        if (fadeSpeed == 1)
         {
             image.enabled = true;
-            image.color = new Color(alpha.r, alpha.g, alpha.b, alpha.a += speed);
-        }
-
-        if (fadeSpeed == -1)
-        {
-            image.color = new Color(alpha.r, alpha.g, alpha.b, alpha.a -= speed);
-        }
-
-        if (alpha.a > .9f && fadeSpeed == 1)
-        {
-            active = true;
-        }
-
-        if (alpha.a < .10f && fadeSpeed == -1)
-        {
-            image.enabled = false;
-            fadeSpeed = 0;
-            active = false;
-            owner = null;
+            image.CrossFadeAlpha(1, .30f, false);
+            StartCoroutine(FadeScreen());
         }
     }
-
+    public IEnumerator FadeScreen()
+    {
+        yield return new WaitForSeconds(.50f);
+        active = true;
+    }
 }
