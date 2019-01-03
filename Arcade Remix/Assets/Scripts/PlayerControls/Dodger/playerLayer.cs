@@ -6,18 +6,19 @@ public class playerLayer : MonoBehaviour {
 
 	private float sortingF;
 	private int sortingI;
+	private SpriteRenderer spr;
+
 	
 	// Use this for initialization
 	void Start () 
 	{
-		
+		spr = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
 		playerMovement s = GetComponent<playerMovement>();
-		SpriteRenderer spr = GetComponent<SpriteRenderer>();
 
 		if (s.lost)
 		{

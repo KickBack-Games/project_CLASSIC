@@ -19,6 +19,7 @@ public class bballPlayer : MonoBehaviour
 	public bool caught;
 	private bool jumped;
 	public float jumpPow;
+	public testShot ts;
 
 	// Use this for initialization
 	void Start () 
@@ -26,12 +27,13 @@ public class bballPlayer : MonoBehaviour
 		yStart = player.GetComponent<Transform>().position.y;
 		ySpeed = 2;
 		anim = player.GetComponent<Animator>();  
+		ts = GetComponent<testShot>();
     }
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		caught = GetComponent<testShot>().touching;
+		caught = ts.touching;
         anim.SetFloat("speed",Mathf.Abs(this.GetComponent<Rigidbody2D>().velocity.x)/50);
         yPos = player.GetComponent<Transform>().position.y;
 		//anim.Play("bball anim_bball_moving", -1, 0f);
