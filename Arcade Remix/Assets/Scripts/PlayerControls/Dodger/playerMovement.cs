@@ -77,24 +77,20 @@ public class playerMovement : MonoBehaviour
 		{
 			if (Input.GetKeyDown(KeyCode.D))
 			{
-                anim.Play("jump", -1, 0f);
                 sprite.flipX = true;
                 SwipeRight();
 			}
 			else if (Input.GetKeyDown(KeyCode.A)) 
 			{
-                anim.Play("jump", -1, 0f);
                 sprite.flipX = false;
                 SwipeLeft();
 			}
 			else if (Input.GetKeyDown(KeyCode.W)) 
 			{
-                anim.Play("anim_dodge_up", -1, 0f);
                 SwipeUp();
 			}
 			else if (Input.GetKeyDown(KeyCode.S)) 
 			{
-                anim.Play("anim_dodge_down", -1, 0f);
                 SwipeDown();
 			}
 			//else
@@ -140,6 +136,7 @@ public class playerMovement : MonoBehaviour
     {
         if (tr.position == pos)
         {
+            anim.Play("anim_dodge_up", -1, 0f);
             pos += Vector3.up;
         }
     }
@@ -147,6 +144,7 @@ public class playerMovement : MonoBehaviour
     {
         if (tr.position == pos)
         {
+            anim.Play("anim_dodge_down", -1, 0f);
             pos += Vector3.down;
         }
     }
@@ -154,6 +152,7 @@ public class playerMovement : MonoBehaviour
     {
         if (tr.position == pos)
         {
+            anim.Play("jump", -1, 0f);
             pos += Vector3.left;
         }
     }
@@ -161,6 +160,7 @@ public class playerMovement : MonoBehaviour
     {
         if(tr.position == pos)
         {
+            anim.Play("jump", -1, 0f);
             pos += Vector3.right;
         }
     }
