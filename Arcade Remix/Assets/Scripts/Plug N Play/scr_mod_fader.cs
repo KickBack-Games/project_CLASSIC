@@ -19,22 +19,27 @@ public class scr_mod_fader : MonoBehaviour {
         owner = null;
         fadeSpeed = 0;
         Time.timeScale = 1;
-        image.canvasRenderer.SetAlpha(0.01f);
+        image.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
-    {       
+    {
+        Debug.Log(image.color.a);
         if (fadeSpeed == 1)
         {
-            image.enabled = true;
             image.CrossFadeAlpha(1, .30f, false);
             StartCoroutine(FadeScreen());
+        }
+        if (fadeSpeed == -1)
+        {
+            image.CrossFadeAlpha(0, .30f, false);
         }
     }
     public IEnumerator FadeScreen()
     {
         yield return new WaitForSeconds(.50f);
         active = true;
+        fadeSpeed = -1;
     }
 }
