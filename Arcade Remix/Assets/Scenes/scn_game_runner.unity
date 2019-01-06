@@ -280,7 +280,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7009416, y: 2.219264}
+  m_Size: {x: 1.7009416, y: 1.65}
   m_EdgeRadius: 0
 --- !u!212 &56999705
 SpriteRenderer:
@@ -2799,7 +2799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hits: 5
   speed: 3
-  jspeed: 8
+  jspeed: 6
   goalText: {fileID: 352084610}
   goals: 050000000a0000000f000000
   results: {fileID: 484303852}
@@ -2815,7 +2815,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.09746313, y: -0.16930503}
+  m_Offset: {x: 0.06634092, y: -0.16930509}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2826,7 +2826,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.707592, y: 3.290937}
+  m_Size: {x: 0.8195317, y: 3.290937}
   m_EdgeRadius: 0
 --- !u!50 &1708757168
 Rigidbody2D:
@@ -3069,7 +3069,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7009416, y: 2.219264}
+  m_Size: {x: 1.7009416, y: 1.47}
   m_EdgeRadius: 0
 --- !u!114 &1824534547
 MonoBehaviour:
@@ -3101,7 +3101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1905636796
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3143,7 +3143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
