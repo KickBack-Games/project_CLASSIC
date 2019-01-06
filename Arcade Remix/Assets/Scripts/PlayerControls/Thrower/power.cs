@@ -47,7 +47,7 @@ public class power : MonoBehaviour {
         global.goalCounter = second;
         if (this.gameObject.GetComponent<Rigidbody2D>().velocity.y != 0)
         {
-            global.scoreThrower += 50;
+            global.scoreThrower += 10;
         }
 		if (second > 0)
 		{
@@ -69,8 +69,7 @@ public class power : MonoBehaviour {
 		{
             if (!done)
 			{
-				//counter = counter * 10; //For testing purposes
-				Vector2 supahPOWAH = new Vector2(counter * 5, counter * 5);
+				Vector2 supahPOWAH = new Vector2(counter * 8, counter * 8);
 				this.gameObject.GetComponent<Rigidbody2D>().AddForce (supahPOWAH, ForceMode2D.Impulse);
 				// Time is redundant now in screen, so change it so that we show total taps instead
 				txtTime.text = counter.ToString();

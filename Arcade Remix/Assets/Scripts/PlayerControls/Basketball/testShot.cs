@@ -48,7 +48,7 @@ public class testShot : MonoBehaviour
 
     void Update()
     {
-        if (secs <= 0)
+        if (secs <= 0 && touching == true)
         {
             global.winner = false;
             results.SetActive(true);

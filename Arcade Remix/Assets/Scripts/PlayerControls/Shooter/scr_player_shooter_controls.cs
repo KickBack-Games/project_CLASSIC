@@ -92,7 +92,7 @@ public class scr_player_shooter_controls : MonoBehaviour {
     void OnShoot() {
         if (ammo > 0)
         {
-            anim.speed = 1;
+            anim.speed = 2;
             anim.Play("shoot", -1, 0f);
         }
     }
