@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1be79b3b10c034485ced3a7b65575f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 030000000200000001000000
 --- !u!114 &729763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,10 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52db5aaf9786c2a43b12acbeed837bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0
   counter: {fileID: 0}
-  icon: {fileID: 0}
-  goalIcon: {fileID: 0}
+  results: {fileID: 0}
+  goalText: {fileID: 0}
 --- !u!114 &729765
 MonoBehaviour:
   m_ObjectHideFlags: 0

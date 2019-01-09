@@ -28,5 +28,21 @@ public class scr_ui_results : MonoBehaviour {
         Time.timeScale = 1;
         scr_mod_fader.fadeSpeed = 1;
         scr_mod_fader.next = next;
+        if (!global.winner)
+        {
+            if (global.timelimit<=0)
+            {
+                if (global.lives > 0)
+                {
+                    global.lives--;
+                    Scene scene = SceneManager.GetActiveScene();
+                    scr_mod_fader.next = scene.name;
+                }
+                else
+                {
+                    scr_mod_fader.next = "scn_title";
+                }
+            }
+        }
     }
 }

@@ -18,6 +18,10 @@ public class scr_game_timer : MonoBehaviour
             counter.text = global.timeSec.ToString();
             StartCoroutine(OnBegin());
         }
+        else
+        {
+            counter.text = global.lives.ToString();
+        }
     }
 
     private void Update()

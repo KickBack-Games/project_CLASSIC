@@ -50,8 +50,11 @@ public class scr_player_shooter_controls : MonoBehaviour {
         }
         if (alarmRe == 0)
         {
-            ammo = 5;
-            GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(ammo);
+            if (ammo <0)
+            {
+                global.winner = false;
+                results.SetActive(true);
+            }
             alarmRe = -1;
         }
 

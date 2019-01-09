@@ -45,7 +45,7 @@ public class scr_player_runner_controls : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "RunnerEnemy")
+        if (collision.gameObject.tag == "RunnerEnemy" && global.winner != true)
         {
             collision.gameObject.GetComponent<scr_enemy_runner_jumping>().goal.SetActive(false);
             if (this.GetComponent<scr_mod_iframes>().alarm>-1)
@@ -54,7 +54,7 @@ public class scr_player_runner_controls : MonoBehaviour {
             }
             else
             {
-                hits--;
+                hits =0;
                 GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
                 this.GetComponent<scr_mod_iframes>().OnStart(60);               
             }
