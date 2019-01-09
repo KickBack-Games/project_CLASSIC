@@ -10,17 +10,11 @@ public class scr_game_start : MonoBehaviour {
         Application.targetFrameRate = 60;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (scr_mod_fader.active)
-        {
-            SceneManager.LoadScene("scn_game_runner", LoadSceneMode.Single);
-        }
-    }
-
     public void OnBegin(int difficulty) {
         global.difficulty = difficulty;
+        global.timelimit = 60;
+        global.timeSec = global.timelimit;
         scr_mod_fader.fadeSpeed = 1;
+        scr_mod_fader.next = "scn_game_runner";
     }
 }

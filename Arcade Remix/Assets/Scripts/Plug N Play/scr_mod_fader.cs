@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class scr_mod_fader : MonoBehaviour {
     private Image image;
@@ -9,6 +10,7 @@ public class scr_mod_fader : MonoBehaviour {
     public static Color alpha;
     public static float speed = 0.030f;
     public static bool active = false;
+    public static string next;
 
     public static GameObject owner;
     // Use this for initialization
@@ -17,7 +19,7 @@ public class scr_mod_fader : MonoBehaviour {
         image = GetComponent<Image>();
         active = false;
         owner = null;
-        fadeSpeed = 0;
+        fadeSpeed = -1;
         Time.timeScale = 1;
         image.enabled = true;
     }
@@ -25,7 +27,6 @@ public class scr_mod_fader : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(image.color.a);
         if (fadeSpeed == 1)
         {
             image.CrossFadeAlpha(1, .30f, false);
@@ -38,8 +39,16 @@ public class scr_mod_fader : MonoBehaviour {
     }
     public IEnumerator FadeScreen()
     {
-        yield return new WaitForSeconds(.50f);
-        active = true;
-        fadeSpeed = -1;
+        if (fadeSpeed == 1)
+        {
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene(next, LoadSceneMode.Single);
+            active = true;
+            fadeSpeed = -1;
+        }
+        if (fadeSpeed == -1)
+        {
+            fadeSpeed = 0;
+        }
     }
 }

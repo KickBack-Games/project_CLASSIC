@@ -12,7 +12,7 @@ public class scr_player_shooter_controls : MonoBehaviour {
     //Ammo Limmit
     public int ammo = 5;
     //Movement speed
-    public int speed = 3;
+    public float speed = 3;
     //Timer for changing the player direction
     public int alarm = 60;
     public int alarmMin = 35;
@@ -24,12 +24,11 @@ public class scr_player_shooter_controls : MonoBehaviour {
 
     public int[] goals;
     public Text goalText;
-    public Text timeText;
     public GameObject results;
-    public int secs;
 
     // Use this for initialization
     void Start () {
+        global.goalCounter = 0;
         button.onClick.AddListener(OnShoot);
         ammo = 5;
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(ammo);
@@ -38,24 +37,10 @@ public class scr_player_shooter_controls : MonoBehaviour {
         scr_game_launcher.winstate = -1;
         goalText.text = "Hit " + goals[global.difficulty - 1] + " Targets!";
         results.GetComponent<scr_ui_results>().next = "scn_game_thrower";
-        secs = 3 * goals[global.difficulty - 1];
-        StartCoroutine(OnBegin());
     }
 	
 	// Update is called once per frame
 	void Update () {
-        /*if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= anim.GetCurrentAnimatorStateInfo(0).length)
-        {
-            anim.Play("shoot", -1, 0f);
-            anim.speed = 0;
-        }*/
-
-        if (secs <= 0)
-        {
-            global.winner = false;
-            results.SetActive(true);
-            Destroy(this);
-        }
         transform.Translate(Vector2.right * Time.deltaTime * speed);
         //alarm--;
         alarmRe--;
@@ -102,6 +87,8 @@ public class scr_player_shooter_controls : MonoBehaviour {
         ammo--;
         GameObject shot = Instantiate(bullet, this.transform.position, bullet.transform.rotation);
         shot.SetActive(true);
+        shot.transform.parent = bullet.transform.parent;
+        shot.transform.localScale = bullet.transform.localScale;
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(ammo);
         if (ammo >= 0)
         {
@@ -112,12 +99,5 @@ public class scr_player_shooter_controls : MonoBehaviour {
     void OnFlip() {
         alarm = Random.Range(alarmMin, alarmMax);
         speed *= -1;
-    }
-    public IEnumerator OnBegin()
-    {
-        yield return new WaitForSeconds(1);
-        secs--;
-        timeText.text = secs.ToString();
-        StartCoroutine(OnBegin());
     }
 }

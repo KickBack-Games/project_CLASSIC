@@ -6,39 +6,39 @@ using UnityEngine.SceneManagement;
 
 public class scr_game_timer : MonoBehaviour
 {
-    public int time;
     public Text counter;
-    public Image icon;
-    public Image goalIcon;
+
+    public GameObject results;
+    public Text goalText;
     // Use this for initialization
     void Start()
     {
         if (global.timelimit > 0)
         {
+            counter.text = global.timeSec.ToString();
             StartCoroutine(OnBegin());
-            time = global.timelimit;
-        }
-        else
-        {
-            icon.sprite = goalIcon.sprite;
         }
     }
 
     private void Update()
     {
-        if (global.timelimit == 0)
+        if (global.timeSec <= 0 && global.timelimit > 0)
         {
-            counter.text = global.goalCounter.ToString();
+            global.winner = false;
+            results.SetActive(true);
+            results.GetComponent<scr_ui_results>().next = "scn_title";
         }
+        goalText.text = global.goalCounter.ToString();
     }
 
     public IEnumerator OnBegin()
     {
-        for (int i = global.timelimit; i >= 0; i--)
+        yield return new WaitForSeconds(1);
+        if (results.activeSelf==false)
         {
-            yield return new WaitForSeconds(1);
-            counter.text = i.ToString();
+            global.timeSec--;
+            counter.text = global.timeSec.ToString();
         }
-        SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
+        StartCoroutine(OnBegin());
     }
 }

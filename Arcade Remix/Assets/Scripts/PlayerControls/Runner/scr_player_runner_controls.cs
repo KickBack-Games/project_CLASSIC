@@ -17,13 +17,11 @@ public class scr_player_runner_controls : MonoBehaviour {
 
     public int[] goals;
     public GameObject results;
-
     // Use this for initialization
     void Start () {
         global.goalCounter = 0;
-        results.GetComponent<scr_ui_results>().next = "scn_game_basketball";
+        goal = 0;        
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
-        SimpleGesture.On4AxisSwipeUp(OnJump);
         hits = 3;
         anim = this.GetComponent<Animator>();
         scr_game_launcher.winstate = 1;
@@ -33,14 +31,12 @@ public class scr_player_runner_controls : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown("space")) { OnJump(); }
+        if (Input.GetKeyUp("space")) { OnDrop(); }
         if (hits <= 0 && global.timelimit > 0)
         {
             GameObject.Find("Results").SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            OnJump();
-        }
+
         if (this.GetComponent<Rigidbody2D>().velocity.y == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("run"))
         {
             anim.Play("run", -1, 1f);
@@ -64,7 +60,8 @@ public class scr_player_runner_controls : MonoBehaviour {
             }
             if (hits <= 0)
             {
-                scr_game_launcher.winstate = -1;
+                global.winner = false;
+                results.GetComponent<scr_ui_results>().next = "scn_title";
                 results.SetActive(true);
             }
         }
@@ -76,16 +73,22 @@ public class scr_player_runner_controls : MonoBehaviour {
             if (goal >= goals[global.difficulty - 1])
             {
                 global.winner = true;
+                results.GetComponent<scr_ui_results>().next = "scn_game_basketball";
                 results.SetActive(true);
             }
         }
     }
 
-    void OnJump() {
-        if(GetComponent<Rigidbody2D>().velocity == new Vector2(0,0))
+    public void OnJump()
+    {
+        if (GetComponent<Rigidbody2D>().velocity == new Vector2(0, 0))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, jspeed);
             anim.Play("jump", -1, 0f);
-        }       
+        }
+    }
+    public void OnDrop()
+    {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, -1);
     }
 }

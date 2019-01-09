@@ -22,6 +22,7 @@ public class global : MonoBehaviour {
     public static int layer = 0;
 
     public static int timelimit = 0;
+    public static int timeSec = 0;
 
     public static int wincount = 0;
 
