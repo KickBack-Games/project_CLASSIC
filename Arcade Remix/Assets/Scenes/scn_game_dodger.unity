@@ -833,7 +833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1d6f7386a15bf43ba74b390655e239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency: 0.6
+  frequency: 0.3
   counter: 0
   ball: {fileID: 1511947911769424, guid: f2d27937b56022440bafd50ec457b1e3, type: 2}
 --- !u!114 &914688513

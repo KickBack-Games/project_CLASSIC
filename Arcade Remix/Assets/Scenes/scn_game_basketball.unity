@@ -1582,7 +1582,7 @@ MonoBehaviour:
   touching: 0
   goals: 020000000400000006000000
   goalText: {fileID: 1136196041}
-  timeText: {fileID: 0}
+  timeText: {fileID: 1800441370}
   results: {fileID: 1671326622}
   secs: 10
   player: {fileID: 1648225459}

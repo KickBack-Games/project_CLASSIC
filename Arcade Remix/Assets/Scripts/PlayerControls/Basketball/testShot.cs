@@ -34,6 +34,8 @@ public class testShot : MonoBehaviour
     // player jump
     public GameObject player;
 
+    private int numberTries;
+
     void Start()
     {
         points = 0;
@@ -43,12 +45,14 @@ public class testShot : MonoBehaviour
         goalText.text = "Shoot " + goals[global.difficulty - 1] + " Baskets!";
         results.GetComponent<scr_ui_results>().next = "scn_game_dodger";
         secs = 15;
-        StartCoroutine(OnBegin());
+        //StartCoroutine(OnBegin());
+
+        numberTries = 5;
     }
 
     void Update()
     {
-        if (secs <= 0 && touching == true)
+        if (numberTries <= 0 && touching == true)
         {
             global.winner = false;
             results.SetActive(true);
@@ -120,13 +124,14 @@ public class testShot : MonoBehaviour
                 // Do physics
                 gameObject.GetComponent<Rigidbody2D>().AddForce(supahPOWAH, ForceMode2D.Impulse);
                 player.GetComponent<Rigidbody2D>().AddForce(jumpPOWAH, ForceMode2D.Impulse);
-
+                numberTries -= 1;
                 // Reset it
                 initP = new Vector2(0, 0);
                 touching = false;
             }
             locked = false;
         }
+        timeText.text = numberTries.ToString();
     }
 
     void FixedUpdate()
@@ -145,11 +150,11 @@ public class testShot : MonoBehaviour
         }
     }
 
-    public IEnumerator OnBegin()
+    /*public IEnumerator OnBegin()
     {
         yield return new WaitForSeconds(1);
         secs--;
         timeText.text = secs.ToString();
         StartCoroutine(OnBegin());
-    }
+    }*/
 }

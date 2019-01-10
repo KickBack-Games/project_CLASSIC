@@ -26,6 +26,8 @@ public class scr_player_shooter_controls : MonoBehaviour {
     public Text goalText;
     public GameObject results;
 
+    public float lostTimer;
+
     // Use this for initialization
     void Start () {
         global.goalCounter = 0;
@@ -37,6 +39,7 @@ public class scr_player_shooter_controls : MonoBehaviour {
         scr_game_launcher.winstate = -1;
         goalText.text = "Hit " + goals[global.difficulty - 1] + " Targets!";
         results.GetComponent<scr_ui_results>().next = "scn_game_thrower";
+        lostTimer = 1f;
     }
 	
 	// Update is called once per frame
@@ -48,12 +51,17 @@ public class scr_player_shooter_controls : MonoBehaviour {
         {
             OnFlip();
         }
-        if (alarmRe == 0)
+        if (alarmRe <= 0) // changed this to <= from ==. it would keep on going to -100's. == 0 for a split second at some point
         {
-            if (ammo <0)
+            if (ammo <= 0 && (global.goalCounter > 0))
             {
-                global.winner = false;
-                results.SetActive(true);
+                if(lostTimer <= 0)
+                {
+                    global.winner = false;
+                    results.SetActive(true);
+                }
+                else
+                    lostTimer -= 1f * Time.deltaTime;
             }
             alarmRe = -1;
         }

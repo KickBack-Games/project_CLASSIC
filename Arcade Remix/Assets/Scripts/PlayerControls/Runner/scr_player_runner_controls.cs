@@ -54,7 +54,8 @@ public class scr_player_runner_controls : MonoBehaviour {
             }
             else
             {
-                hits =0;
+                hits--;
+                //hits =0;
                 GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
                 this.GetComponent<scr_mod_iframes>().OnStart(60);               
             }

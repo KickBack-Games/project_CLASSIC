@@ -17,7 +17,7 @@ public class spawner : MonoBehaviour
     void Update () 
 	{
 		counter -= frequency;
-		if (counter <= 0.0)
+		if (counter <= 0.0f)
 		{
 			Instantiate(ball);
 			counter = 10; 
