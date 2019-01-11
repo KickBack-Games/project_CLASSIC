@@ -3586,7 +3586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 1740874113}
   bullet: {fileID: 1439204086}
-  ammo: 5
+  ammo: 2
   speed: 1.5
   alarm: 60
   alarmMin: 35
@@ -3595,6 +3595,7 @@ MonoBehaviour:
   goals: 050000000a0000000f000000
   goalText: {fileID: 305253244}
   results: {fileID: 253335562}
+  lostTimer: 0
 --- !u!95 &1708757167
 Animator:
   serializedVersion: 3

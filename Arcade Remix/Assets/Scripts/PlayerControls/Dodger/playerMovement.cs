@@ -48,7 +48,7 @@ public class playerMovement : MonoBehaviour
 
 	void Update() 
 	{
-
+        var mousePos = Input.mousePosition;
 		// Check to see if the player lost
 		if ((pos.x >= 3) || 
 			(pos.x <= -3) ||
@@ -75,7 +75,35 @@ public class playerMovement : MonoBehaviour
 		}
 		else
 		{
-			if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetMouseButtonDown(0))
+            {
+                print(mousePos + " ||| " + Screen.width + " width|height" + Screen.height);
+                print((Screen.height * .7) + " .7 |||  .5 " + (Screen.height * .4));
+                if (mousePos.y >= (Screen.height * .4f))
+                {
+                    SwipeUp();
+                }
+                else if (mousePos.y <= (Screen.height * .2f))
+                {
+                    SwipeDown();
+                }
+                else
+                {
+                // now in between up and down... gotta do same for middle
+                    if (mousePos.x >= (Screen.width * .5))
+                    {
+                        sprite.flipX = true;
+                        SwipeRight();
+                    }
+                    else 
+                    {
+                        sprite.flipX = false;
+                        SwipeLeft();
+                    }
+                }
+            }
+
+			/*if (Input.GetKeyDown(KeyCode.D))
 			{
                 sprite.flipX = true;
                 SwipeRight();
@@ -94,7 +122,7 @@ public class playerMovement : MonoBehaviour
                 SwipeDown();
 			}
 			//else
-				//anim.SetBool("moving", false);
+				//anim.SetBool("moving", false);*/
 		}
 		transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);
         if (global.goalCounter <= 0)
