@@ -39,7 +39,6 @@ public class testShot : MonoBehaviour
     void Start()
     {
         points = 0;
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
         scr_game_launcher.winstate = -1;
         global.goalCounter = 0;
         goalText.text = "Shoot " + goals[global.difficulty - 1] + " Baskets!";
@@ -48,6 +47,7 @@ public class testShot : MonoBehaviour
         //StartCoroutine(OnBegin());
 
         numberTries = 5;
+        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(numberTries);
     }
 
     void Update()
@@ -125,13 +125,13 @@ public class testShot : MonoBehaviour
                 gameObject.GetComponent<Rigidbody2D>().AddForce(supahPOWAH, ForceMode2D.Impulse);
                 player.GetComponent<Rigidbody2D>().AddForce(jumpPOWAH, ForceMode2D.Impulse);
                 numberTries -= 1;
+                GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(numberTries);
                 // Reset it
                 initP = new Vector2(0, 0);
                 touching = false;
             }
             locked = false;
         }
-        timeText.text = numberTries.ToString();
     }
 
     void FixedUpdate()
