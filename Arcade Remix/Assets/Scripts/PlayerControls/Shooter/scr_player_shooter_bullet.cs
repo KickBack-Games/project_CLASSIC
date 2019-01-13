@@ -6,11 +6,12 @@ public class scr_player_shooter_bullet : MonoBehaviour {
     public GameObject eventobject;
 	// Use this for initialization
 	void Start () {
-		
+		transform.parent = null;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        
         transform.Translate(Vector2.up * Time.deltaTime * 12);
     }
 

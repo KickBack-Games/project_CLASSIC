@@ -16,8 +16,6 @@ public class testShot : MonoBehaviour
 
     public float power;
 
-    public GameObject anchor;
-    public SpriteRenderer rend;
 
     private float rotSpeed;
 
@@ -31,6 +29,9 @@ public class testShot : MonoBehaviour
     public GameObject results;
     public int secs;
 
+    public GameObject lr;
+    private LineRenderer lr2;
+
     // player jump
     public GameObject player;
 
@@ -38,7 +39,9 @@ public class testShot : MonoBehaviour
 
     void Start()
     {
+        lr2 = lr.GetComponent<LineRenderer>();
         points = 0;
+        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
         scr_game_launcher.winstate = -1;
         global.goalCounter = 0;
         goalText.text = "Shoot " + goals[global.difficulty - 1] + " Baskets!";
@@ -47,7 +50,6 @@ public class testShot : MonoBehaviour
         //StartCoroutine(OnBegin());
 
         numberTries = 5;
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(numberTries);
     }
 
     void Update()
@@ -79,14 +81,14 @@ public class testShot : MonoBehaviour
                 if ((initP.x == 0) && (initP.y == 0))
                 {
                     initP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    rend.transform.position = initP;
-                    rend.enabled = true;
+                    lr2.SetPosition(0, new Vector3(initP.x - 7.35f, initP.y, -1));
                 }
+                finalP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                lr2.SetPosition(1,   new Vector3(finalP.x-7.35f, finalP.y,-1));
             }
         }
         else
         {
-            rend.enabled = false;
             if (!touching)
                 gameObject.GetComponent<Rigidbody2D>().gravityScale = 10;
 
@@ -119,19 +121,19 @@ public class testShot : MonoBehaviour
                 ///  direction (probably 1, or -1... calculated by if statements of initP and finalP)* magnitude * power(which is a public float) 
                 Vector2 supahPOWAH = new Vector2(xDir * power * xDist, yDir * power * yDist);
                 if (yDist > 12)
-                	yDist = 12;
+                    yDist = 12;
                 Vector2 jumpPOWAH = new Vector2(0, (yDir * power * yDist)/4);
                 // Do physics
                 gameObject.GetComponent<Rigidbody2D>().AddForce(supahPOWAH, ForceMode2D.Impulse);
                 player.GetComponent<Rigidbody2D>().AddForce(jumpPOWAH, ForceMode2D.Impulse);
                 numberTries -= 1;
-                GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(numberTries);
                 // Reset it
                 initP = new Vector2(0, 0);
                 touching = false;
             }
             locked = false;
         }
+        timeText.text = numberTries.ToString();
     }
 
     void FixedUpdate()

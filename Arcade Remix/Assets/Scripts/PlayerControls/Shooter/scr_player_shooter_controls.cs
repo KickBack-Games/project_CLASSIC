@@ -27,7 +27,7 @@ public class scr_player_shooter_controls : MonoBehaviour {
     public GameObject results;
 
     public float lostTimer;
-
+    private int reloadCount;
     // Use this for initialization
     void Start () {
         global.goalCounter = 0;
@@ -40,6 +40,7 @@ public class scr_player_shooter_controls : MonoBehaviour {
         goalText.text = "Hit " + goals[global.difficulty - 1] + " Targets!";
         results.GetComponent<scr_ui_results>().next = "scn_game_thrower";
         lostTimer = 1f;
+        reloadCount = 1;
     }
 	
 	// Update is called once per frame
@@ -53,7 +54,7 @@ public class scr_player_shooter_controls : MonoBehaviour {
         }
         if (alarmRe <= 0) // changed this to <= from ==. it would keep on going to -100's. == 0 for a split second at some point
         {
-            if (ammo <= 0 && (global.goalCounter > 0))
+            if (ammo <= 0 && (global.goalCounter > 0) && reloadCount == 0)
             {
                 if(lostTimer <= 0)
                 {
@@ -95,15 +96,21 @@ public class scr_player_shooter_controls : MonoBehaviour {
 
     public void OnFire()
     {
-        ammo--;
-        GameObject shot = Instantiate(bullet, this.transform.position, bullet.transform.rotation);
-        shot.SetActive(true);
-        shot.transform.parent = bullet.transform.parent;
-        shot.transform.localScale = bullet.transform.localScale;
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(ammo);
-        if (ammo >= 0)
+        if (ammo > 0)
         {
             alarmRe = 60;
+            ammo--;
+            GameObject shot = Instantiate(bullet, this.transform.position, bullet.transform.rotation);
+            shot.SetActive(true);
+            shot.transform.parent = bullet.transform.parent;
+            shot.transform.localScale = bullet.transform.localScale;
+            GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(ammo);
+        }
+        if (ammo == 0 && reloadCount > 0)
+        {
+            reloadCount -= 1;
+            ammo = 5;
+            GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(ammo);
         }
     }
 
