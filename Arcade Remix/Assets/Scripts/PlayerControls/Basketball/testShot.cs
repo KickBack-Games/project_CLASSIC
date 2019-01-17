@@ -81,7 +81,7 @@ public class testShot : MonoBehaviour
                 if ((initP.x == 0) && (initP.y == 0))
                 {
                     initP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    lr2.SetPosition(0, new Vector3(initP.x - 7.35f, initP.y, -1));
+                    lr2.SetPosition(0, new Vector3(initP.x-7.35f, initP.y,-1));
                 }
                 finalP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 lr2.SetPosition(1,   new Vector3(finalP.x-7.35f, finalP.y,-1));
@@ -89,6 +89,8 @@ public class testShot : MonoBehaviour
         }
         else
         {
+            lr2.SetPosition(0,new Vector3(100f, 100f,-1));
+            lr2.SetPosition(1,new Vector3(100f, 100f,-1));
             if (!touching)
                 gameObject.GetComponent<Rigidbody2D>().gravityScale = 10;
 
