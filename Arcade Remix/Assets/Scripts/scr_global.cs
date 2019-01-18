@@ -35,17 +35,10 @@ public class global : MonoBehaviour {
 
     public static bool winner = false;
     public static List<string> games = new List<string>(new string[] {
-        "scn_game_baseball",
         "scn_game_basketball",
-        "scn_game_color",
         "scn_game_dodger",
-        "scn_game_gliding",
-        "scn_game_golf",
-        "scn_game_jumper",
-        "scn_game_racing",
         "scn_game_runner",
         "scn_game_shooter",
-        "scn_game_skii",
-        "scn_game_tennis",
         "scn_game_thrower"});
+    public static List<string> beatGames = new List<string>();
 }

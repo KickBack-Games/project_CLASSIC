@@ -24,10 +24,9 @@ public class scr_ui_results : MonoBehaviour {
 
     public IEnumerator OnBegin()
     {
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(1);
         Time.timeScale = 1;
         scr_mod_fader.fadeSpeed = 1;
-        scr_mod_fader.next = next;
         if (!global.winner)
         {
             if (global.timelimit<=0)
@@ -43,6 +42,30 @@ public class scr_ui_results : MonoBehaviour {
                     scr_mod_fader.next = "scn_title";
                 }
             }
+        }
+        else
+        {
+            if (global.beatGames.Count == global.games.Count)
+            {
+                scr_mod_fader.next = "scn_title";
+            }
+            else
+            {
+                OnLevelSelect();
+            }
+        }
+    }
+    public void OnLevelSelect()
+    {
+        scr_mod_fader.next = global.games[Random.Range(0, global.games.Count)];
+        if (global.beatGames.Contains(scr_mod_fader.next))
+        {
+            OnLevelSelect();
+        }
+        else
+        {
+            global.beatGames.Add(scr_mod_fader.next);
+            scr_mod_fader.fadeSpeed = 1;
         }
     }
 }
