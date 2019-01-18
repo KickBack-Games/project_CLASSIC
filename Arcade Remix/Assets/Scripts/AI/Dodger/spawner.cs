@@ -12,7 +12,8 @@ public class spawner : MonoBehaviour
 
     private void Start()
     {
-        frequency *= global.difficulty;
+    	if (global.difficulty > 1)
+        	frequency *= global.difficulty / 3;
     }
     void Update () 
 	{
