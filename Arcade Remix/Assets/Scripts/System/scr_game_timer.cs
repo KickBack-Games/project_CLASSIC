@@ -32,7 +32,7 @@ public class scr_game_timer : MonoBehaviour
             results.SetActive(true);
             results.GetComponent<scr_ui_results>().next = "scn_title";
         }
-        goalText.text = global.goalCounter.ToString();
+        //goalText.text = global.goalCounter.ToString();
     }
 
     public IEnumerator OnBegin()

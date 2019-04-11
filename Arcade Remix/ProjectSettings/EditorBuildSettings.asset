@@ -6,21 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/scn_title.unity
-    guid: 36cebbd8d1186964a8697bbbbb0ea022
-  - enabled: 1
-    path: Assets/Scenes/scn_game_runner.unity
-    guid: 449f8c66507b0cb40bf766eeda516cdb
-  - enabled: 1
-    path: Assets/Scenes/scn_game_basketball.unity
-    guid: 69b3f3f6ecc72df47b34fcaa40133ac9
-  - enabled: 1
-    path: Assets/Scenes/scn_game_dodger.unity
-    guid: 8319f9a5a1cd9594a95ade077e35cd35
-  - enabled: 1
-    path: Assets/Scenes/scn_game_shooter.unity
-    guid: 3d351fa5afb169f4692f6e7b06cc1ddf
-  - enabled: 1
-    path: Assets/Scenes/scn_game_thrower.unity
-    guid: c144f50df58bc554c8053d09a884ae11
+    path: Assets/Scenes/cutGames/scn_game_jumper.unity
+    guid: be5ca9550a9da7246b7e2738222bfe4b
   m_configObjects: {}
