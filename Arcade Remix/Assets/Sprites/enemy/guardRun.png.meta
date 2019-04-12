@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 29aa30aeb2447aa47ba8d4043f576e4f
+guid: 510a8c0fd8ce9274d877f5603616c62a
 TextureImporter:
   fileIDToRecycleName:
-    21300000: rotiiIdle_0
-    21300002: rotiiIdle_1
-    21300004: rotiiIdle_2
-    21300006: rotiiIdle_3
-    21300008: rotiiIdle_4
-    21300010: rotiiIdle_5
-    21300012: rotiiIdle_6
-    21300014: rotiiIdle_7
-    21300016: rotiiIdle_8
-    21300018: rotiiIdle_9
-    21300020: rotiiIdle_10
-    21300022: rotiiIdle_11
+    21300000: guardRun_0
+    21300002: guardRun_1
+    21300004: guardRun_2
+    21300006: guardRun_3
+    21300008: guardRun_4
+    21300010: guardRun_5
+    21300012: guardRun_6
+    21300014: guardRun_7
+    21300016: guardRun_8
+    21300018: guardRun_9
+    21300020: guardRun_10
+    21300022: guardRun_11
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -118,13 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rotiiIdle_0
+      name: guardRun_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 198
-        width: 57
-        height: 99
+        y: 148
+        width: 74
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,19 +132,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 404638081aa5a554da4d6ea8cb06adb2
+      spriteID: 62d06c4ac03056a48ad779567514927f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rotiiIdle_1
+      name: guardRun_1
       rect:
         serializedVersion: 2
-        x: 57
-        y: 198
-        width: 57
-        height: 99
+        x: 74
+        y: 148
+        width: 74
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,19 +152,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7149e3b72580c2349a25c9c1e8966f25
+      spriteID: e7d23092580ea9141b98960cf05e2d60
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rotiiIdle_2
+      name: guardRun_2
       rect:
         serializedVersion: 2
-        x: 114
-        y: 198
-        width: 57
-        height: 99
+        x: 148
+        y: 148
+        width: 74
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,19 +172,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c750ad81e0f5c5f4c8b7bcd8dcd33a2d
+      spriteID: 5abc17f576333c24cb91141d9fa7f805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rotiiIdle_3
+      name: guardRun_3
       rect:
         serializedVersion: 2
-        x: 171
-        y: 198
-        width: 57
-        height: 99
+        x: 222
+        y: 148
+        width: 74
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,39 +192,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e7cc86f391298c48900404e59f956af
+      spriteID: 9e50c67d945d95544aee3ad4d20e436a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rotiiIdle_4
-      rect:
-        serializedVersion: 2
-        x: 228
-        y: 198
-        width: 57
-        height: 99
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 02d41af20d90c624bb63ff19fba53b32
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rotiiIdle_5
+      name: guardRun_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 99
-        width: 57
-        height: 99
+        y: 74
+        width: 74
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,19 +212,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aaa92eb790dff254faedb8c7baec4077
+      spriteID: 61fc5354ed11c574fb52879502d01c58
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rotiiIdle_6
+      name: guardRun_5
       rect:
         serializedVersion: 2
-        x: 57
-        y: 99
-        width: 57
-        height: 99
+        x: 74
+        y: 74
+        width: 74
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,19 +232,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e99face6c11b5c646a463ab5f5e08aba
+      spriteID: fda572f50009d6d4e9b63b0773793b8a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rotiiIdle_7
+      name: guardRun_6
       rect:
         serializedVersion: 2
-        x: 114
-        y: 99
-        width: 57
-        height: 99
+        x: 148
+        y: 74
+        width: 74
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,19 +252,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cd7b63f5a2570942ae924e37adf80c2
+      spriteID: b8a98a5f86ff3c94e814fb9d96260e16
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rotiiIdle_8
+      name: guardRun_7
       rect:
         serializedVersion: 2
-        x: 171
-        y: 99
-        width: 57
-        height: 99
+        x: 222
+        y: 74
+        width: 74
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,39 +272,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 826a7207daa8a2a4e9e30056c01ef0bf
+      spriteID: 59b5d226b580e064990ba17be92b7afa
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rotiiIdle_9
-      rect:
-        serializedVersion: 2
-        x: 228
-        y: 99
-        width: 57
-        height: 99
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5bacf824404edf4b9b0fc8b70aab84e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rotiiIdle_10
+      name: guardRun_8
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 57
-        height: 99
+        width: 74
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -332,19 +292,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce5fbdc7f84f8fd46830004af10e5405
+      spriteID: 1d52f01e46036784b89fb03cbe844dd0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rotiiIdle_11
+      name: guardRun_9
       rect:
         serializedVersion: 2
-        x: 57
+        x: 74
         y: 0
-        width: 57
-        height: 99
+        width: 74
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,7 +312,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24615c96b5fa7534e851f39a9bd01af1
+      spriteID: 3ea3e1b1982f90649a166e1dff3919ad
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardRun_10
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 0
+        width: 74
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b04a953e46daa8946a35eab4e14a1d5e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardRun_11
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 0
+        width: 74
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9183f2cab3b4593469715bf91ab38e3f
       vertices: []
       indices: 
       edges: []
@@ -360,7 +360,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 026f389250b02cd4eb942a7c90f000af
+    spriteID: 68615565396219c4c8a85637c5840e89
     vertices: []
     indices: 
     edges: []

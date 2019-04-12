@@ -24,25 +24,39 @@ public class jumperMovement : MonoBehaviour
     public bool lost = false;
     public bool forceAdded = false;
 
-    private Animator anim;
     private LineRenderer line;
     public bool mouseOver = false;
 
+    public Sprite sprIdle;
+    public Sprite sprReady;
+    public Sprite sprUp;
+    public Sprite sprDown;
+    private SpriteRenderer sprite;
 
+    private float startY;
 
 	void Start()
 	{
 		rend = anchor.GetComponent<SpriteRenderer>();
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
         scr_game_launcher.winstate = 1;
-        anim = GetComponent<Animator>();
         line = GetComponent<LineRenderer>();
+        sprite = GetComponent<SpriteRenderer>();
+        startY = transform.position.y;
     }
 
 
 	void Update () 
 	{
-		if (locked)
+        if (this.GetComponent<Rigidbody2D>().velocity.y > 0)
+        {
+            sprite.sprite = sprUp;
+        }
+        if (this.GetComponent<Rigidbody2D>().velocity.y < 0)
+        {
+            sprite.sprite = sprDown;
+        }
+        if (locked)
         {
             line.enabled = true;
             line.SetPosition(0, transform.position);
@@ -71,7 +85,7 @@ public class jumperMovement : MonoBehaviour
                         // We can get initial point
                         if ((initP.x == 0) && (initP.y == 0))
                         {
-                            anim.Play("ready");
+                            sprite.sprite = sprReady;
                             initP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                             rend.transform.position = initP;
                             rend.enabled = true;
@@ -85,7 +99,6 @@ public class jumperMovement : MonoBehaviour
 				gameObject.GetComponent<Rigidbody2D>().gravityScale = 8;
 				if (locked)
 				{
-                    anim.Play("jump");
 					finalP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 					// Find the direction
@@ -155,8 +168,8 @@ public class jumperMovement : MonoBehaviour
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		landed = true;
-        anim.Play("idle");
-	}
+        sprite.sprite = sprIdle;
+    }
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
@@ -173,7 +186,7 @@ public class jumperMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "Main Camera")
+        if (other.gameObject.name == "Main Camera" && transform.position.y < startY)
         {
             scr_game_launcher.winstate = -1;
             SceneManager.LoadScene("scn_game_jumper", LoadSceneMode.Single);
