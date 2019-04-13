@@ -12,6 +12,7 @@ TagManager:
   - bad
   - point
   - stop
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - 
   - 
   - Wall
-  - 
+  - FireLayer
   - 
   - 
   - 

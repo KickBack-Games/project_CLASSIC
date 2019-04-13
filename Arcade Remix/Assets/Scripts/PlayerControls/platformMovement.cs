@@ -8,17 +8,23 @@ public class platformMovement : MonoBehaviour {
 	private float travelDistance;
 	public bool goingHorizontal = true;
 
-	public Vector2 pointA;
-	public Vector2 pointB;
+	public Vector3 pointA;
+	public Vector3 pointB;
 
 	public GameObject playah;
 
+    public GameObject hazardPool;
+
+    public bool faller = false;
+
+    private bool spawned = false;
+
 	void Start()
 	{
-		travelDistance = Random.Range(1f, 2f);
+		travelDistance = Random.Range(.5f, 1f);
 		hasLanded = false;
 		pointA = transform.position;
-		pointB = new Vector2 (pointA.x + travelDistance, pointA.y);
+		pointB = new Vector3 (pointA.x + travelDistance, pointA.y,transform.position.z);
 	}
 
 	void Update()
@@ -27,37 +33,50 @@ public class platformMovement : MonoBehaviour {
 		{
 			if (goingHorizontal)
 			{
-				transform.position = Vector2.Lerp(pointA, pointB, Mathf.PingPong(Time.time, 1));
+				transform.position = Vector3.Lerp(pointA, pointB, Mathf.PingPong(Time.time, 1));
 			}
 		}
+        if (GameObject.Find("player").transform.position.x - transform.position.x >= 10 && !spawned)
+        {
+            teleportPlatform();
+            hasLanded = false;
+        }
+        if (GameObject.Find("player").transform.position.x - transform.position.x >= 30)
+        {
+            Destroy(gameObject);
+        }
+    }
 
-	}
-
-	void OnCollisionEnter2D (Collision2D other)
+	void OnCollisionEnter(Collision other)
 	{
 		hasLanded = true;
-	}
-
-	void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.gameObject.tag == "Respawn")
-		{
-			teleportPlatform();
-			hasLanded = false;
-		}
-	}
+        if (faller)
+        {
+            StartCoroutine(OnTimer());
+        }
+    }
 
 	void teleportPlatform()
 	{
-		int hori = Random.Range(0,2);
+        int children = hazardPool.transform.childCount;
+        List<GameObject> list = new List<GameObject>();
+        for (int i = 0; i < children; ++i)
+        {
+            list.Add(hazardPool.transform.GetChild(i).gameObject);
+        }
 
-		transform.position = new Vector2(playah.transform.position.x + 25f, Random.Range(-5.5f, 5.5f));
-		travelDistance = Random.Range(1f, 3f);
-		pointA = transform.position;
-		if (hori == 0)
-			pointB = new Vector2 (pointA.x + travelDistance, pointA.y);
-		else
-			pointB = new Vector2(pointA.x, pointA.y + travelDistance);
-	}
+        int hori = Random.Range(0,2);
+
+        GameObject tmp = Instantiate(list[Random.Range(0, list.Count)].gameObject);
+        tmp.SetActive(true);
+		tmp.transform.position = new Vector3(playah.transform.position.x + 25f, Random.Range(-5.5f, 5.5f),transform.position.z);
+        spawned = true;
+    }
+
+    public IEnumerator OnTimer() {
+        yield return new WaitForSeconds(2);
+        this.GetComponent<Rigidbody>().isKinematic = false;
+        this.GetComponent<Rigidbody>().useGravity = true;
+    }
 }
 

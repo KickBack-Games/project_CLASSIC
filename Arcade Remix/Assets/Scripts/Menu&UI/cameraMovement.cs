@@ -13,6 +13,6 @@ public class cameraMovement : MonoBehaviour {
 	void Update ()
 	 {
 		temp = followPlayer.gameObject.GetComponent<Transform>().position;
-		this.gameObject.GetComponent<Transform>().position = new Vector3(temp.x + offset, 0, -10);
+		this.gameObject.GetComponent<Transform>().position = new Vector3(temp.x + offset, transform.position.y, transform.position.z);
 	}
 }
