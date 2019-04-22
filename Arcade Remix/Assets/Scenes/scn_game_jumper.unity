@@ -8020,7 +8020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1127283686
 Transform:
   m_ObjectHideFlags: 0
@@ -8103,7 +8103,6 @@ MonoBehaviour:
   close: 15
   mid: 25
   far: 35
-  NEPTUNEPOWER: 10
 --- !u!1001 &1154673364
 Prefab:
   m_ObjectHideFlags: 0
