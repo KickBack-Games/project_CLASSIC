@@ -28,10 +28,10 @@ public class waveMovement : MonoBehaviour
 			if(speed >= 3)
 				speed -= 1;
 		}
-		else if ((Mathf.Abs(player.transform.position.x - gameObject.transform.position.x)) < far)
+		else// if ((Mathf.Abs(player.transform.position.x - gameObject.transform.position.x)) < far)
 		{
 			speed = 2;
 		}
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 }
