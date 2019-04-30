@@ -32,7 +32,7 @@ public class jumperMovement : MonoBehaviour
     public Transform center;
 
     private Animator anim;
-
+    public bool ScrollTesting = true;
 	void Start()
 	{
 		rend = anchor.GetComponent<SpriteRenderer>();
@@ -169,18 +169,21 @@ public class jumperMovement : MonoBehaviour
 	{
 		if (other.gameObject.tag == "bad")
 		{
-            anim.Play("Die");
+            if (!ScrollTesting)
+                anim.Play("Die");
 		}
         if (other.gameObject.name == "Points" && gameObject.GetComponent<Rigidbody>().velocity.y <= 0)
         {
 
         }
+        
 	}
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == "Main Camera" && transform.position.y < startY)
         {
+            if (!ScrollTesting)
             SceneManager.LoadScene("scn_game_jumper", LoadSceneMode.Single);
         }
     }
