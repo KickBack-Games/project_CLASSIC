@@ -12,8 +12,6 @@ TagManager:
   - bad
   - point
   - stop
-  - Fire
-  - bouncy
   layers:
   - Default
   - TransparentFX
@@ -24,7 +22,7 @@ TagManager:
   - 
   - 
   - Wall
-  - FireLayer
+  - 
   - 
   - 
   - 

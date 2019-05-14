@@ -2,193 +2,185 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class jumperMovement : MonoBehaviour 
 {
 	public bool locked = false;
-	public float maxX;
-    public float maxY;
+	public float maxVelocity;
 
-	private Rigidbody rb;
+	public Rigidbody2D rb;
 
-	public Vector3 initP;
-	public Vector3 finalP;
+	public Vector2 initP;
+	public Vector2 finalP;
 
 	public float power;
 
 	public GameObject anchor;
 	public SpriteRenderer rend;
 
+    private float rotSpeed;
+
     public bool landed = false;
     public bool lost = false;
     public bool forceAdded = false;
 
+    private Animator anim;
     private LineRenderer line;
     public bool mouseOver = false;
 
-    private float startY;
 
-    public Transform center;
 
-    private Animator anim;
-    public bool ScrollTesting = true;
 	void Start()
 	{
 		rend = anchor.GetComponent<SpriteRenderer>();
-        line = GetComponent<LineRenderer>();
-        startY = transform.position.y;
-        rb = GetComponent<Rigidbody>();
+        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
+        scr_game_launcher.winstate = 1;
         anim = GetComponent<Animator>();
-        GameObject.Find("imgFill").GetComponent<Image>().fillAmount = 0;
-        global.score = -1;
+        line = GetComponent<LineRenderer>();
     }
 
-    public Vector3 GetWorldPositionOnPlane(Vector3 screenPosition, float z)
-    {
-        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
-        Plane xy = new Plane(Vector3.forward, new Vector3(0, 0, z));
-        float distance;
-        xy.Raycast(ray, out distance);
-        return ray.GetPoint(distance);
-    }
 
-    void Update () 
+	void Update () 
 	{
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+		if (locked)
         {
-            if (rb.velocity.y > 1 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Up") && !landed)
-            {
-                anim.Play("Up");
-            }
-            if (rb.velocity.y < 1 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Down") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Land") && !landed)
-            {
-                anim.Play("Down");
-            }
-
-            if (locked)
-            {
-                line.enabled = true;
-                line.SetPosition(0, center.position);
-                line.SetPosition(1, GetWorldPositionOnPlane(Input.mousePosition, 0));
-
-                float avgX = (initP.x - GetWorldPositionOnPlane(Input.mousePosition, 0).x) / maxX;
-                float avgY = (initP.y - GetWorldPositionOnPlane(Input.mousePosition, 0).y) / maxY;
-
-                avgX = Mathf.Clamp(avgX, 0, 1);
-                avgY = Mathf.Clamp(avgY, 0, 1);
-
-                float avg1 = (avgX + avgY) / 2;
-                GameObject.Find("imgFill").GetComponent<Image>().fillAmount = avg1;
-            }
-            else
-            {
-                line.enabled = false;
-            }
-
-            if (Input.GetMouseButton(0) && landed)
-            {
+            line.enabled = true;
+            line.SetPosition(0, transform.position);
+            line.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
+        else
+        {
+            line.enabled = false;
+        }
+		
+		if (!lost)
+		{
+	        if (Input.GetMouseButton(0) && landed)
+			{
                 if (mouseOver)
                 {
                     // This 'lock' allows the logic for dragging... since only when you let go, does it 
                     // turn false
                     locked = true;
-                    rb.velocity = new Vector3(0, 0, 0);
+                    // Stop ball from moving as player calculates shot
+                    gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+                    rb.velocity = new Vector2(0, 0);
 
                     if (locked)
                     {
                         // We can get initial point
-                        if ((initP.x == 0) && (initP.y == 0) && (initP.z == 0))
+                        if ((initP.x == 0) && (initP.y == 0))
                         {
-                            anim.Play("Crouch");
-                            initP = GetWorldPositionOnPlane(Input.mousePosition, 0);
+                            anim.Play("ready");
+                            initP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                             rend.transform.position = initP;
                             rend.enabled = true;
                         }
                     }
                 }
-            }
-            else
+			}
+			else
+			{
+				rend.enabled = false;
+				gameObject.GetComponent<Rigidbody2D>().gravityScale = 8;
+				if (locked)
+				{
+                    anim.Play("jump");
+					finalP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+					// Find the direction
+					int xDir;
+					int yDir;
+					if (initP.x > finalP.x)
+						xDir = 1;
+					else
+						xDir = -1;
+
+					if(initP.y > finalP.y)
+						yDir = 1;
+					else
+						yDir = -1;
+
+					// Find the real power (distance between x, and y vectors
+					// subtract the x, and y
+					float xDist = initP.x - finalP.x;
+					float yDist = initP.y - finalP.y;
+
+					xDist = Mathf.Abs(xDist);
+					yDist = Mathf.Abs(yDist);
+					// Can also set a max distance to avoid overpowering
+
+					///  direction (probably 1, or -1... calculated by if statements of initP and finalP)* magnitude * power(which is a public float) 
+					Vector2 supahPOWAH = new Vector2(xDir * power * xDist, yDir * power * yDist);
+
+					//Do physics
+					gameObject.GetComponent<Rigidbody2D>().AddForce (supahPOWAH, ForceMode2D.Impulse);
+
+					// Reset it
+					initP = new Vector2 (0, 0);
+				}
+				locked = false;
+			}
+		}
+		else
+		{
+			transform.Rotate( new Vector3(0, 0, 500) * Time.deltaTime);
+			// falling effect
+			if (transform.localScale.x >= 0 && transform.localScale.y >= 0)
+			{
+				Vector2 force_ = new Vector2(5f, 30f);
+				transform.localScale -= new Vector3(0.01f, 0.01f, 0.0f);
+				BoxCollider2D bc = gameObject.GetComponent<BoxCollider2D>();
+				if (!forceAdded)
+				{
+					bc.enabled = false;
+					this.gameObject.GetComponent<Rigidbody2D>().AddForce (force_, ForceMode2D.Impulse);
+					forceAdded = true;	
+				}
+			}
+			else
+				// Restart when completely shrunk
+				if (global.timelimit > 0)
             {
-                rend.enabled = false;
-                if (locked)
-                {
-                    finalP = GetWorldPositionOnPlane(Input.mousePosition, 0);
-
-                    // Find the direction
-                    int xDir;
-                    int yDir;
-                    if (initP.x > finalP.x)
-                        xDir = 1;
-                    else
-                        xDir = -1;
-
-                    if (initP.y > finalP.y)
-                        yDir = 1;
-                    else
-                        yDir = -1;
-
-                    // Find the real power (distance between x, and y vectors
-                    // subtract the x, and y
-                    float xDist = initP.x - finalP.x;
-                    float yDist = initP.y - finalP.y;
-
-                    xDist = Mathf.Clamp(xDist, maxX * -1, maxX);
-                    yDist = Mathf.Clamp(yDist, maxY * -1, maxY);
-
-                    xDist = Mathf.Abs(xDist);
-                    yDist = Mathf.Abs(yDist);
-                    // Can also set a max distance to avoid overpowering
-
-                    ///  direction (probably 1, or -1... calculated by if statements of initP and finalP)* magnitude * power(which is a public float) 
-                    Vector3 supahPOWAH = new Vector3(xDir * power * xDist, yDir * power * yDist, 0);
-
-                    //Do physics
-                    gameObject.GetComponent<Rigidbody>().AddForce(supahPOWAH, ForceMode.Impulse);
-
-                    // Reset it
-                    initP = new Vector3(0, 0, 0);
-
-                    GameObject.Find("imgFill").GetComponent<Image>().fillAmount = 0;
-                }
-                locked = false;
+                SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
             }
-        }
+		}
 	}
 
-	void OnCollisionEnter(Collision other)
+	void FixedUpdate()
 	{
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
-        {
-            landed = true;
-            anim.Play("Land");
-        }
-    }
+		rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+	}
 
-	void OnTriggerEnter(Collider other)
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		landed = true;
+        anim.Play("idle");
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "bad")
 		{
-            if (!ScrollTesting)
-                anim.Play("Die");
+			lost = true;
+            scr_game_launcher.winstate = -1;
 		}
-        if (other.gameObject.name == "Points" && gameObject.GetComponent<Rigidbody>().velocity.y <= 0)
+        if (other.gameObject.name == "Points" && gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
         {
-
+            global.scoreJumper += 500;
         }
-        
 	}
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "Main Camera" && transform.position.y < startY)
+        if (other.gameObject.name == "Main Camera")
         {
-            if (!ScrollTesting)
+            scr_game_launcher.winstate = -1;
             SceneManager.LoadScene("scn_game_jumper", LoadSceneMode.Single);
         }
     }
 
-    void OnCollisionExit(Collision other)
+    void OnCollisionExit2D(Collision2D other)
 	{
 		landed = false;
 	}
@@ -201,10 +193,6 @@ public class jumperMovement : MonoBehaviour
     void OnMouseExit()
     {
         mouseOver = false;
-    }
-
-    void OnDie() {
-        SceneManager.LoadScene("scn_game_jumper", LoadSceneMode.Single);
     }
 }
 

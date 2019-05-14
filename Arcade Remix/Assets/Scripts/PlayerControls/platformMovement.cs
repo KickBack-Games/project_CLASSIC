@@ -4,43 +4,52 @@ using UnityEngine;
 
 public class platformMovement : MonoBehaviour {
 
-	public bool hasLanded;
-    public bool hasBounced;
+	private bool hasLanded;
 
     private float travelDistance;
 	public bool goingHorizontal = true;
     public bool goingVertical = false;
 
-
-    public Vector3 pointA;
-	public Vector3 pointB;
+    private Vector2 pointA;
+	private Vector2 pointB;
 
 	public GameObject playah;
 
     public GameObject hazardPool;
+    public GameObject spikePool;
+    public GameObject firePool;
 
     public bool faller = false;
+    public bool spikes = false;
+    public bool fire = false;
     public bool bouncer = false;
 
     private bool spawned = false;
 
-	void Start()
+    void Start()
 	{
-		travelDistance = Random.Range(.5f, 1f);
+		travelDistance = Random.Range(1f, 2f);
 		hasLanded = false;
-        hasBounced = false;
         pointA = transform.position;
-		pointB = new Vector3 (pointA.x + ((goingHorizontal?1f:0f)*travelDistance), pointA.y+ ((goingVertical? 1f : 0f) * travelDistance), transform.position.z);
-        
-    }
+		pointB = new Vector2 (pointA.x + travelDistance, pointA.y);
+        if (spikes)
+        {
+            StartCoroutine(TimeSpike());
+        }
+        if (fire)
+        {
+            firePool.transform.position = new Vector2(Random.Range(GetComponent<Collider2D>().bounds.min.x, GetComponent<Collider2D>().bounds.max.x), transform.position.y);
+        }
+
+	}
 
 	void Update()
 	{
 		if(!hasLanded)
 		{
-			if (goingHorizontal||goingVertical)
+			if (goingHorizontal || goingVertical)
 			{
-				transform.position = Vector3.Lerp(pointA, pointB, Mathf.PingPong(Time.time, 1));
+				transform.position = Vector2.Lerp(pointA, pointB, Mathf.PingPong(Time.time, 1));
 			}
 		}
         if (GameObject.Find("player").transform.position.x - transform.position.x >= 10 && !spawned)
@@ -54,34 +63,22 @@ public class platformMovement : MonoBehaviour {
         }
     }
 
-	void OnCollisionEnter(Collision other)
+	void OnCollisionEnter2D (Collision2D other)
 	{
-		hasLanded = true;
+        hasLanded = true;
+        if (bouncer)
+        {
+            GetComponent<Rigidbody2D>().sharedMaterial = null;
+        }
         if (faller)
         {
             StartCoroutine(OnTimer());
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
+	void OnTriggerEnter2D(Collider2D other)
+	{
         if (other.gameObject.GetComponent<jumperMovement>() == null) return;
-        //Debug.Log("Triggered!");
-        if (bouncer)
-        {
-            //Debug.Log("Bounce");
-            //if (!hasBounced)
-            //{
-            //Debug.Log("FORCE");
-            if (other.gameObject.GetComponent<Rigidbody>().velocity.y <= 0f) {
-                hasBounced = true;
-
-                other.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(other.gameObject.GetComponent<Rigidbody>().velocity.x, Mathf.Max(20f,Mathf.Abs(other.gameObject.GetComponent<Rigidbody>().velocity.y)), other.gameObject.GetComponent<Rigidbody>().velocity.z);
-            }
-            //}
-
-
-        }
     }
 
 	void teleportPlatform()
@@ -97,14 +94,21 @@ public class platformMovement : MonoBehaviour {
 
         GameObject tmp = Instantiate(list[Random.Range(0, list.Count)].gameObject);
         tmp.SetActive(true);
-		tmp.transform.position = new Vector3(playah.transform.position.x + 25f, Random.Range(-5.5f, 5.5f),transform.position.z);
+        tmp.transform.position = new Vector3(playah.transform.position.x + 25f, Random.Range(-5.5f, 5.5f), transform.position.z);
         spawned = true;
     }
 
-    public IEnumerator OnTimer() {
+    public IEnumerator OnTimer()
+    {
+        yield return new WaitForSeconds(1);
+        this.GetComponent<Rigidbody2D>().isKinematic = false;
+        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+    }
+    public IEnumerator TimeSpike()
+    {
         yield return new WaitForSeconds(2);
-        this.GetComponent<Rigidbody>().isKinematic = false;
-        this.GetComponent<Rigidbody>().useGravity = true;
+        spikePool.SetActive(!spikePool.activeSelf);
+        StartCoroutine(TimeSpike());
     }
 }
 
