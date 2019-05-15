@@ -28,7 +28,7 @@ public class platformMovement : MonoBehaviour {
 
     void Start()
 	{
-		travelDistance = Random.Range(1f, 2f);
+		travelDistance = Random.Range(1f, 1.5f);
 		hasLanded = false;
         pointA = transform.position;
 		pointB = new Vector2 (pointA.x + travelDistance, pointA.y);
@@ -38,7 +38,7 @@ public class platformMovement : MonoBehaviour {
         }
         if (fire)
         {
-            firePool.transform.position = new Vector2(Random.Range(GetComponent<Collider2D>().bounds.min.x, GetComponent<Collider2D>().bounds.max.x), transform.position.y);
+            firePool.transform.position = new Vector2(Random.Range(GetComponent<Collider2D>().bounds.min.x, GetComponent<Collider2D>().bounds.max.x), firePool.transform.position.y);
         }
 
 	}
@@ -107,7 +107,14 @@ public class platformMovement : MonoBehaviour {
     public IEnumerator TimeSpike()
     {
         yield return new WaitForSeconds(2);
-        spikePool.SetActive(!spikePool.activeSelf);
+        if(spikePool.activeSelf)
+        {
+            spikePool.SetActive(false);
+        }
+        else
+        {
+            spikePool.SetActive(true);
+        }
         StartCoroutine(TimeSpike());
     }
 }

@@ -138,12 +138,6 @@ public class jumperMovement : MonoBehaviour
 					forceAdded = true;	
 				}
 			}
-			else
-				// Restart when completely shrunk
-				if (global.timelimit > 0)
-            {
-                SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
-            }
 		}
 	}
 
@@ -163,7 +157,6 @@ public class jumperMovement : MonoBehaviour
 		if (other.gameObject.tag == "bad")
 		{
 			lost = true;
-            scr_game_launcher.winstate = -1;
 		}
         if (other.gameObject.name == "Points" && gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
         {
@@ -173,9 +166,8 @@ public class jumperMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "Main Camera")
+        if (other.gameObject.name == "Main Camera" && transform.position.y < other.transform.position.y)
         {
-            scr_game_launcher.winstate = -1;
             SceneManager.LoadScene("scn_game_jumper", LoadSceneMode.Single);
         }
     }

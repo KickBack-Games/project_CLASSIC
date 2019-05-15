@@ -1039,6 +1039,21 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 212770600334407350, guid: 74ce9c7cbf114c4408e3031859193293,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.40997687
+      objectReference: {fileID: 0}
+    - target: {fileID: 212770600334407350, guid: 74ce9c7cbf114c4408e3031859193293,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.43744764
+      objectReference: {fileID: 0}
+    - target: {fileID: 212770600334407350, guid: 74ce9c7cbf114c4408e3031859193293,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.7830189
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74ce9c7cbf114c4408e3031859193293, type: 2}
   m_IsPrefabAsset: 0
@@ -3127,7 +3142,7 @@ Prefab:
         type: 2}
       propertyPath: spikePool
       value: 
-      objectReference: {fileID: 904398931}
+      objectReference: {fileID: 1430015586}
     - target: {fileID: 114184682237367854, guid: 74ce9c7cbf114c4408e3031859193293,
         type: 2}
       propertyPath: spikes
