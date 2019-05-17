@@ -13,8 +13,10 @@ public class jumperMovement : MonoBehaviour
 
 	public Vector2 initP;
 	public Vector2 finalP;
+    public float maxX;
+    public float maxY;
 
-	public float power;
+    public float power;
 
 	public GameObject anchor;
 	public SpriteRenderer rend;
@@ -38,6 +40,7 @@ public class jumperMovement : MonoBehaviour
         line = GetComponent<LineRenderer>();
         points = 0;
         GameObject.Find("txtScore").GetComponent<Text>().text = points.ToString();
+        GameObject.Find("imgFill").GetComponent<Image>().fillAmount = 0;
     }
 
 
@@ -46,38 +49,49 @@ public class jumperMovement : MonoBehaviour
 		if (locked)
         {
             line.enabled = true;
-            line.SetPosition(0, transform.position);
-            line.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            line.SetPosition(0, new Vector2(initP.x,initP.y));
+            line.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));            
+
+            float avgX = (initP.x - GetWorldPositionOnPlane(Input.mousePosition, 0).x) / maxX;
+            float avgY = (initP.y - GetWorldPositionOnPlane(Input.mousePosition, 0).y) / maxY;
+
+            avgX = Mathf.Clamp(avgX, 0, 1);
+            avgY = Mathf.Clamp(avgY, 0, 1);
+
+            float avg1 = (avgX + avgY) / 2;
+            GameObject.Find("imgFill").GetComponent<Image>().fillAmount = avg1;
         }
         else
         {
             line.enabled = false;
+            GameObject.Find("imgFill").GetComponent<Image>().fillAmount = 0;
         }
 		
 		if (!lost)
 		{
 	        if (Input.GetMouseButton(0) && landed)
 			{
+                // This 'lock' allows the logic for dragging... since only when you let go, does it 
+                // turn false
+                locked = true;
+                // Stop ball from moving as player calculates shot
+                gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+                rb.velocity = new Vector2(0, 0);
+
+                if (locked)
+                {
+                    // We can get initial point
+                    if ((initP.x == 0) && (initP.y == 0))
+                    {
+                        anim.Play("ready");
+                        initP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        rend.transform.position = initP;
+                        rend.enabled = true;
+                    }
+                }
                 if (mouseOver)
                 {
-                    // This 'lock' allows the logic for dragging... since only when you let go, does it 
-                    // turn false
-                    locked = true;
-                    // Stop ball from moving as player calculates shot
-                    gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-                    rb.velocity = new Vector2(0, 0);
 
-                    if (locked)
-                    {
-                        // We can get initial point
-                        if ((initP.x == 0) && (initP.y == 0))
-                        {
-                            anim.Play("ready");
-                            initP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                            rend.transform.position = initP;
-                            rend.enabled = true;
-                        }
-                    }
                 }
 			}
 			else
@@ -182,6 +196,15 @@ public class jumperMovement : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+    }
+
+    public Vector3 GetWorldPositionOnPlane(Vector3 screenPosition, float z)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+        Plane xy = new Plane(Vector3.forward, new Vector3(0, 0, z));
+        float distance;
+        xy.Raycast(ray, out distance);
+        return ray.GetPoint(distance);
     }
 
     void OnCollisionExit2D(Collision2D other)
