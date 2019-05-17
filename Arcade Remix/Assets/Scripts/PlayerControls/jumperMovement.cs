@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class jumperMovement : MonoBehaviour 
 {
@@ -28,15 +29,15 @@ public class jumperMovement : MonoBehaviour
     private LineRenderer line;
     public bool mouseOver = false;
 
-
+    public static int points = 0;
 
 	void Start()
 	{
 		rend = anchor.GetComponent<SpriteRenderer>();
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
-        scr_game_launcher.winstate = 1;
         anim = GetComponent<Animator>();
         line = GetComponent<LineRenderer>();
+        points = 0;
+        GameObject.Find("txtScore").GetComponent<Text>().text = points.ToString();
     }
 
 
@@ -160,7 +161,14 @@ public class jumperMovement : MonoBehaviour
 		}
         if (other.gameObject.name == "Points" && gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
         {
-            global.scoreJumper += 500;
+            points++;
+            GameObject.Find("txtScore").GetComponent<Text>().text = points.ToString();
+        }
+        if (other.gameObject.name == "bg")
+        {
+            GameObject tmp = Instantiate(other.gameObject);
+            tmp.transform.position = new Vector2(other.gameObject.GetComponent<Collider2D>().bounds.max.x, other.gameObject.transform.position.y);
+            tmp.gameObject.name = "bg";
         }
 	}
 
@@ -169,6 +177,10 @@ public class jumperMovement : MonoBehaviour
         if (other.gameObject.name == "Main Camera" && transform.position.y < other.transform.position.y)
         {
             SceneManager.LoadScene("scn_game_jumper", LoadSceneMode.Single);
+        }
+        if (other.gameObject.name == "bg")
+        {
+            Destroy(other.gameObject);
         }
     }
 

@@ -151,7 +151,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DarkShotStudios.Remix
+    Android: com.DarkShotStudios.Jump
     Standalone: com.DarkShotStudios.Remix
   buildNumber: {}
   AndroidBundleVersionCode: 1
@@ -243,8 +243,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 5
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/zarof/Documents/project_CLASSIC/keystore.keystore
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/zarof/Documents/Projects/project_CLASSIC/Arcade Remix/keystore.keystore
+  AndroidKeyaliasName: darkshot studios
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
