@@ -9,10 +9,33 @@ public class cameraMovement : MonoBehaviour {
 
 	private Vector2 temp = new Vector2();
 
-	// Update is called once per frame
-	void Update ()
+    public bool follower = false;
+
+    private Vector2 start;
+
+    private void Start()
+    {
+        start = transform.position;
+    }
+
+    void Update ()
 	 {
-		temp = followPlayer.gameObject.GetComponent<Transform>().position;
-		this.gameObject.GetComponent<Transform>().position = new Vector3(temp.x + offset, 0, -10);
+        if (follower)
+        {
+            temp = followPlayer.gameObject.GetComponent<Transform>().position;
+            this.gameObject.GetComponent<Transform>().position = new Vector3(temp.x + offset, 0, -10);
+        }
+        else
+        {
+            transform.Translate(Vector3.right * 2 * Time.deltaTime);
+        }
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "bg")
+        {
+            transform.position = start;
+        }
+    }
 }
