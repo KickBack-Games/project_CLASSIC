@@ -153,6 +153,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.DarkShotStudios.Jump
     Standalone: com.DarkShotStudios.Remix
+    iOS: com.DarkShotStudios.Jump
   buildNumber: {}
   AndroidBundleVersionCode: 2
   AndroidMinSdkVersion: 21
@@ -228,7 +229,7 @@ PlayerSettings:
   metalEditorSupport: 1
   metalAPIValidation: 1
   iOSRenderExtraFrameOnPause: 0
-  appleDeveloperTeamID: 
+  appleDeveloperTeamID: Q48M6B65W6
   iOSManualSigningProvisioningProfileID: 
   tvOSManualSigningProvisioningProfileID: 
   iOSManualSigningProvisioningProfileType: 0
