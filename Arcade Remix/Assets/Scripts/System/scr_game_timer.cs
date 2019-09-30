@@ -15,7 +15,7 @@ public class scr_game_timer : MonoBehaviour
     {
         if (global.timelimit > 0)
         {
-            counter.text = global.timeSec.ToString();
+            counter.text = "0:" + global.timeSec.ToString("D2");
             StartCoroutine(OnBegin());
         }
         else
@@ -28,7 +28,6 @@ public class scr_game_timer : MonoBehaviour
     {
         if (global.timeSec <= 0 && global.timelimit > 0)
         {
-            global.winner = false;
             results.SetActive(true);
             results.GetComponent<scr_ui_results>().next = "scn_title";
         }
@@ -41,7 +40,7 @@ public class scr_game_timer : MonoBehaviour
         if (results.activeSelf==false)
         {
             global.timeSec--;
-            counter.text = global.timeSec.ToString();
+            counter.text = "0:" + global.timeSec.ToString("D2");
         }
         StartCoroutine(OnBegin());
     }

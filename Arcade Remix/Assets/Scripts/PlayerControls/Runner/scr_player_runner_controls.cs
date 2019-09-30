@@ -22,10 +22,10 @@ public class scr_player_runner_controls : MonoBehaviour {
         global.goalCounter = 0;
         goal = 0;        
         GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
-        hits = 3;
+        hits = 1;
         anim = this.GetComponent<Animator>();
         scr_game_launcher.winstate = 1;
-        goalText.text = "Clear " +goals[global.difficulty-1] +" hurdles!";
+        //goalText.text = "Clear " +goals[global.difficulty-1] +" hurdles!";
     }
 	
 	// Update is called once per frame

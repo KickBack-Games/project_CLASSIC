@@ -21,8 +21,8 @@ public class global : MonoBehaviour {
     public static int level = 1;
     public static int layer = 0;
 
-    public static int timelimit = 0;
-    public static int timeSec = 0;
+    public static int timelimit = 5;
+    public static int timeSec = 5;
     public static int lives;
 
     public static int wincount = 0;
@@ -39,6 +39,14 @@ public class global : MonoBehaviour {
         "scn_game_dodger",
         "scn_game_runner",
         "scn_game_shooter",
-        "scn_game_thrower"});
+        "scn_game_thrower",
+        "scn_game_color",
+        "scn_game_baseball",
+        "scn_game_gliding",
+        "scn_game_golf",
+        "scn_game_jumper",
+        "scn_game_racing",
+        "scn_game_skii",
+        "scn_game_tennis",});
     public static List<string> beatGames = new List<string>();
 }

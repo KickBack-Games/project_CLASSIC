@@ -22,6 +22,7 @@ public class confettiMaker : MonoBehaviour {
     private void Start()
     {
         scr_game_launcher.winstate = -1;
+        transitioning = true;
     }
     void Update () 
 	{
