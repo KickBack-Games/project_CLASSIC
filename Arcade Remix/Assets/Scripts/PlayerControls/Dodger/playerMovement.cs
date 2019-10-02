@@ -30,7 +30,7 @@ public class playerMovement : MonoBehaviour
         StartCoroutine(OnBegin());
 
         scr_game_launcher.winstate = -1;
-        goalText.text = "Last " + goals[global.difficulty - 1] + " Sec!";
+        //goalText.text = "Last " + goals[global.difficulty - 1] + " Sec!";
     }
 
     void Start() 
@@ -40,8 +40,9 @@ public class playerMovement : MonoBehaviour
 		pos = transform.position;
 		tr = transform;
 		lost = false;
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
+        //GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
         scr_game_launcher.winstate = 1;
+        global.winner = true;
         global.goalCounter = goals[global.difficulty - 1];
         results.GetComponent<scr_ui_results>().next = "scn_game_shooter";
     }
@@ -137,7 +138,10 @@ public class playerMovement : MonoBehaviour
     {
     	if (!lost)
     	{
-	    	ballMovement ballScript = other.GetComponent<ballMovement>();
+            global.winner = false;
+            results.SetActive(true);
+            results.GetComponent<scr_ui_results>().next = "scn_title";
+            ballMovement ballScript = other.GetComponent<ballMovement>();
 	    	int dir = ballScript.dir;
 
 	        if (other.gameObject.tag == "ball")

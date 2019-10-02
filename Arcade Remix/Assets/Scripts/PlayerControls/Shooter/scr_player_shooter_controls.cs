@@ -37,7 +37,7 @@ public class scr_player_shooter_controls : MonoBehaviour {
         anim = this.GetComponent<Animator>();
         anim.speed = 0;
         scr_game_launcher.winstate = -1;
-        goalText.text = "Hit " + goals[global.difficulty - 1] + " Targets!";
+        //goalText.text = "Hit " + goals[global.difficulty - 1] + " Targets!";
         results.GetComponent<scr_ui_results>().next = "scn_game_thrower";
         lostTimer = 1f;
         reloadCount = 1;

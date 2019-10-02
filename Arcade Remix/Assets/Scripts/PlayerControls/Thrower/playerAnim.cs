@@ -14,7 +14,7 @@ public class playerAnim : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
+        //GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
         anim = GetComponent<Animator>();
 		scri = pow.GetComponent<power>();
 	}
@@ -22,7 +22,7 @@ public class playerAnim : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (scri.second == 0)
+		if (scri.counter >= scri.goals[global.difficulty - 1])
 		{
 			if (count > 50)
 				anim.SetBool("THROW", false);
