@@ -22,7 +22,7 @@ public class scr_player_shooter_bullet : MonoBehaviour {
             Destroy(other.gameObject);
             Destroy(gameObject);
             global.scoreShooter += 500;
-            global.goalCounter++;
+            global.goalCounter--;
             eventobject.GetComponent<scr_enemy_shooter_spawn>().alarm = 60;
         }
         if (other.gameObject.tag == "bad")

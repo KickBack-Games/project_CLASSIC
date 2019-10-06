@@ -17,8 +17,6 @@ public class skiierMovement : MonoBehaviour {
 	public int boundary;
 
 	private Vector3 mPos;
-
-    public static int goals;
 	
 	// Use this for initialization
 	void Start () 
@@ -27,9 +25,7 @@ public class skiierMovement : MonoBehaviour {
 		max = 4;
 		yVel = 0;
 		mPos.z = 10;
-        goals = 0;
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
-        scr_game_launcher.winstate = -1;
+        global.winner = true;
     }
 	
 	// Update is called once per frame
@@ -77,11 +73,6 @@ public class skiierMovement : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
         global.scoreSkii += 500;
-        goals++;
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(goals);
-        if (goals >= 3)
-        {
-            scr_game_launcher.winstate = 1;
-        }
+        other.GetComponent<poleMovement>().OnReset();
     }
 }

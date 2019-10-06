@@ -19,13 +19,8 @@ public class testShot : MonoBehaviour
 
     private float rotSpeed;
 
-    public static int points;
-
     public bool touching;
 
-    public int[] goals;
-    public Text goalText;
-    public Text timeText;
     public GameObject results;
     public int secs;
 
@@ -35,33 +30,16 @@ public class testShot : MonoBehaviour
     // player jump
     public GameObject player;
 
-    private int numberTries;
-
     void Start()
     {
         lr2 = lr.GetComponent<LineRenderer>();
-        points = 0;
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
-        scr_game_launcher.winstate = -1;
         global.winner = false;
-        global.goalCounter = 0;
-        //goalText.text = "Score " + (global.difficulty + 1) + " out of 5 shots!";
-        //results.GetComponent<scr_ui_results>().next = "scn_game_dodger";
-        //secs = 15;
-        //StartCoroutine(OnBegin());
-
-        numberTries = 99;
+        global.goalCounter = 1;
     }
 
     void Update()
     {
-        if (numberTries <= 0 && touching == true)
-        {
-            global.winner = false;
-            results.SetActive(true);
-            Destroy(this);
-        }
-        if (global.goalCounter >= (1))
+        if (global.goalCounter ==0)
         {
             global.winner = true;
             results.SetActive(true);
@@ -129,14 +107,12 @@ public class testShot : MonoBehaviour
                 // Do physics
                 gameObject.GetComponent<Rigidbody2D>().AddForce(supahPOWAH, ForceMode2D.Impulse);
                 player.GetComponent<Rigidbody2D>().AddForce(jumpPOWAH, ForceMode2D.Impulse);
-                numberTries -= 1;
                 // Reset it
                 initP = new Vector2(0, 0);
                 touching = false;
             }
             locked = false;
         }
-        timeText.text = numberTries.ToString();
     }
 
     void FixedUpdate()
@@ -154,12 +130,4 @@ public class testShot : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
         }
     }
-
-    /*public IEnumerator OnBegin()
-    {
-        yield return new WaitForSeconds(1);
-        secs--;
-        timeText.text = secs.ToString();
-        StartCoroutine(OnBegin());
-    }*/
 }

@@ -12,13 +12,12 @@ public class scr_game_start : MonoBehaviour {
 
     public void OnBegin(int difficulty) {
         global.beatGames.Clear();
-        global.difficulty = difficulty;
         global.lives = lives[difficulty-1];
         global.timeSec = global.timelimit;
         if (global.beatGames.Count == global.games.Count)
         {
             scr_mod_fader.fadeSpeed = 1;
-            scr_mod_fader.next = "scn_title";
+            scr_mod_fader.next = "scn_lobby";
         }
         else
         {

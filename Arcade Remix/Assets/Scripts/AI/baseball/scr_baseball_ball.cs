@@ -5,6 +5,7 @@ using UnityEngine;
 public class scr_baseball_ball : MonoBehaviour {
     public int vspeed,hspeed;
     public GameObject pitcher;
+    public GameObject results;
     // Use this for initialization
     void Start () {
         vspeed = Random.Range(8, 3);
@@ -21,8 +22,8 @@ public class scr_baseball_ball : MonoBehaviour {
     {
         if (col.gameObject.name == "BlastZone")
         {
-            scr_baseball_player_controls.balls--;
-            GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(scr_baseball_player_controls.balls);
+            global.winner = false;
+            results.SetActive(true);
         }
     }
 
@@ -32,6 +33,7 @@ public class scr_baseball_ball : MonoBehaviour {
         {
             Destroy(this.gameObject);
             pitcher.GetComponent<scr_baseball_pitcher>().OnShoot();
+            global.scoreBaseball += 200;
         }
     }
 }

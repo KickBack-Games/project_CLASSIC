@@ -7,15 +7,14 @@ using UnityEngine.SceneManagement;
 public class scr_gliding_player_controls : MonoBehaviour {
     //touch button to fire 
     public Button button;
-    public static int hits;
 
     public float velocity;
+
+    public GameObject results;
     void Start()
     {
+        global.winner = true;
         button.onClick.AddListener(OnJump);
-        hits = 2;
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
-        scr_game_launcher.winstate = 1;
     }
 
     void Update()
@@ -29,27 +28,14 @@ public class scr_gliding_player_controls : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "missle")
+        if (other.gameObject.name == "missle" || other.gameObject.name == "water")
         {
-            hits--;
-            GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
+            global.winner = false;
+            results.SetActive(true);
             other.GetComponent<BoxCollider2D>().enabled = false;
-            if (hits <= 0)
-            {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(0, Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y)* -1 );
-                scr_game_launcher.winstate = -1;
-            }
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y)* -1 );
         }
-        if (other.gameObject.name == "water")
-        {
-            hits = 0;
-            GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(hits);
-            scr_game_launcher.winstate = -1;
-        }
-        if (other.gameObject.name == "warp" && global.timelimit > 0)
-        {
-            SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
-        }
+
         if (other.gameObject.name == "ceiling")
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) * -1);
@@ -58,9 +44,6 @@ public class scr_gliding_player_controls : MonoBehaviour {
 
     public void OnJump()
     {
-        if (hits > 0)
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5);
-        }
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5);
     }
 }

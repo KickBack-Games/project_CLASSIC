@@ -139,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 28438948}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -203.12683, y: -691.9589, z: -7.875}
+  m_LocalPosition: {x: -203.12683, y: -693.52, z: -7.875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 811022110}
@@ -276,9 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1538165e26b40fc4bac9cf8af0dcbaca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wave:
-  - {fileID: 1035674896}
-  - {fileID: 1035674896}
+  wave: {fileID: 1035674896}
   wave0: {fileID: 2013951545}
 --- !u!4 &44304069
 Transform:
@@ -445,7 +443,7 @@ Transform:
   m_GameObject: {fileID: 91493174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.604084, y: 1.0309119, z: 0}
-  m_LocalScale: {x: 0.64834, y: 0.64834, z: 0.64834}
+  m_LocalScale: {x: 0.40608126, y: 0.40608126, z: 0.40608126}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -461,8 +459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cb190ff281a5724fabb67f190851011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 1270745027}
+  button: {fileID: 1114313398}
   velocity: 0
+  results: {fileID: 1567328764}
 --- !u!61 &91493178
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -674,7 +673,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &282084426
@@ -1121,7 +1120,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 526851167}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -205.08156, y: -689.99286, z: -7.875}
+  m_LocalPosition: {x: -205.08156, y: -691.51, z: -7.875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2115653773}
@@ -1322,7 +1321,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &597843051
@@ -1670,7 +1669,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 786529171}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -205.56683, y: -689.5089, z: -7.875}
+  m_LocalPosition: {x: -205.56683, y: -689.41, z: -7.875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 191672026}
@@ -1993,7 +1992,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1028993932
@@ -2148,6 +2147,12 @@ Transform:
   m_Father: {fileID: 44304069}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1114313398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114962530256181346, guid: ebb8936645a7a2b4fa373226cea1c498,
+    type: 2}
+  m_PrefabInternal: {fileID: 375314410}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1145535370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,12 +2287,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1270745027 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114433003181919932, guid: ebb8936645a7a2b4fa373226cea1c498,
-    type: 2}
-  m_PrefabInternal: {fileID: 375314410}
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1332718444
 GameObject:
   m_ObjectHideFlags: 0
@@ -2579,6 +2578,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4941829879597578, guid: 01ffd71b7b30efa40b9768a3eaa8ff90,
     type: 2}
   m_PrefabInternal: {fileID: 282084426}
+--- !u!1 &1567328764 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1979610426012582, guid: ebb8936645a7a2b4fa373226cea1c498,
+    type: 2}
+  m_PrefabInternal: {fileID: 375314410}
 --- !u!1 &1570836841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,7 +2965,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1921184241}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -203.34, y: -688.3, z: -7.875}
+  m_LocalPosition: {x: -203.34, y: -687.46, z: -7.875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 584668356}
@@ -3252,6 +3256,6 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

@@ -29,7 +29,6 @@ public class scr_game_timer : MonoBehaviour
         if (global.timeSec <= 0 && global.timelimit > 0)
         {
             results.SetActive(true);
-            results.GetComponent<scr_ui_results>().next = "scn_title";
         }
         goalText.text = global.goalCounter.ToString();
     }

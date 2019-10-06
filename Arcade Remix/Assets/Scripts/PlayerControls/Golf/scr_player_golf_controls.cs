@@ -8,18 +8,13 @@ public class scr_player_golf_controls : MonoBehaviour {
     //touch button to fire 
     public Button button;
     private Animator anim;
-
-    public static int holes;
-
     public GameObject ball;
     // Use this for initialization
     void Start () {
         anim = this.GetComponent<Animator>();
         button.onClick.AddListener(OnShoot);
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
         anim.speed = 0;
-        holes = 0;
-        scr_game_launcher.winstate = -1;
+        global.winner = false;
     }
 	
 	// Update is called once per frame
@@ -28,14 +23,10 @@ public class scr_player_golf_controls : MonoBehaviour {
         {
             if (ball.GetComponent<scr_golf_ball_aim>().goSpeed == 0)
             {
-                ball.GetComponent<scr_golf_ball_aim>().goSpeed = 0.3f;
+                ball.GetComponent<scr_golf_ball_aim>().goSpeed = 9f;
                 anim.Play("swing", -1, 0f);
                 anim.speed = 0;
             }
-        }
-        if (holes >= 3)
-        {
-            SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
         }
     }
 

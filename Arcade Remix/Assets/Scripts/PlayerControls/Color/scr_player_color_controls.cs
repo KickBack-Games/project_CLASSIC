@@ -15,10 +15,10 @@ public class scr_player_color_controls : MonoBehaviour {
     public static int tries;
     private void Start()
     {
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(3);
+
         OnRed();
         tries = 3;
-        scr_game_launcher.winstate = 1;
+
     }
 
     public void OnRed() {

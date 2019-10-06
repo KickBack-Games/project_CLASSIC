@@ -12,13 +12,10 @@ public class playerMovement : MonoBehaviour
 	private Transform tr;
 
 	public bool lost;
-	public Text txtScore;
 
 	private Animator anim;
     private SpriteRenderer sprite;
 
-    public int[] goals;
-    public Text goalText;
     public GameObject results;
     public void Awake()
     {
@@ -26,11 +23,6 @@ public class playerMovement : MonoBehaviour
         SimpleGesture.On4AxisSwipeDown(SwipeDown);
         SimpleGesture.On4AxisSwipeLeft(SwipeLeft);
         SimpleGesture.On4AxisSwipeUp(SwipeUp);
-
-        StartCoroutine(OnBegin());
-
-        scr_game_launcher.winstate = -1;
-        //goalText.text = "Last " + goals[global.difficulty - 1] + " Sec!";
     }
 
     void Start() 
@@ -40,15 +32,28 @@ public class playerMovement : MonoBehaviour
 		pos = transform.position;
 		tr = transform;
 		lost = false;
-        //GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
-        scr_game_launcher.winstate = 1;
         global.winner = true;
-        global.goalCounter = goals[global.difficulty - 1];
-        results.GetComponent<scr_ui_results>().next = "scn_game_shooter";
     }
 
 	void Update() 
 	{
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            SwipeUp();
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            SwipeDown();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            SwipeLeft();
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            SwipeRight();
+        }
+
         var mousePos = Input.mousePosition;
 		// Check to see if the player lost
 		if ((pos.x >= 3) || 
@@ -66,7 +71,6 @@ public class playerMovement : MonoBehaviour
             else
             {
                 // Restart when completely shrunk
-                global.winner = false;
                 results.SetActive(true);
                 Destroy(this);
             }
@@ -126,11 +130,6 @@ public class playerMovement : MonoBehaviour
 				//anim.SetBool("moving", false);*/
 		}
 		transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);
-        if (global.goalCounter <= 0)
-        {
-            global.winner = true;
-            results.SetActive(true);
-        }
 	}   
 
 	// HANDLE THE COLLISION HERE
@@ -140,7 +139,6 @@ public class playerMovement : MonoBehaviour
     	{
             global.winner = false;
             results.SetActive(true);
-            results.GetComponent<scr_ui_results>().next = "scn_title";
             ballMovement ballScript = other.GetComponent<ballMovement>();
 	    	int dir = ballScript.dir;
 
@@ -168,16 +166,17 @@ public class playerMovement : MonoBehaviour
     {
         if (tr.position == pos)
         {
-            anim.Play("anim_dodge_up", -1, 0f);
-            pos += Vector3.up;
+            anim.Play("anim_dodge_down", -1, 0f);
+            pos += Vector3.down;
         }
     }
     public void SwipeDown()
     {
         if (tr.position == pos)
         {
-            anim.Play("anim_dodge_down", -1, 0f);
-            pos += Vector3.down;
+            anim.Play("anim_dodge_up", -1, 0f);
+            pos += Vector3.up;
+
         }
     }
     public void SwipeLeft()
@@ -195,12 +194,5 @@ public class playerMovement : MonoBehaviour
             anim.Play("jump", -1, 0f);
             pos += Vector3.right;
         }
-    }
-
-    public IEnumerator OnBegin()
-    {
-        yield return new WaitForSeconds(1);
-        global.goalCounter--;
-        StartCoroutine(OnBegin());
     }
 }

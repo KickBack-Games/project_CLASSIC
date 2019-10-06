@@ -17,8 +17,7 @@ public class timer : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		txtTime.text = second.ToString();
-		global.scoreDodger = 0;
+        StartCoroutine(TimePoint());
 	}
 	
 	// Update is called once per frame
@@ -43,6 +42,12 @@ public class timer : MonoBehaviour
 		else
 			changed = false;
 		// Increase it every second
-		global.scoreDodger = second * 100;
+		
 	}
+
+    public IEnumerator TimePoint() {
+        yield return new WaitForSeconds(3);
+        global.scoreDodger += 100;
+        StartCoroutine(TimePoint());
+    }
 }

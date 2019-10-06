@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class jumperMovement : MonoBehaviour 
 {
+    public GameObject results;
+
 	public bool locked = false;
 	public float maxVelocity;
 
@@ -27,16 +29,13 @@ public class jumperMovement : MonoBehaviour
 	void Start()
 	{
 		rend = anchor.GetComponent<SpriteRenderer>();
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(0);
-        scr_game_launcher.winstate = 1;
+        global.goalCounter = 3;
+        global.winner = true;
     }
 
 
 	void Update () 
-	{
-		if (Input.GetKeyDown(KeyCode.R))
-			SceneManager.LoadScene("scn_game_jumper");
-		
+	{		
 		if (!lost)
 		{
 	        if (Input.GetMouseButton(0) && landed)
@@ -141,22 +140,20 @@ public class jumperMovement : MonoBehaviour
 		if (other.gameObject.tag == "bad")
 		{
 			lost = true;
-            scr_game_launcher.winstate = -1;
-		}
+            global.winner = false;
+            results.SetActive(true);
+        }
         if (other.gameObject.name == "Points" && gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
         {
             global.scoreJumper += 500;
+            global.goalCounter--;
+            if (global.goalCounter == 0)
+            {
+                global.winner = true;
+                results.SetActive(true);
+            }
         }
 	}
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.name == "Main Camera")
-        {
-            scr_game_launcher.winstate = -1;
-            SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
-        }
-    }
 
     void OnCollisionExit2D(Collision2D other)
 	{

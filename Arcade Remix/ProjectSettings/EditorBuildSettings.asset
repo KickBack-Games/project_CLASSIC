@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/scn_title.unity
-    guid: 36cebbd8d1186964a8697bbbbb0ea022
+    path: Assets/Scenes/scn_lobby.unity
+    guid: 4c00a3c2a594b8d48b1fea8df73f4418
   - enabled: 1
-    path: Assets/Scenes/scn_game_runner.unity
-    guid: 449f8c66507b0cb40bf766eeda516cdb
+    path: Assets/Scenes/cutGames/scn_game_baseball.unity
+    guid: b7f8ab496662bbb49809549362d0fa49
   - enabled: 1
     path: Assets/Scenes/scn_game_basketball.unity
     guid: 69b3f3f6ecc72df47b34fcaa40133ac9
@@ -18,8 +18,26 @@ EditorBuildSettings:
     path: Assets/Scenes/scn_game_dodger.unity
     guid: 8319f9a5a1cd9594a95ade077e35cd35
   - enabled: 1
+    path: Assets/Scenes/cutGames/scn_game_gliding.unity
+    guid: 2371ce7612a69654485e78461313edb8
+  - enabled: 1
+    path: Assets/Scenes/cutGames/scn_game_golf.unity
+    guid: c93e9e6ff83767c408cc052cdf2f424c
+  - enabled: 1
+    path: Assets/Scenes/cutGames/scn_game_jumper.unity
+    guid: be5ca9550a9da7246b7e2738222bfe4b
+  - enabled: 1
+    path: Assets/Scenes/scn_game_runner.unity
+    guid: 449f8c66507b0cb40bf766eeda516cdb
+  - enabled: 1
     path: Assets/Scenes/scn_game_shooter.unity
     guid: 3d351fa5afb169f4692f6e7b06cc1ddf
+  - enabled: 1
+    path: Assets/Scenes/cutGames/scn_game_skii.unity
+    guid: 90ca6c1721f0b6c419429775cceae561
+  - enabled: 1
+    path: Assets/Scenes/cutGames/scn_game_tennis.unity
+    guid: a9f6d58c3f2430c45a707df7972ad20a
   - enabled: 1
     path: Assets/Scenes/scn_game_thrower.unity
     guid: c144f50df58bc554c8053d09a884ae11

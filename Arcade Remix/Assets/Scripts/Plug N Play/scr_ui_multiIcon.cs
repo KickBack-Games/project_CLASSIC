@@ -22,7 +22,7 @@ public class scr_ui_multiIcon : MonoBehaviour {
         basewidth = image.GetComponent<Image>().sprite.rect.width;
     }
 
-    public void OnRefresh (int count) {
+    public void OnSpriteRefresh (int count) {
         image.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(basewidth * count, image.GetComponent<Image>().rectTransform.sizeDelta.y);
     }
 }

@@ -77,11 +77,9 @@ public class scr_enemy_color_movement : MonoBehaviour {
             {
                 if (scr_player_color_controls.tries <= 0)
                 {
-                    scr_game_launcher.winstate = -1;
                     SceneManager.LoadScene("scn_lobby", LoadSceneMode.Single);
                 }
                 scr_player_color_controls.tries--;
-                GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(scr_player_color_controls.tries);
             }
         }
     }

@@ -1,0 +1,158 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=6952, tid=0x00000000000045bc
+#
+# JRE version:  (8.0_152-b16) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.152-b16 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000002513800):  JavaThread "Unknown thread" [_thread_in_vm, id=17852, stack(0x0000000002410000,0x0000000002510000)]
+
+Stack: [0x0000000002410000,0x0000000002510000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x0000000002513800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=17852, stack(0x0000000002410000,0x0000000002510000)]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ PSYoungGen      total 38400K, used 665K [0x00000000d5d80000, 0x00000000d8800000, 0x0000000100000000)
+  eden space 33280K, 2% used [0x00000000d5d80000,0x00000000d5e26670,0x00000000d7e00000)
+  from space 5120K, 0% used [0x00000000d8300000,0x00000000d8300000,0x00000000d8800000)
+  to   space 5120K, 0% used [0x00000000d7e00000,0x00000000d7e00000,0x00000000d8300000)
+ ParOldGen       total 87552K, used 0K [0x0000000081800000, 0x0000000086d80000, 0x00000000d5d80000)
+  object space 87552K, 0% used [0x0000000081800000,0x0000000081800000,0x0000000086d80000)
+ Metaspace       used 770K, capacity 4480K, committed 4480K, reserved 1056768K
+  class space    used 75K, capacity 384K, committed 384K, reserved 1048576K
+
+Card table byte_map: [0x00000000119d0000,0x0000000011dd0000] byte_map_base: 0x00000000115c4000
+
+Marking Bits: (ParMarkBitMap*) 0x0000000077d80860
+ Begin Bits: [0x0000000012880000, 0x0000000014820000)
+ End Bits:   [0x0000000014820000, 0x00000000167c0000)
+
+Polling page: 0x00000000006e0000
+
+CodeCache: size=245760Kb used=328Kb max_used=328Kb free=245431Kb
+ bounds [0x0000000002610000, 0x0000000002880000, 0x0000000011610000]
+ total_blobs=58 nmethods=0 adapters=38
+ compilation: enabled
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.033 loading class java/lang/Short
+Event: 0.033 loading class java/lang/Short done
+Event: 0.033 loading class java/lang/Integer
+Event: 0.033 loading class java/lang/Integer done
+Event: 0.033 loading class java/lang/Long
+Event: 0.034 loading class java/lang/Long done
+Event: 0.034 loading class java/lang/NullPointerException
+Event: 0.034 loading class java/lang/NullPointerException done
+Event: 0.034 loading class java/lang/ArithmeticException
+Event: 0.034 loading class java/lang/ArithmeticException done
+
+
+Dynamic libraries:
+0x00007ff799ad0000 - 0x00007ff799b07000 	C:\Program Files\Java\jdk1.8.0_152\bin\java.exe
+0x00007fff3c7c0000 - 0x00007fff3c9b0000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007fff3b190000 - 0x00007fff3b242000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007fff3a310000 - 0x00007fff3a5b3000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007fff3b5d0000 - 0x00007fff3b673000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007fff3af90000 - 0x00007fff3b02e000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007fff3b330000 - 0x00007fff3b3c7000 	C:\WINDOWS\System32\sechost.dll
+0x00007fff3ba60000 - 0x00007fff3bb80000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007fff3b430000 - 0x00007fff3b5c3000 	C:\WINDOWS\System32\USER32.dll
+0x00007fff39a30000 - 0x00007fff39a51000 	C:\WINDOWS\System32\win32u.dll
+0x00007fff3c390000 - 0x00007fff3c3b6000 	C:\WINDOWS\System32\GDI32.dll
+0x00007fff3a6d0000 - 0x00007fff3a864000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007fff3a5c0000 - 0x00007fff3a65e000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007fff3a210000 - 0x00007fff3a30a000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007fff2a1b0000 - 0x00007fff2a435000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.356_none_e6c4af7d130f27cc\COMCTL32.dll
+0x00007fff3c3c0000 - 0x00007fff3c6f6000 	C:\WINDOWS\System32\combase.dll
+0x00007fff398a0000 - 0x00007fff39920000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007fff3a870000 - 0x00007fff3a89e000 	C:\WINDOWS\System32\IMM32.DLL
+0x0000000050730000 - 0x0000000050802000 	C:\Program Files\Java\jdk1.8.0_152\jre\bin\msvcr100.dll
+0x0000000077560000 - 0x0000000077e00000 	C:\Program Files\Java\jdk1.8.0_152\jre\bin\server\jvm.dll
+0x00007fff3b980000 - 0x00007fff3b988000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007fff381a0000 - 0x00007fff381a9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007fff35f70000 - 0x00007fff35f94000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007fff34b50000 - 0x00007fff34b5a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007fff3b910000 - 0x00007fff3b97f000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007fff35f00000 - 0x00007fff35f2d000 	C:\WINDOWS\SYSTEM32\winmmbase.dll
+0x00007fff3a660000 - 0x00007fff3a6aa000 	C:\WINDOWS\System32\cfgmgr32.dll
+0x0000000050910000 - 0x000000005091f000 	C:\Program Files\Java\jdk1.8.0_152\jre\bin\verify.dll
+0x00000000508e0000 - 0x0000000050909000 	C:\Program Files\Java\jdk1.8.0_152\jre\bin\java.dll
+0x00000000508c0000 - 0x00000000508d6000 	C:\Program Files\Java\jdk1.8.0_152\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Dcom.android.sdkmanager.toolsdir=C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\\.. 
+java_command: com.android.sdklib.tool.AvdManagerCli list target -c
+java_class_path (initial): C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\dvlib-26.0.0-dev.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\jimfs-1.1.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\jsr305-1.3.9.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\repository-26.0.0-dev.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\j2objc-annotations-1.1.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\layoutlib-api-26.0.0-dev.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\gson-2.3.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\httpcore-4.2.5.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\commons-logging-1.1.1.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\commons-compress-1.12.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\annotations-26.0.0-dev.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\error_prone_annotations-2.0.18.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\animal-sniffer-annotations-1.14.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\httpclient-4.2.6.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\commons-codec-1.6.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\common-26.0.0-dev.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\kxml2-2.3.0.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\httpmime-4.1.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\annotations-12.0.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\sdklib-26.0.0-dev.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\guava-22.0.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:/Program Files/Java/jdk1.8.0_152
+CLASSPATH=C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\dvlib-26.0.0-dev.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\jimfs-1.1.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\jsr305-1.3.9.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\repository-26.0.0-dev.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\j2objc-annotations-1.1.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\layoutlib-api-26.0.0-dev.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\gson-2.3.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\httpcore-4.2.5.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\commons-logging-1.1.1.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\commons-compress-1.12.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\annotations-26.0.0-dev.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\error_prone_annotations-2.0.18.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\animal-sniffer-annotations-1.14.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\httpclient-4.2.6.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\commons-codec-1.6.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\common-26.0.0-dev.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\kxml2-2.3.0.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\httpmime-4.1.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\annotations-12.0.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\sdklib-26.0.0-dev.jar;C:\Users\zarof\AppData\Local\Android\sdk\tools\bin\..\lib\guava-22.0.jar
+PATH=C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\Git LFS;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files (x86)\Autodesk\Backburner\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\zarof\AppData\Local\Microsoft\WindowsApps;C:\Users\zarof\AppData\Local\GitHubDesktop\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;
+USERNAME=zarof
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 18362 (10.0.18362.329)
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 94 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, rtm, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 8285800k(1102524k free), swap 10238568k(5572k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.152-b16) for windows-amd64 JRE (1.8.0_152-b16), built on Sep 14 2017 02:29:36 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Sat Oct 05 18:02:29 2019
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

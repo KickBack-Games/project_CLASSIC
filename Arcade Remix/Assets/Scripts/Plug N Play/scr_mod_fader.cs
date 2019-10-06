@@ -20,7 +20,7 @@ public class scr_mod_fader : MonoBehaviour {
         active = false;
         owner = null;
         fadeSpeed = -1;
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         image.enabled = true;
     }
 

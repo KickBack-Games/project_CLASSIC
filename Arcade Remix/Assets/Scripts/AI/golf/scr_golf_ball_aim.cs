@@ -8,19 +8,21 @@ public class scr_golf_ball_aim : MonoBehaviour {
 
     public float goSpeed = 0;
     public GameObject spawner;
+
+    public GameObject results;
     void Start()
     {
         spinSpeed.x = 0;
         spinSpeed.y = 0;
-        spinSpeed.z = Random.Range(0.5f, 0.9f);
+        spinSpeed.z = 24f;
         goSpeed = 0;
         line = GetComponent<LineRenderer>();
     }
 
     void Update()
     {
-        transform.Translate(Quaternion.Euler(0, 0, 0) * this.transform.up * goSpeed);
-        gameObject.transform.Rotate(spinSpeed);
+        transform.Translate(Quaternion.Euler(0, 0, 0) * this.transform.up * goSpeed * Time.deltaTime);
+        gameObject.transform.Rotate(spinSpeed * Time.deltaTime);
         line.SetPosition(1, (Quaternion.Euler(0, 0, 0) * this.transform.up) * 500);
         if (transform.rotation.z > 0.21 && spinSpeed.z > 0)
         {
@@ -36,15 +38,10 @@ public class scr_golf_ball_aim : MonoBehaviour {
     {
         if (col.gameObject.name == "goal")
         {
+            global.winner = true;
+            results.SetActive(true);
             Destroy(this.gameObject);
-            spawner.GetComponent<scr_golf_goal_spawn>().OnSpawn();
-            scr_player_golf_controls.holes++;
-            GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(scr_player_golf_controls.holes);
             global.scoreGolf += 200;
-            if (scr_player_golf_controls.holes >= 3)
-            {
-                scr_game_launcher.winstate = 1;
-            }
         }
     }
 
@@ -52,6 +49,8 @@ public class scr_golf_ball_aim : MonoBehaviour {
     {
         if (col.gameObject.tag == "MainCamera")
         {
+            global.winner = false;
+            results.SetActive(true);
             Destroy(this.gameObject);
             spawner.GetComponent<scr_golf_goal_spawn>().OnSpawn();
         }

@@ -8,7 +8,7 @@ public class scr_enemy_runner_cloudspeed : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         speed = Random.Range(-6, -1);
-        this.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
+        //this.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
     }
 	
 	// Update is called once per frame

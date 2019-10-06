@@ -6,12 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class scr_ui_results : MonoBehaviour {
     public Sprite[] logo;
-
-    public string next;
 	// Use this for initialization
 	void Start () {
+
         StartCoroutine(OnBegin());
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         if (global.winner)
         {
             this.GetComponent<Image>().sprite = logo[0];
@@ -25,35 +24,9 @@ public class scr_ui_results : MonoBehaviour {
     public IEnumerator OnBegin()
     {
         yield return new WaitForSecondsRealtime(1);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         scr_mod_fader.fadeSpeed = 1;
-        if (!global.winner)
-        {
-            if (global.timelimit<=0)
-            {
-                if (global.lives > 0)
-                {
-                    global.lives--;
-                    Scene scene = SceneManager.GetActiveScene();
-                    scr_mod_fader.next = scene.name;
-                }
-                else
-                {
-                    scr_mod_fader.next = "scn_title";
-                }
-            }
-        }
-        else
-        {
-            if (global.beatGames.Count == global.games.Count)
-            {
-                scr_mod_fader.next = "scn_title";
-            }
-            else
-            {
-                OnLevelSelect();
-            }
-        }
+        scr_mod_fader.next = "scn_lobby";
     }
     public void OnLevelSelect()
     {

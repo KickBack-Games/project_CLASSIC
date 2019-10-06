@@ -232,7 +232,7 @@ SpriteRenderer:
   m_Size: {x: 1.6, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &35659557
@@ -370,6 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a44c2aaa12b1714a8fc28703d8e0feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goal: 4
+  results: {fileID: 398371937}
   locked: 0
   maxVelocity: 50
   rb: {fileID: 35659558}
@@ -440,6 +442,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4535300791675458, guid: 74ce9c7cbf114c4408e3031859193293,
     type: 2}
   m_PrefabInternal: {fileID: 899301509}
+--- !u!1 &398371937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1979610426012582, guid: ebb8936645a7a2b4fa373226cea1c498,
+    type: 2}
+  m_PrefabInternal: {fileID: 1346970950}
 --- !u!1001 &899301509
 Prefab:
   m_ObjectHideFlags: 0
@@ -615,7 +622,7 @@ SpriteRenderer:
   m_Size: {x: 1.6, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &989226498
@@ -710,7 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followPlayer: {fileID: 35659557}
-  offset: 4.5
+  offset: 4.85
 --- !u!50 &989226503
 Rigidbody2D:
   serializedVersion: 4
@@ -840,7 +847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1127283686
 Transform:
   m_ObjectHideFlags: 0
@@ -956,12 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ff2d92dd6fcc34f9554a1bc17b1099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 35659557}
-  speed: 100
-  close: 7
-  mid: 16
-  far: 18
-  NEPTUNEPOWER: 10
+  speed: 10
 --- !u!4 &1167805832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4535300791675458, guid: 74ce9c7cbf114c4408e3031859193293,
@@ -1271,7 +1273,7 @@ SpriteRenderer:
   m_Size: {x: 1.6, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1827948995

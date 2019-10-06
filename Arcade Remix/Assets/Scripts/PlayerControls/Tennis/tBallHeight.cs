@@ -29,7 +29,7 @@ public class tBallHeight : MonoBehaviour {
 			LSx = 4.6f;
 			LSy = 4.6f;
 		}
-		transform.localScale = new Vector2(LSx, LSy);
+		//transform.localScale = new Vector2(LSx, LSy);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)

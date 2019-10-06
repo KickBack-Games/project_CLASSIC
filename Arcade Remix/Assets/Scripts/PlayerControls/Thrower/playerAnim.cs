@@ -22,7 +22,7 @@ public class playerAnim : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (scri.counter >= scri.goals[global.difficulty - 1])
+		if (global.goalCounter >= 10)
 		{
 			if (count > 50)
 				anim.SetBool("THROW", false);

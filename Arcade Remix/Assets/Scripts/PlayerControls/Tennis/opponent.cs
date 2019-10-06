@@ -24,7 +24,14 @@ public class opponent : MonoBehaviour
     	myX = ball.transform.position.x;
     	pos = new Vector2(myX, myY);
  		transform.position = Vector2.MoveTowards(transform.position, pos, Time.deltaTime * speed);
-
+        if (ball.transform.position.x > transform.position.x)
+        {
+            transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
+        }
+        if (ball.transform.position.x < transform.position.x)
+        {
+            transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = false;
+        }
     }
 
     IEnumerator Example()

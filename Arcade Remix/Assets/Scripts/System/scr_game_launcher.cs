@@ -15,56 +15,71 @@ public class scr_game_launcher : MonoBehaviour {
 
     public Image thumbs;
 
-    public static int winstate = 0;
-	// Use this for initialization
+    public GameObject players;
+    public GameObject cheergood;
+    public GameObject cheerbad;
+
+    public GameObject speedup;
 	void Start () {
         StartCoroutine(OnBegin());
-        if (winstate != 0)
+        messagebox.SetActive(false);
+        if (global.gamecount>0)
         {
-            thumbs.gameObject.SetActive(true);
+            thumbs.transform.parent.gameObject.gameObject.SetActive(true);
+            if (global.winner)
+            {
+                global.wincount++;
+                cheergood.SetActive(true);
+                if (global.wincount % 5 == 0)
+                {
+                    Time.timeScale = Time.timeScale + .50f;
+                    Time.fixedDeltaTime = Time.fixedDeltaTime + .50f;
+                    speedup.SetActive(true);
+                }
+            }
+            else
+            {
+                cheerbad.SetActive(false);
+            }
         }
-        global.wincount++;
-        if (global.wincount % 10 == 0)
-        {
-            Time.timeScale = Time.timeScale + 0.05f;
-        }
+
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public IEnumerator OnBegin() {
-        if (winstate == 1)
+        if (global.winner)
         {
             thumbs.color = new Color(0, 255, 0, 255);
+            cheergood.SetActive(true);
         }
-        if (winstate == -1)
+        if (!global.winner)
         {
             thumbs.color = new Color(255, 0, 0, 255);
+            cheerbad.SetActive(true);
             thumbs.gameObject.transform.localScale = new Vector3(thumbs.gameObject.transform.localScale.x, thumbs.gameObject.transform.localScale.y * - 1, thumbs.gameObject.transform.localScale.z);
         }
         yield return new WaitForSeconds(3);
-        toLoad = global.games[Random.Range(0, global.games.Count)];
+        int rng = Random.Range(0, global.games.Count);
+        toLoad = global.games[rng];
         //toLoad = "scn_game_thrower";
-        thumbs.gameObject.SetActive(false);
+        thumbs.transform.parent.gameObject.SetActive(false);
         messagebox.SetActive(true);
-        if (toLoad == "scn_game_baseball") { message.text = "Hit the Ball!!"; icon.sprite = icons[0]; global.timelimit = 5; }
-        if (toLoad == "scn_game_basketball") { message.text = "Make A Goal!!"; icon.sprite = icons[1]; global.timelimit = 11; }
-        if (toLoad == "scn_game_color") { message.text = "Match the Color!!"; icon.sprite = icons[0]; global.timelimit = 5; }
-        if (toLoad == "scn_game_dodger") { message.text = "Dodge the Balls!!"; icon.sprite = icons[2]; global.timelimit = 5; }
-        if (toLoad == "scn_game_gliding") { message.text = "Stay in the Air!!"; icon.sprite = icons[0]; global.timelimit = 8; }
-        if (toLoad == "scn_game_golf") { message.text = "Get Three Holes!!"; icon.sprite = icons[0]; global.timelimit = 9; }
-        if (toLoad == "scn_game_jumper") { message.text = "Board the Platforms!!"; icon.sprite = icons[1]; global.timelimit = 11; }
-        if (toLoad == "scn_game_racing") { message.text = "Collect the Rings!!"; icon.sprite = icons[4]; global.timelimit = 5; }
-        if (toLoad == "scn_game_runner") { message.text = "Avoid the Bumps!!"; icon.sprite = icons[2]; global.timelimit = 8; }
-        if (toLoad == "scn_game_shooter") { message.text = "Shoot the Targets!!"; icon.sprite = icons[0]; global.timelimit = 10; }
-        if (toLoad == "scn_game_skii") { message.text = "Touch Three Flags!!"; icon.sprite = icons[3]; global.timelimit = 8; }
-        if (toLoad == "scn_game_tennis") { message.text = "Tap the Ball!!"; icon.sprite = icons[0]; global.timelimit = 10; }
-        if (toLoad == "scn_game_thrower") { message.text = "Throw Over 3m!!"; icon.sprite = icons[0]; global.timelimit = 7; }
+        cheerbad.SetActive(false);
+        cheergood.SetActive(false);
+        players.transform.GetChild(rng).gameObject.SetActive(true);
+        if (toLoad == "scn_game_baseball") { message.text = "Baseball"; icon.sprite = icons[rng];}
+        if (toLoad == "scn_game_basketball") { message.text = "Basketball"; icon.sprite = icons[rng];}
+        if (toLoad == "scn_game_dodger") { message.text = "Dodgeball"; icon.sprite = icons[rng];}
+        if (toLoad == "scn_game_gliding") { message.text = "Hang Glide"; icon.sprite = icons[rng];}
+        if (toLoad == "scn_game_golf") { message.text = "Golf"; icon.sprite = icons[rng];}
+        if (toLoad == "scn_game_jumper") { message.text = "Plat Jumps"; icon.sprite = icons[rng];}
+        if (toLoad == "scn_game_runner") { message.text = "Track Run"; icon.sprite = icons[rng];}
+        if (toLoad == "scn_game_shooter") { message.text = "Archery"; icon.sprite = icons[rng];}
+        if (toLoad == "scn_game_skii") { message.text = "Snowboard"; icon.sprite = icons[rng];}
+        if (toLoad == "scn_game_tennis") { message.text = "Tennis"; icon.sprite = icons[rng];}
+        if (toLoad == "scn_game_thrower") { message.text = "Shot Put"; icon.sprite = icons[rng];}
         yield return new WaitForSeconds(2);
-        messagebox.SetActive(false);
+        global.timeSec = 5;
         SceneManager.LoadScene(toLoad, LoadSceneMode.Single);
+        global.gamecount++;
     }
 }

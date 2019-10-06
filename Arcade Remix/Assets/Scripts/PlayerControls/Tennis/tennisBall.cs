@@ -13,16 +13,16 @@ public class tennisBall : MonoBehaviour {
 	public bool goingup;
 	private Vector3 mPos;
 
-    public static int balls;
+    public GameObject results;
+
+    public Animator anim;
 	// Use this for initialization
 	void Start () 
 	{
 		goingup = false;
 		pos = new Vector2(Random.Range(-3f, 3f), -5f);
 		mPos.z = 10;
-        balls = 3;
-        GameObject.Find("EventSystem").GetComponent<scr_ui_multiIcon>().OnRefresh(1);
-        scr_game_launcher.winstate = 1;
+        global.winner = true;
     }
 	
 	// Update is called once per frame
@@ -83,12 +83,8 @@ public class tennisBall : MonoBehaviour {
         {
             if (global.timelimit>0)
             {
-                scr_game_launcher.winstate = -1;
-                SceneManager.LoadScene("scn_lobby",LoadSceneMode.Single);
-            }
-            else
-            {
-                SceneManager.LoadScene("scn_game_tennis", LoadSceneMode.Single);
+                global.winner = false;
+                results.SetActive(true);
             }
         }
 			
@@ -102,7 +98,8 @@ public class tennisBall : MonoBehaviour {
 
 		if(other.gameObject.tag == "bad") // For the opponents hitbox
 		{
-			pos = new Vector2(Random.Range(-3f, 3f), -5f);
+            anim.Play("hit");
+            pos = new Vector2(Random.Range(-3f, 3f), -5f);
 			goingup = false;
 			swung = false;
 			if (speed < 12)

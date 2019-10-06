@@ -59,7 +59,6 @@ public class bballPlayer : MonoBehaviour
 				{
 					throwCounter -= .05f;
 					anim.Play("anim_bball_throw");
-					print(throwCounter);
 				}
 			}
 

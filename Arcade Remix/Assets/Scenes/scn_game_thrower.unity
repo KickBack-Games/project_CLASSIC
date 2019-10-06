@@ -1208,24 +1208,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e250471f63724d8ee179d01536af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 5
-  second: 5
-  counter: 0
   landed: 0
   sr: {fileID: 0}
-  txtTime: {fileID: 1572075614}
-  txtDistance: {fileID: 1468468505}
   distance: 0
   pre_particles: {fileID: 1353741704110272, guid: 4b68de56d6279464db27fe5b9c86a631,
     type: 2}
   feedback: {fileID: 1897011306360108, guid: af95227122e3ce74299a803d7ddf729f, type: 2}
   holder: {fileID: 2023289852}
   bar: {fileID: 1058076660}
-  goals: 0a000000140000001e000000
-  goalText: {fileID: 0}
-  timeText: {fileID: 0}
   results: {fileID: 1713416450}
-  secs: 0
   eventsystem: {fileID: 1239509998}
 --- !u!58 &1558967088
 CircleCollider2D:
@@ -1340,7 +1331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1728718049
 RectTransform:
   m_ObjectHideFlags: 0
