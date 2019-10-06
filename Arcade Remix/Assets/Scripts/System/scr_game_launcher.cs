@@ -33,13 +33,12 @@ public class scr_game_launcher : MonoBehaviour {
                 if (global.wincount % 5 == 0)
                 {
                     Time.timeScale = Time.timeScale + .50f;
-                    Time.fixedDeltaTime = Time.fixedDeltaTime + .50f;
                     speedup.SetActive(true);
                 }
             }
             else
             {
-                cheerbad.SetActive(false);
+                cheerbad.SetActive(true);
             }
         }
 
@@ -49,12 +48,10 @@ public class scr_game_launcher : MonoBehaviour {
         if (global.winner)
         {
             thumbs.color = new Color(0, 255, 0, 255);
-            cheergood.SetActive(true);
         }
         if (!global.winner)
         {
             thumbs.color = new Color(255, 0, 0, 255);
-            cheerbad.SetActive(true);
             thumbs.gameObject.transform.localScale = new Vector3(thumbs.gameObject.transform.localScale.x, thumbs.gameObject.transform.localScale.y * - 1, thumbs.gameObject.transform.localScale.z);
         }
         yield return new WaitForSeconds(3);
